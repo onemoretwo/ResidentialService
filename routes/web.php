@@ -14,5 +14,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home.index');
+Route::get('/information', 'HomeController@information')->name('home.information');
+Route::get('/gallery', 'HomeController@gallery')->name('home.gallery');
+Route::get('/neighborhood', 'HomeController@neighborhood')->name('home.neighborhood');
+
+Route::get('/register-rental', 'LeaseController@register')->name('leases.register');
+
