@@ -2,10 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="df8245d6-ba08-4a4d-8a2c-567eb575f903" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/images/map1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/public.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LeaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LeaseController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/messageImage_1583072209595.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/database/schema.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/gallery.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/gallery.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/information.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/information.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/navbar.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,7 +182,10 @@
       <option name="presentableId" value="Default" />
       <updated>1583316680667</updated>
       <workItem from="1583316684668" duration="48000" />
-      <workItem from="1583332793698" duration="9558000" />
+      <workItem from="1583332793698" duration="10930000" />
+      <workItem from="1583870155813" duration="5806000" />
+      <workItem from="1583985905633" duration="11000" />
+      <workItem from="1583996865472" duration="494000" />
     </task>
     <servers />
   </component>
@@ -193,21 +204,29 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="482" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1440.900@0.0.1440.900" timestamp="1583340335048" />
-    <state width="1398" height="245" key="GridCell.Tab.0.bottom" timestamp="1583333289708">
+    <state width="1398" height="245" key="GridCell.Tab.0.bottom" timestamp="1583819220206">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="245" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1583333289708" />
-    <state width="1398" height="245" key="GridCell.Tab.0.center" timestamp="1583333289706">
+    <state width="1398" height="245" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1583819220206" />
+    <state width="1398" height="245" key="GridCell.Tab.0.center" timestamp="1583819220204">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="245" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1583333289706" />
-    <state width="1398" height="245" key="GridCell.Tab.0.left" timestamp="1583333289705">
+    <state width="1398" height="245" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1583819220204" />
+    <state width="1398" height="245" key="GridCell.Tab.0.left" timestamp="1583819220202">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="245" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1583333289705" />
-    <state width="1398" height="245" key="GridCell.Tab.0.right" timestamp="1583333289707">
+    <state width="1398" height="245" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1583819220202" />
+    <state width="1398" height="245" key="GridCell.Tab.0.right" timestamp="1583819220205">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="245" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1583333289707" />
+    <state width="1398" height="245" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1583819220205" />
+    <state x="397" y="282" key="com.intellij.ide.util.TipDialog" timestamp="1583870228114">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="397" y="282" key="com.intellij.ide.util.TipDialog/0.0.1440.900@0.0.1440.900" timestamp="1583870228114" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1583389328776">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1583389328776" />
   </component>
 </project>
