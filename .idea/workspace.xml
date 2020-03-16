@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="df8245d6-ba08-4a4d-8a2c-567eb575f903" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/images/map1.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/gallery.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/gallery.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/information.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/information.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,11 +147,11 @@
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/database" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/database" />
     </key>
   </component>
   <component name="RunManager">
@@ -175,6 +172,8 @@
       <updated>1583316680667</updated>
       <workItem from="1583316684668" duration="48000" />
       <workItem from="1583332793698" duration="9558000" />
+      <workItem from="1583389526655" duration="462000" />
+      <workItem from="1583509256910" duration="428000" />
     </task>
     <servers />
   </component>
@@ -209,5 +208,9 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1398" height="245" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1583333289707" />
+    <state x="397" y="270" key="com.intellij.ide.util.TipDialog" timestamp="1584156337487">
+      <screen x="0" y="23" width="1440" height="831" />
+    </state>
+    <state x="397" y="270" key="com.intellij.ide.util.TipDialog/0.23.1440.831@0.23.1440.831" timestamp="1584156337487" />
   </component>
 </project>
