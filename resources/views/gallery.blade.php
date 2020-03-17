@@ -4,10 +4,10 @@
     <style>
         body {
             background-color:#1d1d1d !important;
-            font-family: "Asap", sans-serif;
+            /*font-family: "Asap", sans-serif;*/
             color:#989898;
-            margin:10px;
-            font-size:16px;
+            /*margin:10px;*/
+            /*font-size:16px;*/
         }
         .thumb{
             margin-bottom: 30px;
@@ -42,7 +42,6 @@
 @section('content')
     <div class="container page-top">
         <h1 class="text-center" style="padding-bottom: 2rem">รูปภาพหอพัก</h1>
-
 
 
         <div class="row">
