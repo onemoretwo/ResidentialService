@@ -26,3 +26,4 @@ Route::get('/neighborhood', 'HomeController@neighborhood')->name('home.neighborh
 
 Route::get('/register-rental', 'LeaseController@register')->name('leases.register');
 
+Route::resource('/rooms','RoomController');
