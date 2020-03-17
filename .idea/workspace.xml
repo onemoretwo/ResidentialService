@@ -2,18 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="df8245d6-ba08-4a4d-8a2c-567eb575f903" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/css/public.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/PackageController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/ReceiptController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/ReportController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/RequestController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LeaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LeaseController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/messageImage_1583072209595.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/database/schema.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/gallery.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/gallery.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/information.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/information.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/navbar.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,7 +178,8 @@
       <workItem from="1583332793698" duration="10930000" />
       <workItem from="1583870155813" duration="5806000" />
       <workItem from="1583985905633" duration="11000" />
-      <workItem from="1583996865472" duration="494000" />
+      <workItem from="1583996865472" duration="749000" />
+      <workItem from="1584453092744" duration="3700000" />
     </task>
     <servers />
   </component>
@@ -196,10 +190,10 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="453" y="260" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1583333529074">
+    <state x="453" y="260" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1584454076919">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="453" y="260" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900@0.0.1440.900" timestamp="1583333529074" />
+    <state x="453" y="260" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900@0.0.1440.900" timestamp="1584454076919" />
     <state x="482" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1583340335048">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -220,10 +214,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1398" height="245" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1583819220205" />
-    <state x="397" y="282" key="com.intellij.ide.util.TipDialog" timestamp="1583870228114">
+    <state x="397" y="282" key="com.intellij.ide.util.TipDialog" timestamp="1584453092783">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="397" y="282" key="com.intellij.ide.util.TipDialog/0.0.1440.900@0.0.1440.900" timestamp="1583870228114" />
+    <state x="397" y="282" key="com.intellij.ide.util.TipDialog/0.0.1440.900@0.0.1440.900" timestamp="1584453092783" />
     <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1583389328776">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
