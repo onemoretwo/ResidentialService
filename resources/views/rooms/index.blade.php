@@ -26,16 +26,16 @@
                                 <div class="col-md-9">
                                     <dl class="row" style="padding-top: 1rem; margin-left: 2rem">
 
-                                        <dt class="col-sm-3">ชื่อ :</dt>
+                                        <dt class="col-sm-3"><i class="fas fa-user"></i> ชื่อ :</dt>
                                         <dd class="col-sm-9">40 ห้อง</dd>
 
-                                        <dt class="col-sm-3">email :</dt>
+                                        <dt class="col-sm-3"><i class="far fa-envelope"></i> email :</dt>
                                         <dd class="col-sm-9 "> _จหก</dd>
 
-                                        <dt class="col-sm-3">ที่อยู่ :</dt>
+                                        <dt class="col-sm-3"><i class="fas fa-map-marker-alt"></i> ที่อยู่ :</dt>
                                         <dd class="col-sm-9">40 ห้อง</dd>
 
-                                        <dt class="col-sm-3">เบอร์โทรศัพท์ :</dt>
+                                        <dt class="col-sm-3"><i class="fas fa-phone-square-alt"></i> เบอร์ : </dt>
                                         <dd class="col-sm-9">40 ห้อง</dd>
 
                                     </dl>
@@ -44,10 +44,10 @@
                         </div>
                         <h5 class="text-lg-center" style="padding-top: 1rem">ข้อมูลห้อง</h5>
                         <div class="container">
-                                <p class="col-6"><i class="fas fa-check-circle" style="color: #1c7430"></i> ตึก</p>
+                                <p class="col-6"><i class="far fa-building"></i> ตึก</p>
                                 <p class="col-6"><i class="fas fa-check-circle" style="color: #1c7430"></i> ชั้น</p>
                                 <p class="col-6"><i class="fas fa-check-circle" style="color: #1c7430"></i> เลขห้อง</p>
-                                <p class="col-6"><i class="fas fa-check-circle" style="color: #1c7430"></i> Wifi code</p>
+                                <p class="col-6"><i class="fas fa-wifi"></i> Wifi code</p>
 
                         </div>
 

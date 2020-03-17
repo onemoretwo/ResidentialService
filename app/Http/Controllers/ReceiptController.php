@@ -13,7 +13,8 @@ class ReceiptController extends Controller
      */
     public function index()
     {
-        //
+        return view('receipts.index');
+
     }
 
     /**
@@ -23,7 +24,8 @@ class ReceiptController extends Controller
      */
     public function create()
     {
-        //
+        return view('receipts.create');
+
     }
 
     /**
