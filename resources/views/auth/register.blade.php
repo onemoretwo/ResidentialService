@@ -96,7 +96,7 @@
                             <label for="birthdate" class="col-md-4 col-form-label text-md-right">วันเกิด</label>
 
                             <div class="col-md-6">
-                                <input id="birthdate" type="text" class="form-control @error('birthdate') is-invalid @enderror" name="birthdate" value="{{ old('birthdate') }}" required autocomplete="birthdate">
+                            <input type="date" class="form-control" id="dob" name="dob">
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-time"></span>
                                 </span>
@@ -125,30 +125,6 @@
 @endsection
 
 @section('script')
-    <script type="text/javascript" src="js/jquery.datepick.js"></script>
-{{--    <script type="text/javascript">--}}
-{{--        <!----}}
-{{--        $(document).ready(function() {--}}
-{{--            var d = new Date();--}}
-{{--            d.setDate(d.getDate());cd--}}
-{{--            var toDay = d.getDate() + '/' + (d.getMonth() + 1) + '/' + (d.getFullYear()+543);--}}
 
-{{--            $(".current").datepicker({--}}
-{{--                buttonImage: 'images/ico-calendar.gif',--}}
-{{--                showOn: 'both',--}}
-{{--                buttonImageOnly: true,--}}
-{{--                changeMonth: true,--}}
-{{--                changeYear: true,--}}
-{{--                dateFormat: 'dd/mm/yy',--}}
-{{--                isBuddhist: true,--}}
-{{--                defaultDate: toDay,--}}
-{{--                dayNames: ['อาทิตย์', 'จันทร์', 'อังคาร', 'พุธ', 'พฤหัสบดี', 'ศุกร์', 'เสาร์'],--}}
-{{--                yearRange: "-1:+1",--}}
-{{--                dayNamesMin: ['อา.', 'จ.', 'อ.', 'พ.', 'พฤ.', 'ศ.', 'ส.'],--}}
-{{--                monthNames: ['มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'],--}}
-{{--                monthNamesShort: ['ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.']--}}
-{{--            });--}}
-{{--        });--}}
-{{--        // -->--}}
-{{--    </script>--}}
 @endsection
+
