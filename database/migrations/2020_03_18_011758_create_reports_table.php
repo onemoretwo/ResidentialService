@@ -18,6 +18,7 @@ class CreateReportsTable extends Migration
             $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('room_id')->unsigned();
             $table->string('detail');
+            $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade');

@@ -22,6 +22,7 @@ class CreateBillsTable extends Migration
             $table->float('room_price');
             $table->float('total_price');
             $table->enum('status',['รอชำระ','ชำระแล้ว']);
+            $table->timestamps();
 
             $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade');
             $table->foreign('admin_id')->references('id')->on('users')->onDelete('cascade');

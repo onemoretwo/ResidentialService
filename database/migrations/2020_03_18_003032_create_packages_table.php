@@ -20,6 +20,7 @@ class CreatePackagesTable extends Migration
             $table->string('recipient');
             $table->enum('status',['รอรับของ','ได้รับแล้ว']);
             $table->string('detail');
+            $table->timestamps();
 
             $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade');
             $table->foreign('admin_id')->references('id')->on('users')->onDelete('cascade');

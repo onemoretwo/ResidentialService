@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="df8245d6-ba08-4a4d-8a2c-567eb575f903" name="Default Changelist" comment="">
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
 <<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
 =======
@@ -32,6 +34,7 @@
       <change afterPath="$PROJECT_DIR$/app/Http/Controllers/ReceiptController.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/Http/Controllers/ReportController.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/Http/Controllers/RequestController.php" afterDir="false" />
+>>>>>>> b88a7b39b3aa4a842d6bf8f83f8d1d56c3fd3ccb
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
 >>>>>>> e5f55c9fdedc33b60ba3a67e4457fc152c474a55
     </list>
@@ -231,8 +234,12 @@
 >>>>>>> 7512774168273a0807eef867bef2d403ed79d5be
 =======
       <workItem from="1583996865472" duration="749000" />
+<<<<<<< HEAD
+      <workItem from="1584453092744" duration="4251000" />
+=======
       <workItem from="1584453092744" duration="3700000" />
 >>>>>>> e5f55c9fdedc33b60ba3a67e4457fc152c474a55
+>>>>>>> b88a7b39b3aa4a842d6bf8f83f8d1d56c3fd3ccb
     </task>
     <servers />
   </component>
