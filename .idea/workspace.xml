@@ -6,6 +6,7 @@
 <<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
 =======
+<<<<<<< HEAD
       <change afterPath="$PROJECT_DIR$/public/css/public.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
@@ -19,6 +20,13 @@
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/navbar.blade.php" afterDir="false" />
 >>>>>>> 7512774168273a0807eef867bef2d403ed79d5be
+=======
+      <change afterPath="$PROJECT_DIR$/public/images/map1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/gallery.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/gallery.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/information.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/information.blade.php" afterDir="false" />
+>>>>>>> 468c4791fb9e02ce33b73f506adff0a89059fd73
+>>>>>>> aaa2bfd78d0f74009936a1d8d8aad7a53a3c1531
 =======
       <change afterPath="$PROJECT_DIR$/app/Http/Controllers/PackageController.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/Http/Controllers/ReceiptController.php" afterDir="false" />
@@ -148,9 +156,13 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1Yex5tPeWJAygu1Q5Fm9utCjAed" />
+<<<<<<< HEAD
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+=======
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
+>>>>>>> 8c5a541d99a2508562de98ad0a78c9a94379931a
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -195,9 +207,21 @@
       <updated>1583316680667</updated>
       <workItem from="1583316684668" duration="48000" />
 <<<<<<< HEAD
+<<<<<<< HEAD
       <workItem from="1583332793698" duration="9558000" />
       <workItem from="1583389526655" duration="462000" />
       <workItem from="1583509256910" duration="428000" />
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+      <workItem from="1583317196825" duration="334000" />
+=======
+      <workItem from="1583332793698" duration="7420000" />
+>>>>>>> 8c5a541d99a2508562de98ad0a78c9a94379931a
+=======
+      <workItem from="1583332793698" duration="9558000" />
+>>>>>>> 468c4791fb9e02ce33b73f506adff0a89059fd73
+>>>>>>> aaa2bfd78d0f74009936a1d8d8aad7a53a3c1531
 =======
       <workItem from="1583332793698" duration="10930000" />
       <workItem from="1583870155813" duration="5806000" />
