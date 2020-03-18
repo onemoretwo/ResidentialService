@@ -20,6 +20,7 @@ class CreateRoomsTable extends Migration
             $table->string("number");
             $table->integer("floor");
             $table->enum('available',['yes','no'])->default('yes');
+            $table->timestamps();
 
             $table->foreign('building_id')->references('id')->on('buildings')->onDelete('cascade');
             $table->foreign('type_id')->references('id')->on('types')->onDelete('cascade');

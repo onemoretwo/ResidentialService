@@ -19,6 +19,8 @@ class CreateTypesTable extends Migration
             $table->float('size');
             $table->integer('capacity')->unsigned();
             $table->float('price');
+
+            $table->timestamps();
         });
     }
 
