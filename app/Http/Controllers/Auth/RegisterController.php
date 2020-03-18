@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -50,10 +51,23 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'title' => ['required'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'birth_date' => ['required', 'date'],
+            'citizen_id' => ['required', 'digits:13'],
+            'address' => ['required'],
+            'phone_number_1' => ['required', 'digits:10'],
+            'phone_number_2' => ['nullable', 'digits:10']
         ]);
+    }
+
+
+    public function register(Request $request)
+    {
+        return $request->input();
     }
 
     /**
@@ -64,10 +78,24 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $gender = 0;
+        if ($data['title'] === 'นาย') {
+            $gender = 1;
+        }
+
         return User::create([
-            'name' => $data['name'],
+            'title' => $data['title'],
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'birth_date' => $data['birth_date'],
+            'citizen_id' => $data['citizen_id'],
+            'address' => $data['address'],
+            'phone_number_1' => $data['phone_number_1'],
+            'phone_number_2' => $data['phone_number_2'],
+            'gender' => $gender
         ]);
+//        return $data;
     }
 }
