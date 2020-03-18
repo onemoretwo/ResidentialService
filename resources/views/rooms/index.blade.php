@@ -44,7 +44,7 @@
 
                         </div>
                         <div class="col-md-3 mb-3" style="padding-top: 2rem">
-                            <button type="button" class="btn btn-outline-primary">แสดง</button>
+                            <button type="button" class="btn btn-outline-primary">ค้นหา</button>
 
                         </div>
 
@@ -81,8 +81,9 @@
                     <tr>
                         <th scope="row">3</th>
                         <td >Larry the Bird</td>
-                        <td><button type="button" class="btn btn-outline-primary">แสดง</button>
+                        <td><a href="{{ route("rooms.show",1) }}"><button type="button" class="btn btn-outline-primary">แสดง</button></a>
                         </td>
+
                     </tr>
                     </tbody>
                 </table>
