@@ -13,7 +13,7 @@ class RequestController extends Controller
      */
     public function index()
     {
-        //
+        return view('requests.index');
     }
 
     /**
@@ -23,7 +23,8 @@ class RequestController extends Controller
      */
     public function create()
     {
-        //
+        return view('requests.create');
+
     }
 
     /**
@@ -45,7 +46,8 @@ class RequestController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('requests.show');
+
     }
 
     /**

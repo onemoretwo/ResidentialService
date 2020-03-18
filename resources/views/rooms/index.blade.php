@@ -75,7 +75,7 @@
                     <tr>
                         <th scope="row">2</th>
                         <td>Jacobฟกหฟหกฟก</td>
-                        <td><button type="button" class="btn btn-outline-primary">แสดง</button>
+                        <td><a href="{{ route("rooms.show.staff",1) }}"><button type="button" class="btn btn-outline-primary">แสดง</button></a>
                         </td>
                     </tr>
                     <tr>

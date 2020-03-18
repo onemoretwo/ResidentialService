@@ -27,11 +27,15 @@ Route::get('/neighborhood', 'HomeController@neighborhood')->name('home.neighborh
 
 Route::get('/register-rental', 'LeaseController@register')->name('leases.register');
 
+Route::get('/rooms/show-room-staff/{id}', 'RoomController@showStaff')->name('rooms.show.staff');
+Route::get('/rooms/my-room/{id}', 'RoomController@userRoom')->name('rooms.show.user');
 Route::resource('/rooms','RoomController');
+
 Route::resource('/reports','ReportController');
 Route::resource('/receipts','ReceiptController');
 Route::resource('/requests','RequestController');
 Route::resource('/packages','PackageController');
+
 Route::get('/rooms/myroom/1', function () {
     return view('rooms.myroom');
 });

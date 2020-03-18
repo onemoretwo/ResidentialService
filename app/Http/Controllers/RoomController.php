@@ -50,6 +50,30 @@ class RoomController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function showStaff($id)
+    {
+
+        return view('rooms.showStaff');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function userRoom($id)
+    {
+
+        return view('rooms.myRoom');
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
