@@ -96,7 +96,7 @@
                             <label for="birthdate" class="col-md-4 col-form-label text-md-right">วันเกิด</label>
 
                             <div class="col-md-6">
-                                <input id="birthdate" type="text" class="form-control @error('birthdate') is-invalid @enderror" name="birthdate" value="{{ old('birthdate') }}" required autocomplete="birthdate">
+                            <input type="date" class="form-control" id="dob" name="dob">
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-time"></span>
                                 </span>
@@ -116,13 +116,6 @@
                                 </button>
                             </div>
                         </div>
-                        <div class="container">
-
-                            <h1>Laravel Bootstrap Datepicker</h1>
-
-                            <input class="date form-control" type="text">
-
-                        </div>
                     </form>
                 </div>
             </div>
@@ -132,14 +125,6 @@
 @endsection
 
 @section('script')
-    <script type="text/javascript">
 
-        $('.date').datepicker({
-
-            format: 'mm-dd-yyyy'
-
-        });
-
-    </script>
 @endsection
 
