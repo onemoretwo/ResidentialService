@@ -22,6 +22,7 @@ class CreateBuildingsTable extends Migration
             $table->float('water_rate');
             $table->float('electric_rate');
 
+            $table->timestamps();
         });
     }
 

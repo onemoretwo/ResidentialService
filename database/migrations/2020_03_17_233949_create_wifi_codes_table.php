@@ -21,6 +21,7 @@ class CreateWifiCodesTable extends Migration
             $table->enum('available',['yes','no'])->default('yes');
             $table->enum('duration',['1','3','7','30','90','365']);
             $table->timestamp('expire_at');
+            $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->softDeletes();
