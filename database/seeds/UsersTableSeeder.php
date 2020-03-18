@@ -15,10 +15,10 @@ class UsersTableSeeder extends Seeder
         $user = new User();
         $user->room_id = null;
         $user->title = "นาย";
-        $user->first_name = "แอด";
-        $user->last_name = "มิน";
+        $user->first_name = "admin";
+        $user->last_name = "admin";
         $user->email = "admin@gmail.com";
-        $user->password = "admin1234";
+        $user->password = Hash::make('admin1234');
         $user->birth_date = NOW();
         $user->gender = 1;
         $user->citizen_id = "1234567890123";

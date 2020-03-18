@@ -63,12 +63,7 @@ class RegisterController extends Controller
             'phone_number_2' => ['nullable', 'digits:10']
         ]);
     }
-
-
-    public function register(Request $request)
-    {
-        return $request->input();
-    }
+    
 
     /**
      * Create a new user instance after a valid registration.

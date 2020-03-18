@@ -10,6 +10,9 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    protected $fillable = ['title', 'first_name', 'last_name', 'email', 'password', 'gender', 'birth_date', 'money',
+                            'citizen_id', 'address', 'phone_number_1', 'phone_number_2'];
+
     /**
      * The attributes that should be hidden for arrays.
      *
