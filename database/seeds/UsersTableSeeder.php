@@ -12,21 +12,36 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+//        $user = new User();
+//        $user->room_id = null;
+//        $user->title = "นาย";
+//        $user->first_name = "admin";
+//        $user->last_name = "admin";
+//        $user->email = "admin@gmail.com";
+//        $user->password = Hash::make('admin1234');
+//        $user->birth_date = NOW();
+//        $user->gender = 1;
+//        $user->citizen_id = "1234567890123";
+//        $user->address = "homeless";
+//        $user->phone_number_1 = "0868214563";
+//        $user->phone_number_2 = null;
+//        $user->role = "admin";
+//        $user->checkIn_at = NOW();
+//        $user->save();
+
         $user = new User();
-        $user->room_id = null;
+        $user->room_id = 1;
         $user->title = "นาย";
-        $user->first_name = "admin";
-        $user->last_name = "admin";
-        $user->email = "admin@gmail.com";
-        $user->password = Hash::make('admin1234');
+        $user->first_name = "อานนท์";
+        $user->last_name = "สุขศิริ";
+        $user->email = "arnon@gmail.com";
+        $user->password = Hash::make('1234');
         $user->birth_date = NOW();
         $user->gender = 1;
-        $user->citizen_id = "1234567890123";
+        $user->citizen_id = "1234561234561";
         $user->address = "homeless";
         $user->phone_number_1 = "0868214563";
-        $user->phone_number_2 = null;
-        $user->role = "admin";
-        $user->checkIn_at = NOW();
+        $user->role = "user";
         $user->save();
     }
 }
