@@ -18,6 +18,9 @@ class CreateRoomImagesTable extends Migration
             $table->bigInteger('room_id')->unsigned();
             $table->string('image_path');
             $table->timestamps();
+
+            $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade');
+            $table->softDeletes();
         });
     }
 

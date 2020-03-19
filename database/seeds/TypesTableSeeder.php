@@ -17,6 +17,6 @@ class TypesTableSeeder extends Seeder
         $type->size = 32.5;
         $type->capacity = 2;
         $type->price = 6000;
-
+        $type->save();
     }
 }

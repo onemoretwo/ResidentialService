@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Wifi_Code extends Model
+class WifiCode extends Model
 {
     //
     protected $table = 'wifi_codes';

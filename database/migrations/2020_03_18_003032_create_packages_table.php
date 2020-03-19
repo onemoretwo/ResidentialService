@@ -18,12 +18,13 @@ class CreatePackagesTable extends Migration
             $table->bigInteger('room_id')->nullable()->unsigned();
             $table->bigInteger('admin_id')->unsigned();
             $table->string('recipient');
-            $table->enum('status',['รอรับของ','ได้รับแล้ว']);
+            $table->enum('status',['รอรับของ','ได้รับแล้ว'])->default('รอรับของ');
             $table->string('detail');
             $table->timestamps();
 
             $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade');
             $table->foreign('admin_id')->references('id')->on('users')->onDelete('cascade');
+            $table->softDeletes();
         });
     }
 
