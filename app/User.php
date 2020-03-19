@@ -5,11 +5,12 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable
 {
     public function room(){
-        return $this->$this->belongsTo(Room::class);
+        return $this->belongsTo(Room::class);
     }
 
     public function userStatements(){
@@ -61,5 +62,10 @@ class User extends Authenticatable
 
     public function isStaff(){
         return $this->role === 'staff' ;
+    }
+
+    public function getRoomFromUser($title,$first,$last){
+        $user = DB::table('users')->where('title',$title)->where('first_name',$first)->where('last_name',$last)->first();
+        return $user->id;
     }
 }

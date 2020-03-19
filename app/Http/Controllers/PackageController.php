@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Package;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -37,15 +38,25 @@ class PackageController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'name' => ['required', 'max:100', 'min:3'],
+            'title' => ['required','min:3'],
+            'first_name' => ['required'],
+            'last_name' => ['required'],
             'detail' => ['required', 'max:500', 'min:3']
         ]);
+        $title = $request->input('title');
+        $first = $request->input('first_name');
+        $last = $request->input('last_name');
+
         $package = new Package();
+        $userId = (new User())->getRoomFromUser($title,$first,$last);
+        $user = User::findOrFail($userId);
+
         $package->admin_id = Auth::id();
-        $package->recipient = $request->input('name');
+        $package->recipient = $title . $first . " " . $last;
+        $package->room_id = $user->room->id;
         $package->detail = $request->input('detail');
         $package->save();
-//        return redirect()->route('posts.show', ['post' => $post->id]);
+//        return redirect()->route('packages.create');
     }
 
     /**
