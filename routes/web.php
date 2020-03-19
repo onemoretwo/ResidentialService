@@ -33,11 +33,8 @@ Route::resource('/rooms','RoomController');
 
 Route::resource('/reports','ReportController');
 Route::resource('/receipts','ReceiptController');
+
 Route::resource('/requests','RequestController');
 Route::resource('/packages','PackageController');
-
-Route::get('/rooms/myroom/1', function () {
-    return view('rooms.myroom');
-});
 
 

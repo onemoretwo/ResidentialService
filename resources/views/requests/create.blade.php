@@ -55,7 +55,7 @@
                     <div  class="container m-md-3" style="padding-top: 2rem">
                         <dl class="row">
                             <dt class="col-sm-3">ตึก :</dt>
-                            <dd class="col-sm-9">A</dd>
+                            <dd class="col-sm-9"></dd>
 
                             <dt class="col-sm-3">ชั้น :</dt>
                             <dd class="col-sm-9"> 1</dd>

@@ -36,7 +36,7 @@
     <div class="container ">
         <div class="card" >
             <div class="card-header">
-                <h1> ตึก a ชั้น 3 ห้อง 331</h1>
+                <h1> ตึก {{ $room->building->name }} ชั้น {{ $room->floor }} ห้อง {{ $room->number }}</h1>
             </div>
             <div class="card-body">
                 <div class="container py-2">
@@ -152,24 +152,24 @@
                                     <table class="table">
                                         <tbody>
                                         <tr>
-                                            <th scope="row">เงินมัดจำ</th>
-                                            <td>6000 บาท</td>
+                                            <th scope="row">ห้องประเภท</th>
+                                            <td> {{ $room->type->name }}</td>
                                         </tr>
                                         <tr>
-                                            <th scope="row">จ่ายล่วงหน้า</th>
-                                            <td>1 เดือน</td>
+                                            <th scope="row">ขนาด</th>
+                                            <td>{{ $room->type->size }} ตร.ม</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">รายเดือน</th>
-                                            <td>5500 บาท</td>
+                                            <td>{{ $room->type->price }}  บาท</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">ค่าไฟ</th>
-                                            <td>4 บาทต่อยูนิต</td>
+                                            <td>{{ $room->building->electric_rate }}  บาทต่อยูนิต</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">ค่าน้ำ</th>
-                                            <td>7 บาทต่อยูนิต</td>
+                                            <td>{{ $room->building->water_rate }}  บาทต่อยูนิต</td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -229,7 +229,7 @@
                                 </div>
                             </div>
                             <div style="padding-top: 2rem;">
-                                <button type="button"   class="btn btn-outline-success w-100">จองห้อง</button>
+                                <a href="{{ route('requests.create')}}"><button type="button"   class="btn btn-outline-success w-100">จองห้อง</button></a>
                             </div>
 
 

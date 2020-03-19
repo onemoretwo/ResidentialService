@@ -75,7 +75,7 @@
                             <tr>
                                 <th scope="row">{{ $room->number }}</th>
                                 <td >{{ $room->floor }}</td>
-                                <td><a href="{{ route("rooms.show",1) }}"><button type="button" class="btn btn-outline-primary">แสดง</button></a>
+                                <td><a href="{{ route("rooms.show",['room' => $room->id]) }}"><button type="button" class="btn btn-outline-primary">แสดง</button></a>
                                 </td>
 
                             </tr>
