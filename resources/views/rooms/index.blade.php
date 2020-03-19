@@ -73,8 +73,8 @@
 {{--                                </td>--}}
 {{--                            </tr>--}}
                             <tr>
-                                <th scope="row">3</th>
-                                <td >{{ $room->number }}</td>
+                                <th scope="row">{{ $room->number }}</th>
+                                <td >{{ $room->floor }}</td>
                                 <td><a href="{{ route("rooms.show",1) }}"><button type="button" class="btn btn-outline-primary">แสดง</button></a>
                                 </td>
 
