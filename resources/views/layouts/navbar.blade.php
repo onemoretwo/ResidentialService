@@ -22,7 +22,7 @@
                     <a href="{{ url('/neighborhood') }}" class="nav-link">สถานที่ใกล้เคียง</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url('/register-rental') }}" class="nav-link">ลงทะเบียนเช่าห้อง</a>
+                    <a href="{{ url('/rooms') }}" class="nav-link">ลงทะเบียนเช่าห้อง</a>
                 </li>
 {{--                @can('show', )--}}
             </ul>
