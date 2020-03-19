@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Room;
 
 class RoomsTableSeeder extends Seeder
 {
@@ -11,13 +12,12 @@ class RoomsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Comment::class, 3)->create([
-            'post_id' => 2
-        ]);
-
-
-        factory(Comment::class, 2)->create([
-            'post_id' => 3
-        ]);
+        $room = new Room();
+        $room->building_id = 1;
+        $room->type_id = 1;
+        $room->number = 101;
+        $room->floor = 1;
+        $room->available = "yes";
+        $room->save();
     }
 }
