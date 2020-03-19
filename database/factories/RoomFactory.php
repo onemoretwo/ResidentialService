@@ -3,16 +3,15 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use App\Model;
+use App\Room;
 use Faker\Generator as Faker;
 
-$factory->define(Model::class, function (Faker $faker) {
+$factory->define(Room::class, function (Faker $faker) {
     return [
 
-        'building_id' => $faker->randomDigit,
-        'type_id' => $faker->randomDigit,
-        'number' => $faker->randomDigit,
-        'floor' => $faker->randomDigit,
-        'available' => $faker->word("null")
+        'number' => $faker->numerify("#0#"),
+        'floor' => $faker->numberBetween(1,6),
+        'available' => ("no")
 
 
     ];

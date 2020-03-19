@@ -55,7 +55,7 @@
 
 
             </div>
-            <div class="card-body">
+            <div class="card-body table-responsive">
                 <table class="table table-hover">
                     <thead>
                     <tr>
@@ -65,26 +65,21 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>ซ่อมแอร์</td>
-                        <td>
-                            <button type="button" class="btn btn-outline-primary">แสดง</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacobฟกหฟหกฟก</td>
-                        <td><a href="{{ route("rooms.show.staff",1) }}"><button type="button" class="btn btn-outline-primary">แสดง</button></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td >Larry the Bird</td>
-                        <td><a href="{{ route("rooms.show",1) }}"><button type="button" class="btn btn-outline-primary">แสดง</button></a>
-                        </td>
+                        @foreach($rooms as $room)
+{{--                            <tr>--}}
+{{--                                <th scope="row">2</th>--}}
+{{--                                <td>Jacobฟกหฟหกฟก</td>--}}
+{{--                                <td><a href="{{ route("rooms.show.staff",1) }}"><button type="button" class="btn btn-outline-primary">แสดง</button></a>--}}
+{{--                                </td>--}}
+{{--                            </tr>--}}
+                            <tr>
+                                <th scope="row">3</th>
+                                <td >{{ $room->number }}</td>
+                                <td><a href="{{ route("rooms.show",1) }}"><button type="button" class="btn btn-outline-primary">แสดง</button></a>
+                                </td>
 
-                    </tr>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

@@ -13,10 +13,18 @@ class TypesTableSeeder extends Seeder
     public function run()
     {
         $type = new Type();
-        $type->name = "A";
-        $type->size = 32.5;
+        $type->name = "Studio";
+        $type->size = 25.5;
         $type->capacity = 2;
-        $type->price = 6000;
+        $type->price = 5500;
+        $type->save();
+
+        $type = new Type();
+        $type->name = "Big";
+        $type->size = 32.5;
+        $type->capacity = 3;
+        $type->price = 7500;
+        $type->save();
 
     }
 }
