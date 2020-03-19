@@ -15,20 +15,30 @@
                 <li class="nav-item">
                     <a href="{{ url('/information') }}" class="nav-link">รายละเอียด</a>
                 </li>
-                <li class="nav-item">
-                    <a href="{{ url('/gallery') }}" class="nav-link">อัลบั้มภาพ</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ url('/neighborhood') }}" class="nav-link">สถานที่ใกล้เคียง</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ url('/rooms') }}" class="nav-link">ลงทะเบียนเช่าห้อง</a>
-                </li>
-                @can('viewAny', \App\Room::class)
-                <li class="nav-item">
-                    <a href="{{ url('/rooms') }}" class="nav-link">Test</a>
-                </li>
-                @endcan
+                @if(auth()->check())
+                    @if(auth()->user()->isAdmin())
+                        <li class="nav-item">
+                            <a href="{{ url('/rooms') }}" class="nav-link">ดูทุกห้อง</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ url('/reports') }}" class="nav-link">รายงานจากทุกห้อง</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ url('/requests') }}" class="nav-link">คำขอจองห้อง</a>
+                        </li>
+                    @else
+                        <li class="nav-item">
+                            <a href="{{ url('/gallery') }}" class="nav-link">อัลบั้มภาพ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ url('/neighborhood') }}" class="nav-link">สถานที่ใกล้เคียง</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ url('/rooms') }}" class="nav-link">ลงทะเบียนเช่าห้อง</a>
+                        </li>
+                    @endif
+                @endif
+
 {{--                @can('show', )--}}
             </ul>
 

@@ -67,11 +67,11 @@
                     <tbody>
                         @foreach($rooms as $room)
                             @if(auth()->check())
-                                @if(auth()->user()->isAdmin() or auth()->user()->isStaff())
+                                @if(auth()->user()->isAdmin())
                                     <tr>
                                         <th scope="row">{{ $room->number }}</th>
                                         <td>{{ $room->floor }}</td>
-                                        <td><a href="{{ route("rooms.show",['room' => $room->id]) }}"><button type="button" class="btn btn-outline-primary">แสดง</button></a>
+                                        <td><a href="{{ route("rooms.show.staff", ['room' => $room->id]) }}"><button type="button" class="btn btn-outline-primary">แสดง</button></a>
                                         </td>
                                     </tr>
                                 @else

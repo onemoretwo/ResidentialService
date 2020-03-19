@@ -18,7 +18,6 @@ class RoomPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->isAdmin() or $user->isStaff() ;
 
     }
 
