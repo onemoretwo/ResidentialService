@@ -32,7 +32,7 @@ class CreateUsersTable extends Migration
             $table->enum('role',['user','staff','admin']);
 
             $table->rememberToken();
-            $table->timestamp("checkIn_at");
+            $table->timestamp("checkIn_at")->default(null)->nullable();
             $table->timestamps();
 
             $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade');
