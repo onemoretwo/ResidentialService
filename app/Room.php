@@ -29,4 +29,13 @@ class Room extends Model
     public function roomImages(){
         return $this->hasMany(RoomImage::class);
     }
+
+    public function isAdmin(){
+        return $this->role === 'admin' ;
+    }
+
+    public function isStaff(){
+        return $this->role === 'staff' ;
+    }
+
 }

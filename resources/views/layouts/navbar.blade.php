@@ -24,6 +24,11 @@
                 <li class="nav-item">
                     <a href="{{ url('/rooms') }}" class="nav-link">ลงทะเบียนเช่าห้อง</a>
                 </li>
+                @can('viewAny', \App\Room::class)
+                <li class="nav-item">
+                    <a href="{{ url('/rooms') }}" class="nav-link">Test</a>
+                </li>
+                @endcan
 {{--                @can('show', )--}}
             </ul>
 

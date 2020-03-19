@@ -66,19 +66,24 @@
                     </thead>
                     <tbody>
                         @foreach($rooms as $room)
-{{--                            <tr>--}}
-{{--                                <th scope="row">2</th>--}}
-{{--                                <td>Jacobฟกหฟหกฟก</td>--}}
-{{--                                <td><a href="{{ route("rooms.show.staff",1) }}"><button type="button" class="btn btn-outline-primary">แสดง</button></a>--}}
-{{--                                </td>--}}
-{{--                            </tr>--}}
-                            <tr>
-                                <th scope="row">{{ $room->number }}</th>
-                                <td >{{ $room->floor }}</td>
-                                <td><a href="{{ route("rooms.show",['room' => $room->id]) }}"><button type="button" class="btn btn-outline-primary">แสดง</button></a>
-                                </td>
+                            @if(auth()->check())
+                                @if(auth()->user()->isAdmin() or auth()->user()->isStaff())
+                                    <tr>
+                                        <th scope="row">{{ $room->number }}</th>
+                                        <td>{{ $room->floor }}</td>
+                                        <td><a href="{{ route("rooms.show",['room' => $room->id]) }}"><button type="button" class="btn btn-outline-primary">แสดง</button></a>
+                                        </td>
+                                    </tr>
+                                @else
+                                    <tr>
+                                        <th scope="row">{{ $room->number }}</th>
+                                        <td >{{ $room->floor }}</td>
+                                        <td><a href="{{ route("rooms.show",['room' => $room->id]) }}"><button type="button" class="btn btn-outline-success">แสดง</button></a>
+                                        </td>
 
-                            </tr>
+                                    </tr>
+                                @endif
+                            @endif
                         @endforeach
                     </tbody>
                 </table>
