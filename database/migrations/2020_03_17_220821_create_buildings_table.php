@@ -21,6 +21,7 @@ class CreateBuildingsTable extends Migration
             $table->integer("total_floor")->unsigned();
             $table->float('water_rate');
             $table->float('electric_rate');
+            $table->string('image_path')->nullable();
 
             $table->timestamps();
         });
