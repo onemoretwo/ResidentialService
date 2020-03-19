@@ -15,7 +15,7 @@ class RoomsTableSeeder extends Seeder
         $room = new Room();
         $room->building_id = 1;
         $room->type_id = 1;
-        $room->number = 101;
+        $room->number = "101";
         $room->floor = 1;
         $room->available = "yes";
         $room->save();
