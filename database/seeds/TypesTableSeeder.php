@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Type;
 
 class TypesTableSeeder extends Seeder
 {
@@ -11,6 +12,11 @@ class TypesTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $type = new Type();
+        $type->name = "A";
+        $type->size = 32.5;
+        $type->capacity = 2;
+        $type->price = 6000;
+        $type->save();
     }
 }

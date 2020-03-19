@@ -18,12 +18,12 @@ class CreateBookingRequestsTable extends Migration
             $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('room_id')->unsigned();
             $table->bigInteger('admin_id')->unsigned()->nullable();
-            $table->enum('status',['รอการยืนยัน','ยืนยันแล้ว']);
+            $table->enum('status',['รอการยืนยัน','ยืนยันแล้ว'])->default('รอการยืนยัน');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade');
-            $table->foreign('admin_id')->references('id')->on('users')->onDelete('cascade');
+            $table->softDeletes();
         });
     }
 

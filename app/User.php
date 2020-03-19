@@ -12,8 +12,24 @@ class User extends Authenticatable
         return $this->$this->belongsTo(Room::class);
     }
 
-    public function user_statements(){
-        return $this->hasMany(User_Statement::class);
+    public function userStatements(){
+        return $this->hasMany(UserStatement::class);
+    }
+
+    public function bills(){
+        return $this->hasMany(Bill::class);
+    }
+
+    public function packages(){
+        return $this->hasMany(Package::class);
+    }
+
+    public function report(){
+        return $this->hasMany(Report::class);
+    }
+
+    public function bookingRequest(){
+        return $this->hasMany(BookingRequest::class);
     }
 
     use Notifiable;

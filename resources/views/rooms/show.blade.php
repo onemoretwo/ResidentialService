@@ -193,10 +193,10 @@
                                         <div class="col-6">
                                             <h5 > สิ่งอำนวยความสะดวก ภายในห้อง</h5>
                                             <div class="container" style="padding-top: 1rem">
-                                                <p class="col-6"><i class="fas fa-check-circle" style="color: #1c7430"></i> ลิฟท์</p>
-                                                <p class="col-6"><i class="fas fa-check-circle" style="color: #1c7430"></i> ที่จอดรถ</p>
-                                                <p class="col-6"><i class="fas fa-check-circle" style="color: #1c7430"></i> สระว่ายน้ำ</p>
-                                                <p class="col-6"><i class="fas fa-check-circle" style="color: #1c7430"></i> ฟิตเนส</p>
+                                                <p class="col-6"><i class="fas fa-check-circle" style="color: #1c7430"></i> เตียงคู่</p>
+                                                <p class="col-6"><i class="fas fa-check-circle" style="color: #1c7430"></i> ตู้เย็น</p>
+                                                <p class="col-6"><i class="fas fa-check-circle" style="color: #1c7430"></i> แอร์</p>
+                                                <p class="col-6"><i class="fas fa-check-circle" style="color: #1c7430"></i> โชฟา</p>
                                             </div>
 
                                         </div>
