@@ -34,6 +34,7 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamp("checkIn_at")->nullable();
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade');
         });

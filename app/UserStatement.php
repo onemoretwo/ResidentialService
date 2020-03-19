@@ -4,10 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Report extends Model
+class UserStatement extends Model
 {
-    //report นี้เป็นของ user คนไหน
     public function user(){
         return $this->belongsTo(User::class);
     }
+
+    protected $table = 'user_statements';
 }

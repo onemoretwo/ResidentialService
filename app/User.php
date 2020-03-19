@@ -8,6 +8,30 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
+    public function room(){
+        return $this->$this->belongsTo(Room::class);
+    }
+
+    public function userStatements(){
+        return $this->hasMany(UserStatement::class);
+    }
+
+    public function bills(){
+        return $this->hasMany(Bill::class);
+    }
+
+    public function packages(){
+        return $this->hasMany(Package::class);
+    }
+
+    public function report(){
+        return $this->hasMany(Report::class);
+    }
+
+    public function bookingRequest(){
+        return $this->hasMany(BookingRequest::class);
+    }
+
     use Notifiable;
 
     protected $fillable = ['title', 'first_name', 'last_name', 'email', 'password', 'gender', 'birth_date', 'money',

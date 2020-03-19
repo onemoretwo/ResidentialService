@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Package;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PackageController extends Controller
 {
@@ -23,7 +25,7 @@ class PackageController extends Controller
      */
     public function create()
     {
-        //
+        return view('packages.create');
     }
 
     /**
@@ -34,7 +36,16 @@ class PackageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => ['required', 'max:100', 'min:3'],
+            'detail' => ['required', 'max:500', 'min:3']
+        ]);
+        $package = new Package();
+        $package->admin_id = Auth::id();
+        $package->recipient = $request->input('name');
+        $package->detail = $request->input('detail');
+        $package->save();
+//        return redirect()->route('posts.show', ['post' => $post->id]);
     }
 
     /**
