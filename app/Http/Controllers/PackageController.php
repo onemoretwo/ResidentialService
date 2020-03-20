@@ -16,7 +16,8 @@ class PackageController extends Controller
      */
     public function index()
     {
-        //
+        $packages = Package::all();
+        return view('packages.allPackages',['packages' => $packages]);
     }
 
     /**
@@ -51,12 +52,12 @@ class PackageController extends Controller
         $userId = (new User())->getRoomFromUser($title,$first,$last);
         $user = User::findOrFail($userId);
 
-        $package->admin_id = Auth::id();
+        $package->user_id = Auth::id();
         $package->recipient = $title . $first . " " . $last;
         $package->room_id = $user->room->id;
         $package->detail = $request->input('detail');
         $package->save();
-//        return redirect()->route('packages.create');
+        return redirect()->route('packages.index');
     }
 
     /**
