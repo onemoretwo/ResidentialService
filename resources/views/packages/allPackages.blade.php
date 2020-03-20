@@ -30,6 +30,14 @@
             margin-top: -30px;
             float: right;
         }
+
+        .icon {
+            height: 40px;
+            width: 40px;
+            position: absolute;
+            right: -7px;
+            top: -20px;
+        }
     </style>
     @endsection
 
@@ -49,6 +57,7 @@
                         <div>
                             <div class="card card-adapt">
                                 <div class="card-body card-bot">
+                                    <img class="icon" src="images/gift.png" alt="">
                                     <div class="inline">
                                         <div class="room-detail">
                                             <h5>ตึก  : {{ $package->room->building->name }}</h5>
@@ -61,7 +70,7 @@
                                         </div>
                                     </div>
                                     <hr style="margin: 0.4rem 0">
-                                    <p style="margin-bottom: 0.1rem;color: #808588">ผู้รับผิดชอบ : {{ $package->user->first_name }}</p>
+                                    <p style="margin-bottom: 0.1rem;color: #808588">ผู้รับผิดชอบ :  {{ $package->user->first_name }}    {{ $package->user->last_name }}</p>
                                 </div>
                             </div>
                         </div>
