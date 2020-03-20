@@ -31,6 +31,7 @@ Route::get('/rooms/show-room-staff/{id}', 'RoomController@showStaff')->name('roo
 Route::get('/rooms/my-room/{id}', 'RoomController@userRoom')->name('rooms.show.user');
 Route::resource('/rooms','RoomController');
 
+Route::post('/reports/repair/','ReportController@storeRepair')->name('reports.repair.store');
 Route::resource('/reports','ReportController');
 Route::resource('/receipts','ReceiptController');
 
