@@ -71,7 +71,7 @@
                                     <tr>
                                         <th scope="row">{{ $room->number }}</th>
                                         <td>{{ $room->floor }}</td>
-                                        <td><a href="{{ route("rooms.show.staff", ['room' => $room->id]) }}"><button type="button" class="btn btn-outline-primary">แสดง</button></a>
+                                        <td><a href="{{ route("rooms.show.staff", ['id' => $room->id]) }}"><button type="button" class="btn btn-outline-primary">แสดง</button></a>
                                         </td>
                                     </tr>
                                 @else

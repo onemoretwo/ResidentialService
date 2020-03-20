@@ -19,7 +19,9 @@
     @endsection
 
 @section('content')
+
     <div class="container align-content-center upper">
+
         <div class="card ">
             <div class="card-header">
                 <h1 class="card-title">แบบฟอร์ม พัสดุ</h1>

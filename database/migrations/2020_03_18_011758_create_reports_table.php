@@ -17,7 +17,10 @@ class CreateReportsTable extends Migration
             $table->id();
             $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('room_id')->unsigned();
+            $table->string('title');
             $table->string('detail');
+            $table->enum('type',['แจ้งซ่อม','รายงาน']);
+            $table->enum('status',['รอการยืนยัน','อนุมัติ'])->default('รอการยืนยัน');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

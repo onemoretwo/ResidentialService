@@ -16,14 +16,14 @@ class CreatePackagesTable extends Migration
         Schema::create('packages', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('room_id')->nullable()->unsigned();
-            $table->bigInteger('admin_id')->unsigned();
+            $table->bigInteger('user_id')->unsigned();
             $table->string('recipient');
             $table->enum('status',['รอรับของ','ได้รับแล้ว'])->default('รอรับของ');
             $table->string('detail');
             $table->timestamps();
 
             $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade');
-            $table->foreign('admin_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->softDeletes();
         });
     }
