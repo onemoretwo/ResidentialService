@@ -29,6 +29,7 @@ Route::get('/register-rental', 'LeaseController@register')->name('leases.registe
 
 Route::get('/rooms/show-room-staff/{id}', 'RoomController@showStaff')->name('rooms.show.staff');
 Route::get('/rooms/my-room/{id}', 'RoomController@userRoom')->name('rooms.show.user');
+Route::get('/rooms/my-room/{id}/packages','RoomController@roomPackages')->name('room.users.packages');
 Route::resource('/rooms','RoomController');
 
 Route::resource('/reports','ReportController');
