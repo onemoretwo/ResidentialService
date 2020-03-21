@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Room;
 use Illuminate\Http\Request;
 
 class RequestController extends Controller
@@ -19,11 +20,13 @@ class RequestController extends Controller
     /**
      * Show the form for creating a new resource.
      *
+     * @param $room
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($room)
     {
-        return view('requests.create');
+        $room = Room::findOrFail($room);
+        return view('requests.create', [ 'room'  => $room ]);
 
     }
 

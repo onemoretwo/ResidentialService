@@ -6,6 +6,7 @@ use App\Package;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class PackageController extends Controller
 {
@@ -16,7 +17,7 @@ class PackageController extends Controller
      */
     public function index()
     {
-        $packages = Package::all();
+        $packages = Package::where('status','รอรับของ')->orderBy('created_at','desc')->get();
         return view('packages.allPackages',['packages' => $packages]);
     }
 
@@ -92,6 +93,15 @@ class PackageController extends Controller
     public function update(Request $request, $id)
     {
         //
+    }
+
+    public function packageConfirm($room_id,$package_id){
+        $package = Package::findOrFail($package_id);
+        $package->status = 'ได้รับแล้ว';
+        $package->save();
+
+        $packages = Package::where('room_id',$room_id)->where('status','รอรับของ')->orderBy('created_at','desc')->get();
+        return redirect()->route('room.users.packages',['id' => $room_id]);
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Package;
+use App\Type;
 use Illuminate\Http\Request;
 use App\Room;
 use Illuminate\Support\Facades\DB;
@@ -16,19 +17,23 @@ class RoomController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param $id
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-//        $rooms = DB::table('rooms')->select('id','building_id','type_id','floor','number')
-//            ->where('available','=',"no")
-//            ->orderBy('building_id','asc')
-//            ->orderBy('floor','asc')
-//            ->orderBy('number','asc')
-//            ->get();
-        $rooms = (new Room())->allRoom();
-        return view('rooms.index',['rooms' => $rooms]);
+        $types = Type::all();
+        $type = Type::find($id);
+        if ($type) {
+            $rooms = Room::get()->where('type_id', $type->id);
+            return view('rooms.index',['types' => $types, 'rooms' => $rooms, 'selected_type' => $type]);
+        } else {
+            $rooms = Room::all();
+            return view('rooms.index',['types' => $types, 'rooms' => $rooms]);
+        }
+
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -84,13 +89,13 @@ class RoomController extends Controller
      */
     public function userRoom($id)
     {
-
-        return view('rooms.myRoom');
+        $room = Room::where('id',$id)->first();
+        return view('rooms.myRoom',['room' => $room]);
     }
 
     public function roomPackages($id){
-        $room = Room::findOrFail($id);
-        return view('rooms.showPackages',['packages' => $room->packages]);
+        $packages = Package::where('room_id',$id)->where('status','รอรับของ')->get();
+        return view('rooms.showPackages',['packages' => $packages]);
     }
 
     /**
