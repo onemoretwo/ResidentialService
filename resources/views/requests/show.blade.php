@@ -16,21 +16,21 @@
             <div class="">
                 <div class="card" >
                     <div class="card-body">
-                        <h3 class="card-title text-center">ฟอร์มยืนยันการจองห้อง</h3>
+                        <h3 class="card-title text-center">ข้อมูลผู้ที้จองห้อง</h3>
                         <div  class="container m-md-3" style="padding-top: 2rem">
                             <dl class="row">
                                 <dt class="col-sm-3">ชื่อ-นามสกุล :</dt>
-                                <dd class="col-sm-9">title  name lastname</dd>
+                                <dd class="col-sm-9">{{ $request->user->title}} {{ $request->user->first_name}} {{ $request->user->last_name}}</dd>
 
                                 <dt class="col-sm-3">ที่อยุ่ :</dt>
                                 <dd class="col-sm-9">
-                                    <p>address</p>
+                                    {{ $request->user->address}}
                                 </dd>
 
                                 <dt class="col-sm-3"> เบอร์โทรศัพท์ : </dt>
-                                <dd class="col-sm-9">tel</dd>
+                                <dd class="col-sm-9">{{ $request->user->phone_number_1}}</dd>
                                 <dt class="col-sm-3 text-truncate">Email :</dt>
-                                <dd class="col-sm-9">email</dd>
+                                <dd class="col-sm-9">{{ $request->user->email}}</dd>
 
                             </dl>
                         </div>
@@ -39,33 +39,33 @@
                         <div  class="container m-md-3" style="padding-top: 2rem">
                             <dl class="row">
                                 <dt class="col-sm-3">ตึก :</dt>
-                                <dd class="col-sm-9">A</dd>
+                                <dd class="col-sm-9">{{ $request->room->building->name}}</dd>
 
                                 <dt class="col-sm-3">ชั้น :</dt>
-                                <dd class="col-sm-9"> 1</dd>
+                                <dd class="col-sm-9"> {{ $request->room->floor}}</dd>
 
                                 <dt class="col-sm-3">เลขห้อง :</dt>
-                                <dd class="col-sm-9">101</dd>
+                                <dd class="col-sm-9">{{ $request->room->number}}</dd>
 
                                 <dt class="col-sm-3 text-truncate">แบบห้อง :</dt>
                                 <dd class="col-sm-9">1 ห้องน้ำ 1 ห้องนอน</dd>
 
                                 <dt class="col-sm-3">ขนาด :</dt>
-                                <dd class="col-sm-9">10 ตร.ม</dd>
+                                <dd class="col-sm-9">{{ $request->room->type->size}} ตร.ม</dd>
 
                                 <dt class="col-sm-3">เฟอร์นิเจอร์ :</dt>
                                 <dd class="col-sm-9">เตียงคู่ ตู้เย็น ทีวี โต๊ะ เก้าอี้ ตู้เสื้อผ้า</dd>
 
                                 <dt class="col-sm-3">ราคามัดจำ :</dt>
-                                <dd class="col-sm-9">1000 บาท</dd>
+                                <dd class="col-sm-9">{{ $request->room->type->price}} บาท</dd>
 
                                 <dt class="col-sm-3">ราคาเช่า :</dt>
-                                <dd class="col-sm-9">2000 บาท</dd>
+                                <dd class="col-sm-9">{{ $request->room->type->price}} บาท</dd>
 
                                 <dt class="col-sm-3">ค่าน้ำ :</dt>
-                                <dd class="col-sm-9">4 บาทต่อยูนิต</dd>
+                                <dd class="col-sm-9">{{ $request->room->building->water_rate}} บาทต่อยูนิต</dd>
                                 <dt class="col-sm-3">ค่าไฟ :</dt>
-                                <dd class="col-sm-9">7 บาทต่อยูนิต</dd>
+                                <dd class="col-sm-9">{{ $request->room->building->electric_rate}} บาทต่อยูนิต</dd>
 
                                 <dt class="col-sm-3">สัญญา :</dt>
                                 <dd class="col-sm-9">1 ปี</dd>
@@ -73,8 +73,24 @@
                             </dl>
                         </div>
                         <div class="text-center">
-                            <button type="button" class="btn btn-danger btn-lg">ไม่อนุมัติ</button>
-                            <button type="button" class="btn btn-success btn-lg">อนุมัติ</button>
+                            <div class="row">
+                                <div class="col-6 text-right">
+                                    <form action="{{ route('requests.update', ['request' => $request->id]) }}" method="POST">
+                                        @method('DELETE')
+                                        @csrf
+                                        <button type="submit" class="btn btn-danger btn-lg">ปฎิเสธ</button>
+                                    </form>
+                                </div>
+                                <div class="col-6 text-left">
+                                    <form action="{{ route('requests.destroy', ['request' => $request->id]) }}" method="post">
+                                        @method('PUT')
+                                        @csrf
+                                        <button type="submit" class="btn btn-success btn-lg">อนุมัติ</button>
+                                    </form>
+
+                                </div>
+
+                            </div>
                         </div>
 
                     </div>

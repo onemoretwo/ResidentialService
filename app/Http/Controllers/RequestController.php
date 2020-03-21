@@ -16,7 +16,8 @@ class RequestController extends Controller
      */
     public function index()
     {
-        $requests = BookingRequest::all();
+        $requests = BookingRequest::all()
+        ->where('status','=','รอการยืนยัน');
 //        dd($requests);
         return view('requests.index',['requests' => $requests ]);
     }
@@ -64,8 +65,7 @@ class RequestController extends Controller
     public function show($id)
     {
         $request = BookingRequest::findOrFail($id);
-
-        return view('requests.show');
+        return view('requests.show',['request' => $request]);
 
     }
 
@@ -89,7 +89,14 @@ class RequestController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request = BookingRequest::findOrFail($id);
+        $request->status = 'ยืนยันแล้ว';
+        $request->save();
+
+        return redirect()->route('requests.index');
+
+
+
     }
 
     /**
@@ -100,6 +107,12 @@ class RequestController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $request = BookingRequest::findOrFail($id);
+        $request->delete();
+
+//        $requests = BookingRequest::all()
+//            ->where('status','=','รอการยืนยัน');
+        return redirect()->route('requests.index');
+
     }
 }
