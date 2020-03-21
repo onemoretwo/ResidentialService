@@ -97,8 +97,8 @@
                                     </div>
 
                                 </div>
-                                <div>
-                                    <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#report">ส่งคำขอ</button>
+                                <div style="text-align: center">
+                                    <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#report">รายงาน</button>
                                 </div>
 
 
@@ -113,7 +113,7 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                ...
+                                                ยืนยันการส่ง รายงานนี้หรือไม่
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -153,8 +153,8 @@
 
 
                                 </div>
-                                <div >
-                                    <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#repair">ส่งคำขอ</button>
+                                <div style="text-align: center">
+                                    <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#repair">ส่งคำขอแจ้งซ่อม</button>
                                 </div>
                                 <!-- Modal -->
                                 <div class="modal fade" id="repair" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -167,7 +167,7 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                ...
+                                                ยืนยัน ส่งเรื่องแจ้งซ่อมหรือไม่
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

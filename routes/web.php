@@ -41,6 +41,7 @@ Route::post('/reports/repair/','ReportController@storeRepair')->name('reports.re
 Route::get('/reports/search','ReportController@seachRoom')->name('reports.index.search');
 Route::resource('/reports','ReportController');
 Route::resource('/receipts','ReceiptController');
+Route::post('/receipts/create/process','ReceiptController@billCreateShowReport')->name('receipt.show.report');
 
 Route::resource('/requests','RequestController')->except([
     'create'
