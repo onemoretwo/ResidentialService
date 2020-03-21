@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Package;
 use Illuminate\Http\Request;
 use App\Room;
 
@@ -78,6 +79,11 @@ class RoomController extends Controller
     {
 
         return view('rooms.myRoom');
+    }
+
+    public function roomPackages($id){
+        $room = Room::findOrFail($id);
+        return view('rooms.showPackages',['packages' => $room->packages]);
     }
 
     /**
