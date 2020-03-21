@@ -59,7 +59,7 @@ class UsersTableSeeder extends Seeder
         $user->save();
 
         $user = new User();
-        $user->room_id = 30;
+        $user->room_id = 27;
         $user->title = "นาย";
         $user->first_name = "อนุทิน";
         $user->last_name = "จำไม่ได้";
