@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Building;
 use App\Report;
 use App\Room;
 use App\User;
@@ -36,7 +37,6 @@ class ReportController extends Controller
      */
     public function create()
     {
-        return view('reports.create');
 
     }
 
@@ -58,14 +58,20 @@ class ReportController extends Controller
 //        ]);
 
         $report = new Report();
+        $building_name = $request->input('building_name');
+        $building_id = Building::where('name',$building_name)->first()->id;
+        $building_floor = $request->input('building_floor');
+        $room_number = $request->input('room_number');
+        $room_id = Room::where('building_id',$building_id)->where('floor',$building_floor)->where('number',$room_number)->first()->id;
+        $current_room_id = $request->input('room_id');
         $report->user_id = Auth::id();
-        $report->room_id = $request->input('room_id');
+        $report->room_id = $room_id;
         $report->title = $request->input('title');
         $report->detail = $request->input('detail');
         $report->type = "รายงาน";
         $report->save();
-
-        return redirect()->route('rooms.show.user',['id' => $report->room_id]);
+//
+        return redirect()->route('rooms.show.user',['id' => $current_room_id]);
     }
 
     public function storeRepair(Request $request)

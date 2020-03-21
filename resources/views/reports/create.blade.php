@@ -53,7 +53,47 @@
                                                 <textarea class="form-control" id="detail" rows="3" name="detail"></textarea>
                                             </div>
                                         </div>
+                                        <h4 style="margin-top: 30px">ห้องที่จะรายงาน</h4>
+                                        <div class="form-row" style="padding-top: 1rem">
+                                            <div class="col-md-2 mb-3">
+                                                <label for="building">ตึก</label>
+                                                <select class="custom-select" id="building" name="building_name" required>
+                                                    <option selected disabled value="">เลือกตึก</option>
+                                                    <option value="A">ตึก A</option>
+                                                    <option value="B">ตึก B</option>
+                                                    <option value="C">ตึก C</option>
+
+                                                </select>
+                                            </div>
+                                            <div class="col-md-2 mb-3">
+                                                <label for="floor">ชั้น</label>
+                                                <select class="custom-select" id="floor" name="building_floor" required>
+                                                    <option selected disabled value="">เลือกชั้น</option>
+                                                    <option value="1">ชั้น 1</option>
+                                                    <option value="2">ชั้น 2</option>
+                                                    <option value="3">ชั้น 3</option>
+                                                    <option value="4">ชั้น 4</option>
+                                                    <option value="5">ชั้น 5</option>
+                                                    <option value="6">ชั้น 6</option>
+                                                    <option value="7">ชั้น 7</option>
+                                                    <option value="8">ชั้น 8</option>
+                                                    <option value="9">ชั้น 9</option>
+
+                                                </select>
+                                                <div class="invalid-feedback">
+                                                    Please select a valid state.
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2 mb-3">
+                                                <label for="numRoom">เลขห้อง</label>
+                                                <input type="text" class="form-control" id="numRoom" name="room_number" required>
+                                                <div class="invalid-feedback">
+                                                    Please provide a valid zip.
+                                                </div>
+                                            </div>
+                                        </div>
                                         <input type="hidden" name="room_id" value="{{ $room_id }}" >
+                                        <p style="color: #808588">* ประวัติการรายงานของท่าน จะถูกเก็บไว้เป็นความลับ</p>
                                     </div>
 
                                 </div>

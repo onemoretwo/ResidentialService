@@ -82,11 +82,7 @@ class UsersTableSeeder extends Seeder
         $user->save();
 
         $user = new User();
-        $user->room_id = 2;
-
-        $room = Room::findOrFail(2);
-        $room->available = 'no';
-        $room->save();
+        $user->room_id = 27;
 
         $user->title = "นาย";
         $user->first_name = "อนุทิน";
