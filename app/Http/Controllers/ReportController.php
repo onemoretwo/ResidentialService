@@ -139,6 +139,41 @@ class ReportController extends Controller
     }
 
     public function seachRoom(Request $request){
+        $building = $request->input('building');
+        $floor = $request->input('floor');
+        $number = $request->input('number');
+
+        $rooms = Room::all()->where();
+
+        if (!empty($building)){
+
+        }
+
+
+
+
 
     }
+
+//    public function search(Request $request) {
+//        $event = $request->input("search");
+//        $type = $request->input('type');
+//        if($event === null) {
+//            if($type === "อีเวนท์ทั้งหมด") {
+//                $events = Event::all();
+//                return view('search', ['events' => $events]);
+//            } else {
+//                $events = (new \App\Event)->serachEventByType($type);
+//                return view('search', ['events' => $events]);
+//            }
+//        } else {
+//            if ($type === "อีเวนท์ทั้งหมด") {
+//                $events = (new \App\Event)->serchEventByName($event);
+//                return view('search', ['events' => $events]);
+//            } else {
+//                $events = (new \App\Event)->searchEventByTypeAndName($event, $type);
+//                return view('search', ['events' => $events]);
+//            }
+//        }
+//    }
 }

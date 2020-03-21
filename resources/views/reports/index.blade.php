@@ -13,8 +13,8 @@
 <script src="https://kit.fontawesome.com/56e49317d8.js" crossorigin="anonymous"></script>
 
 @section('content')
-    <div class="container align-content-center">
-        <div class="card table-responsive " style="height: 40rem">
+    <div class="container justify-content-center">
+        <div class="card " style="height: 40rem">
             <div class="card-header ">
                 <div class="row">
                     <div class="col-md-3 mb-3">
@@ -66,7 +66,7 @@
                 </ul>
             </div>
 
-            <div class="card-body ">
+            <div class="card-body table-responsive ">
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="report" role="tabpanel" aria-labelledby="report-tab">
                         <table class="table table-hover">
@@ -78,17 +78,26 @@
                             </tr>
                             </thead>
                             <tbody>
-                                @foreach( $reports as $report)
+                                @if($reports->isEmpty())
                                     <tr>
-                                        <td>{{  $report->title}}</td>
-                                        <td>{{  $report->created_at}}</td>
-                                        <td>
-                                            <a href="{{route('reports.edit',['report' => $report->id])}}">
-                                                <button type="submit" class="btn btn-outline-primary">แสดง</button>
-                                            </a>
+                                        <td class=" text-black-50" colspan="3">
+                                            ไม่มีเรื่องร้องทุกข์
+
                                         </td>
                                     </tr>
-                                @endforeach
+                                @else
+                                    @foreach( $reports as $report)
+                                        <tr>
+                                            <td>{{  $report->title}}</td>
+                                            <td>{{  $report->created_at}}</td>
+                                            <td>
+                                                <a href="{{route('reports.edit',['report' => $report->id])}}">
+                                                    <button type="submit" class="btn btn-outline-primary">แสดง</button>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @endif
                             </tbody>
                         </table>
 
@@ -104,18 +113,26 @@
                             </tr>
                             </thead>
                             <tbody>
-
-                                @foreach( $repairs as $repair)
+                                @if($repairs->isEmpty())
                                     <tr>
-                                        <td>{{  $repair->title}}</td>
-                                        <td>{{  $repair->created_at}}</td>
-                                        <td>
-                                            <a href="{{route('reports.edit',['report' => $repair->id])}}">
-                                                <button type="submit" class="btn btn-outline-primary">แสดง</button>
-                                            </a>
+                                        <td class=" text-black-50" colspan="3">
+                                            ไม่มีเรื่องร้องทุกข์
+
                                         </td>
                                     </tr>
-                                @endforeach
+                                @else
+                                    @foreach( $repairs as $repair)
+                                        <tr>
+                                            <td>{{  $repair->title}}</td>
+                                            <td>{{  $repair->created_at}}</td>
+                                            <td>
+                                                <a href="{{route('reports.edit',['report' => $repair->id])}}">
+                                                    <button type="submit" class="btn btn-outline-primary">แสดง</button>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @endif
                             </tbody>
                         </table>
 

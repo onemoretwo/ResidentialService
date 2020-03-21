@@ -27,4 +27,6 @@ class Report extends Model
                     ->get();
         return $repairs;
     }
+
+
 }
