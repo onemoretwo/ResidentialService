@@ -70,7 +70,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($requests->sortBy('created_at') as $request)
+                    @foreach($requests as $request)
                         @if(auth()->check())
                             <tr>
                                 <td>{{ $request->room->building->name }}</td>
