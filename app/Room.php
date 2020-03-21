@@ -31,6 +31,9 @@ class Room extends Model
         return $this->hasMany(RoomImage::class);
     }
 
+    public function report(){
+        return $this->hasMany(Report::class);
+    }
     public function isAdmin(){
         return $this->role === 'admin' ;
     }

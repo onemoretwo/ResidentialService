@@ -16,39 +16,43 @@
     <div class="container justify-content-center">
         <div class="card " style="height: 40rem">
             <div class="card-header ">
-                <div class="row">
-                    <div class="col-md-3 mb-3">
-                        <label for="building">ตึก</label>
-                        <select class="custom-select" id="building"  name="building" required>
-                            <option selected disabled value="">เลือกตึก</option>
-                            <option value="1">ตึก A</option>
-                            <option value="2">ตึก B</option>
-                            <option value="3">ตึก C</option>
+                <form action="{{ route('reports.index.search') }}" method="GET">
+                    <div class="row">
+                        <div class="col-md-2 mb-3">
+                            <label for="building">ตึก</label>
+                            <select class="custom-select" id="building"  name="building">
+                                <option selected disabled value="">เลือกตึก</option>
+                                <option value="1">ตึก A</option>
+                                <option value="2">ตึก B</option>
+                                <option value="3">ตึก C</option>
 
-                        </select>
-                    </div>
-                    <div class="col-md-3 mb-3">
-                        <label for="floor">ชั้น</label>
-                        <select class="custom-select" name="floor" id="floor" required>
-                            <option selected disabled value="">เลือกชั้น</option>
-                            <option value="1">ชั้น 1</option>
-                            <option value="2">ชั้น 2</option>
-                            <option value="3">ชั้น 3</option>
-                            <option value="4">ชั้น 4</option>
-                            <option value="5">ชั้น 5</option>
+                            </select>
+                        </div>
 
-                        </select>
-                    </div>
-                    <div class="col-md-3 mb-3">
-                        <label for="numRoom">เลขห้อง</label>
-                        <input type="text" class="form-control" id="numRoom"  name="number" required>
+                        <div class="col-md-2 mb-3">
+                            <label for="floor">ชั้น</label>
+                            <select class="custom-select" name="floor" id="floor">
+                                <option selected disabled value="">เลือกชั้น</option>
+                                <option value="1">ชั้น 1</option>
+                                <option value="2">ชั้น 2</option>
+                                <option value="3">ชั้น 3</option>
+                                <option value="4">ชั้น 4</option>
+                                <option value="5">ชั้น 5</option>
 
-                    </div>
-                    <div class="col-md-3 mb-3" style="padding-top: 2rem">
-                        <a href="{{route('reports.index.search')}}"><button type="button" class="btn btn-outline-primary">ค้นหา</button></a>
-                    </div>
+                            </select>
+                        </div>
 
-                </div>
+                        <div class="col-md-2 mb-3">
+                            <label for="numRoom">เลขห้อง</label>
+                            <input type="text" class="form-control" id="numRoom"  name="number">
+                        </div>
+
+                        <div class="col-md-3 mb-3" style="padding-top: 2rem">
+                            <button type="submit" class="btn btn-outline-primary">ค้นหา</button>
+                        </div>
+                    </div>
+                </form>
+
 
 
 
@@ -71,6 +75,9 @@
                         <table class="table table-hover">
                             <thead>
                             <tr>
+                                <th scope="col">ตึก</th>
+                                <th scope="col">ชั้น</th>
+                                <th scope="col">ห้อง</th>
                                 <th scope="col">เรื่อง</th>
                                 <th scope="col">เวลาที่ส่ง</th>
                                 <th scope="col"></th>
@@ -87,8 +94,11 @@
                                 @else
                                     @foreach( $reports as $report)
                                         <tr>
-                                            <td>{{  $report->title}}</td>
-                                            <td>{{  $report->created_at}}</td>
+                                            <td>{{ $report->room->building->name }}</td>
+                                            <td>{{ $report->room->floor }}</td>
+                                            <td>{{ $report->room->number }}</td>
+                                            <td>{{ $report->title}}</td>
+                                            <td>{{ $report->created_at}}</td>
                                             <td>
                                                 <a href="{{route('reports.edit',['report' => $report->id])}}">
                                                     <button type="submit" class="btn btn-outline-primary">แสดง</button>

@@ -138,26 +138,20 @@ class ReportController extends Controller
         //
     }
 
+
     public function seachRoom(Request $request){
-        $building = $request->input('building');
+        $building = (int)$request->input('building');
         $floor = (int)$request->input('floor');
         $number = (int)$request->input('number');
 
         $reports = (new Report())->searchFilterReport();
         $repairs = (new Report())->searchFilterRepair();
 
-        dd($building);
-//        dd($floor);
-//        dd($number);
-//        dd($reports);
-//        dd($repairs);
+        if (!empty($building)){
+            $reports->where('building_id', '=', $building);
+            $repairs->where('building_id', '=', $building);
 
-
-//        if (!empty($building)){
-//            $reports->where('building_id', '=', $building);
-//            $repairs->where('building_id', '=', $building);
-//
-//        }
+        }
 //        if (!empty($floor)){
 //            $reports->where('floor', '=', $floor);
 //            $repairs->where('floor', '=', $floor);
@@ -166,7 +160,7 @@ class ReportController extends Controller
 //        if (!empty($number)){
 //            $reports->where('number', '=', $number);
 //            $repairs->where('number', '=', $number);
-//
+
 //        }
 //        return view('reports.index',['reports'=> $reports,'repairs'=> $repairs]);
 
