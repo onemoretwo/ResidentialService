@@ -11,6 +11,10 @@ class Room extends Model
         return $this->hasMany(User::class);
     }
 
+    public function bookingRequest(){
+        return $this->hasOne(BookingRequest::class);
+    }
+
     public function building(){
         return $this->belongsTo(Building::class);
     }

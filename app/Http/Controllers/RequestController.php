@@ -16,7 +16,9 @@ class RequestController extends Controller
      */
     public function index()
     {
-        return view('requests.index');
+        $requests = BookingRequest::all();
+//        dd($requests);
+        return view('requests.index',['requests' => $requests ]);
     }
 
     /**
