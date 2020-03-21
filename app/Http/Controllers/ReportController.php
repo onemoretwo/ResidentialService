@@ -37,6 +37,10 @@ class ReportController extends Controller
 
     }
 
+    public function userCreateReport($id){
+        return view('reports.create',['room_id' => $id]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -52,15 +56,13 @@ class ReportController extends Controller
 
         $report = new Report();
         $report->user_id = Auth::id();
-        $find_id = User::findOrFail($report->user_id);
-        $report->room_id = $find_id->room_id;
+        $report->room_id = $request->input('room_id');
         $report->title = $request->input('title');
         $report->detail = $request->input('detail');
         $report->type = "รายงาน";
-        $report->status = "รอการยืนยัน";
         $report->save();
 
-        return redirect()->route('reports.create');
+        return redirect()->route('rooms.show.user',['id' => $report->room_id]);
     }
 
     public function storeRepair(Request $request)
@@ -72,15 +74,13 @@ class ReportController extends Controller
 
         $report = new Report();
         $report->user_id = Auth::id();
-        $find_id = User::findOrFail($report->user_id);
-        $report->room_id = $find_id->room_id;
+        $report->room_id = $request->input('room_id');
         $report->title = $request->input('title');
         $report->detail = $request->input('detail');
         $report->type = "แจ้งซ่อม";
-        $report->status = "รอการยืนยัน";
         $report->save();
 
-        return redirect()->route('reports.create');
+        return redirect()->route('rooms.show.user',['id' => $report->room_id]);
     }
 
     /**

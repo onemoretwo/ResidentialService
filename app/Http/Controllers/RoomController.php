@@ -77,8 +77,8 @@ class RoomController extends Controller
      */
     public function userRoom($id)
     {
-
-        return view('rooms.myRoom');
+        $room = Room::where('id',$id)->first();
+        return view('rooms.myRoom',['room' => $room]);
     }
 
     public function roomPackages($id){

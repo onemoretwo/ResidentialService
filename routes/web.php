@@ -31,6 +31,7 @@ Route::get('/rooms/show-room-staff/{id}', 'RoomController@showStaff')->name('roo
 Route::get('/rooms/my-room/{id}', 'RoomController@userRoom')->name('rooms.show.user');
 Route::get('/rooms/my-room/{id}/packages','RoomController@roomPackages')->name('room.users.packages');
 Route::get('/rooms/my-room/{room}/packages/{package}', 'PackageController@packageConfirm')->name('package.confirm');
+Route::get('/rooms/my-room/{room}/report/create','ReportController@userCreateReport')->name('user.create.report');
 Route::resource('/rooms','RoomController');
 
 Route::post('/reports/repair/','ReportController@storeRepair')->name('reports.repair.store');
