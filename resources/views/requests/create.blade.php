@@ -5,7 +5,7 @@
             background-color:#1d1d1d !important;
             font-family: "Asap", sans-serif;
             /*margin:10px;*/
-            font-size:16px;
+            /*font-size:16px;*/
         }
         .input-aligned {
             line-height:34px;
@@ -22,7 +22,7 @@
                     <h3 class="card-title text-center">ฟอร์มการจองห้อง</h3>
                     <div  class="container m-md-3" style="padding-top: 2rem">
                         <dl class="row">
-                            <dt class="col-sm-2 text-right">ชื่อ :</dt>
+                            <dt class="col-sm-2 text-right ">ชื่อ :</dt>
                             <dd class="col-sm-9">
                                 <input class="form-control w-50" type="text" disabled value="{{ Auth::user()->title }}{{ Auth::user()->first_name }}">
                             </dd>
@@ -42,11 +42,27 @@
                                 <input class="form-control w-50" type="text" disabled value="{{ Auth::user()->phone_number_1 }}">
                             </dd>
 
-                            <dt class="col-sm-2 text-right">Email :</dt>
+                            <dt class="col-sm-2 text-right">อีเมล :</dt>
                             <dd class="col-sm-9">
                                 <input class="form-control w-50" type="text" disabled value="{{ Auth::user()->email }}">
                             </dd>
 
+{{--                            <div class="form-group row" id="birthdatepicker">--}}
+                                <dt for="birth_date" class="col-sm-2 col-form-label text-md-right">วันที่ต้องการย้ายเข้า :</dt>
+
+                                <dd class="col-sm-9">
+                                    <input type="date" class="form-control w-50" id="birth_date" name="birth_date">
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-time"></span>
+                                    </span>
+
+                                    @error('birth_date')
+                                    <span class="invalid-feedback" role=" alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </dd>
+{{--                            </div>--}}
 
                         </dl>
                     </div>
