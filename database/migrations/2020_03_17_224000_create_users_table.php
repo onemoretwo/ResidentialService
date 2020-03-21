@@ -32,7 +32,7 @@ class CreateUsersTable extends Migration
             $table->enum('role',['user','staff','admin']);
 
             $table->rememberToken();
-            $table->timestamp("checkIn_at")->nullable();
+            $table->date("checkIn_at")->nullable();
             $table->timestamps();
             $table->softDeletes();
 

@@ -41,9 +41,15 @@
                         <li class="nav-item">
                             <a href="{{ url('/neighborhood') }}" class="nav-link">สถานที่ใกล้เคียง</a>
                         </li>
+                        @if(Auth::user()->room)
+                            <li class="nav-item">
+                                <a href="{{ route('rooms.show.user', ['id' => Auth::user()->room_id]) }}" class="nav-link">ห้องของฉัน</a>
+                            </li>
+                        @else
                         <li class="nav-item">
                             <a href="{{ route('rooms.index', ['type' => 1]) }}" class="nav-link">ลงทะเบียนจองห้อง</a>
                         </li>
+                        @endif
                     @endif
                 @endif
 
