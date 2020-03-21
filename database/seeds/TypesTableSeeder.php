@@ -20,7 +20,7 @@ class TypesTableSeeder extends Seeder
         $type->save();
 
         $type = new Type();
-        $type->name = "Big";
+        $type->name = "1 bedroom";
         $type->size = 32.5;
         $type->capacity = 3;
         $type->price = 7500;
