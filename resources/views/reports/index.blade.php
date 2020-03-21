@@ -84,14 +84,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                                @if($reports->isEmpty())
-                                    <tr>
-                                        <td class=" text-black-50" colspan="3">
-                                            ไม่มีเรื่องร้องทุกข์
-
-                                        </td>
-                                    </tr>
-                                @else
+                                @if($reports)
                                     @foreach( $reports as $report)
                                         <tr>
                                             <td>{{ $report->room->building->name }}</td>
@@ -106,6 +99,15 @@
                                             </td>
                                         </tr>
                                     @endforeach
+
+                                @else
+                                    <tr>
+                                        <td class=" text-black-50" colspan="3">
+                                            ไม่มีเรื่องร้องทุกข์
+
+                                        </td>
+                                    </tr>
+
                                 @endif
                             </tbody>
                         </table>
@@ -122,14 +124,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                                @if($repairs->isEmpty())
-                                    <tr>
-                                        <td class=" text-black-50" colspan="3">
-                                            ไม่มีเรื่องแจ้งซ่อม
-
-                                        </td>
-                                    </tr>
-                                @else
+                                @if($repairs)
                                     @foreach( $repairs as $repair)
                                         <tr>
                                             <td>{{  $repair->title}}</td>
@@ -141,6 +136,15 @@
                                             </td>
                                         </tr>
                                     @endforeach
+
+                                @else
+                                    <tr>
+                                        <td class=" text-black-50" colspan="3">
+                                            ไม่มีเรื่องแจ้งซ่อม
+
+                                        </td>
+                                    </tr>
+
                                 @endif
                             </tbody>
                         </table>

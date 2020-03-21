@@ -40,16 +40,14 @@ class Report extends Model
         return $repairs;
     }
 
-    public function searchFilterReport(){
-        $reports = DB::table('reports')
-            ->join('rooms', 'reports.room_id', '=', 'rooms.id')
-            ->join('buildings', 'buildings.id', '=', 'rooms.building_id')
-            ->select('*')
+    public function searchFliterReport($building){
+        $reports = Report::all()
             ->where('type', '=', 'รายงาน')
             ->where('status','=','รอการยืนยัน')
-            ->get();
+            ->where('name', '=', $building);
         return $reports;
     }
+
 
 
 
