@@ -16,12 +16,20 @@
                     <a href="{{ url('/information') }}" class="nav-link">รายละเอียด</a>
                 </li>
                 @if(auth()->check())
-                    @if(auth()->user()->isAdmin())
+                    @if(auth()->user()->isAdmin() or auth()->user()->isStaff())
                         <li class="nav-item">
-                            <a href="{{ url('/rooms') }}" class="nav-link">ดูทุกห้อง</a>
+                            <a href="{{ route('rooms.index', ['type' => 1]) }}" class="nav-link">ดูทุกห้อง</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('/reports') }}" class="nav-link">รายงานจากทุกห้อง</a>
+                            <a href="{{ url('/reports') }}" class="nav-link">รายงานจากทุกห้อง
+                                @if($r > 0)
+                                    <span class="badge badge-danger">
+                                        {{  $r }}
+                                    </span>
+                                @endif
+
+                            </a>
+
                         </li>
                         <li class="nav-item">
                             <a href="{{ url('/requests') }}" class="nav-link">คำขอจองห้อง</a>
@@ -33,9 +41,15 @@
                         <li class="nav-item">
                             <a href="{{ url('/neighborhood') }}" class="nav-link">สถานที่ใกล้เคียง</a>
                         </li>
+                        @if(Auth::user()->room)
+                            <li class="nav-item">
+                                <a href="{{ route('rooms.show.user', ['id' => Auth::user()->room_id]) }}" class="nav-link">ห้องของฉัน</a>
+                            </li>
+                        @else
                         <li class="nav-item">
-                            <a href="{{ route('rooms.index', ['type' => 1]) }}" class="nav-link">ลงทะเบียนเช่าห้อง</a>
+                            <a href="{{ route('rooms.index', ['type' => 1]) }}" class="nav-link">ลงทะเบียนจองห้อง</a>
                         </li>
+                        @endif
                     @endif
                 @endif
 

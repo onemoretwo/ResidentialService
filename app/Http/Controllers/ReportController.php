@@ -9,6 +9,7 @@ use App\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use function GuzzleHttp\Promise\all;
 
 class ReportController extends Controller
 {
@@ -19,11 +20,13 @@ class ReportController extends Controller
      */
     public function index()
     {
-        $reports = DB::table('reports')->select('id','title', 'created_at')
-            ->where('type', '=', 'รายงาน')->where('status','=','รอการยืนยัน')->get();
+        $reports = Report::all()
+            ->where('type', '=', 'รายงาน')
+            ->where('status','=','รอการยืนยัน');
+        $repairs = Report::all()
+            ->where('type', '=', 'แจ้งซ่อม')
+            ->where('status','=','รอการยืนยัน');
 
-        $repairs = DB::table('reports')->select('id','title', 'created_at')
-            ->where('type', '=', 'แจ้งซ่อม')->where('status','=','รอการยืนยัน')->get();
         return view('reports.index',['reports'=> $reports,'repairs'=> $repairs]);
     }
 
@@ -34,7 +37,6 @@ class ReportController extends Controller
      */
     public function create()
     {
-        return view('reports.create');
 
     }
 
@@ -144,6 +146,45 @@ class ReportController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $report = Report::findOrFail($id);
+        $report->delete();
+        return redirect()->route('reports.index');
     }
+
+
+    public function seachRoom(Request $request){
+        $building = (int)$request->input('building');
+        $floor = (int)$request->input('floor');
+        $number = (int)$request->input('number');
+
+        $reports = (new Report())->searchFliterReport($building);
+        $repairs = (new Report())->searchFilterRepair();
+
+        dd($reports);
+
+//        if (!empty($building)){
+//            $reports->where('building_id', '=', $building);
+//            $repairs->where('building_id', '=', $building);
+//
+//            dd($reports);
+//
+//        }
+//        if (!empty($floor)){
+//            $reports->where('floor', '=', $floor);
+//            $repairs->where('floor', '=', $floor);
+//
+//        }
+//        if (!empty($number)){
+//            $reports->where('number', '=', $number);
+//            $repairs->where('number', '=', $number);
+
+//        }
+//        return view('reports.index',['reports'=> $reports,'repairs'=> $repairs]);
+
+
+
+
+
+    }
+
 }

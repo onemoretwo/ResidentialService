@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\BookingRequest;
 use App\Room;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class RequestController extends Controller
 {
@@ -14,7 +16,9 @@ class RequestController extends Controller
      */
     public function index()
     {
-        return view('requests.index');
+        $requests = BookingRequest::all();
+//        dd($requests);
+        return view('requests.index',['requests' => $requests ]);
     }
 
     /**
@@ -38,7 +42,17 @@ class RequestController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $req = new BookingRequest;
+        $req->user_id = $request->input('user_id');
+        $req->room_id = $request->input('room_id');
+        $req->checkIn_at = $request->input('checkin_date');
+
+        $room = Room::findOrFail($request->input('room_id'));
+        $room->available = 'no';
+        $room->save();
+
+        $req->save();
+        return $req;
     }
 
     /**

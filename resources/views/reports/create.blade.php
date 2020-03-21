@@ -97,8 +97,30 @@
                                     </div>
 
                                 </div>
-                                <div style="text-align: center">
-                                    <button type="submit" class="btn btn-outline-success">รายงาน</button>
+                                <div>
+                                    <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#report">ส่งคำขอ</button>
+                                </div>
+
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="report" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                ...
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary">Save changes</button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
 
                             </form>
@@ -123,7 +145,7 @@
                                         <div class="row" style="padding-top: 1rem">
                                             <div class="col-md-8">
                                                 <label for="detail">รายละเอียด</label>
-                                                <textarea class="form-control" id="detail" rows="3" name="detail"></textarea>
+                                                <textarea class="form-control" id="detail" rows="3" name="detail" required></textarea>
                                             </div>
                                         </div>
                                         <input type="hidden" name="room_id" value="{{ $room_id }}" >
@@ -131,9 +153,31 @@
 
 
                                 </div>
-                                <div style="text-align: center">
-                                    <button type="submit" class="btn btn-outline-success">ส่งคำขอ</button>
+                                <div >
+                                    <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#repair">ส่งคำขอ</button>
                                 </div>
+                                <!-- Modal -->
+                                <div class="modal fade" id="repair" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                ...
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary">Save changes</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
 
                             </form>
 
@@ -147,3 +191,9 @@
 
     </div>
 @endsection
+
+@section('script')
+
+
+@endsection
+

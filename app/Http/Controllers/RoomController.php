@@ -6,6 +6,7 @@ use App\Package;
 use App\Type;
 use Illuminate\Http\Request;
 use App\Room;
+use Illuminate\Support\Facades\DB;
 
 class RoomController extends Controller
 {

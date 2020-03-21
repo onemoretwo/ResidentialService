@@ -3,11 +3,16 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Room extends Model
 {
     public function users(){
         return $this->hasMany(User::class);
+    }
+
+    public function bookingRequest(){
+        return $this->hasOne(BookingRequest::class);
     }
 
     public function building(){
@@ -30,12 +35,27 @@ class Room extends Model
         return $this->hasMany(RoomImage::class);
     }
 
+    public function report(){
+        return $this->hasMany(Report::class);
+    }
     public function isAdmin(){
         return $this->role === 'admin' ;
     }
 
     public function isStaff(){
         return $this->role === 'staff' ;
+    }
+
+    public function allRoom(){
+
+        $rooms = DB::table('rooms')->select('*')
+            ->where('available','=',"no")
+            ->orderBy('building_id','asc')
+            ->orderBy('floor','asc')
+            ->orderBy('number','asc')
+            ->get();
+        return $rooms;
+
     }
 
 }
