@@ -16,12 +16,12 @@
                     <a href="{{ url('/information') }}" class="nav-link">รายละเอียด</a>
                 </li>
                 @if(auth()->check())
-                    @if(auth()->user()->isAdmin())
+                    @if(auth()->user()->isAdmin() or auth()->user()->isStaff())
                         <li class="nav-item">
                             <a href="{{ url('/rooms') }}" class="nav-link">ดูทุกห้อง</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('/reports') }}" class="nav-link">รายงานจากทุกห้อง</a>
+                            <a href="{{ url('/reports') }}" class="nav-link">รายงานจากทุกห้อง <span class="badge badge-danger">{{  $r }}</span></a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ url('/requests') }}" class="nav-link">คำขอจองห้อง</a>

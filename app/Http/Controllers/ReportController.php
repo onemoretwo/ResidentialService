@@ -80,7 +80,7 @@ class ReportController extends Controller
         $report->status = "รอการยืนยัน";
         $report->save();
 
-        return redirect()->route('reports.create');
+        return redirect()->back();
     }
 
     /**

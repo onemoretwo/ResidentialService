@@ -87,7 +87,7 @@
 
                                 </div>
                                 <div>
-                                    <button type="submit" class="btn btn-primary " data-toggle="modal" data-target="#report">ส่งคำขอ</button>
+                                    <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#report">ส่งคำขอ</button>
                                 </div>
 
 
@@ -134,7 +134,7 @@
                                         <div class="row" style="padding-top: 1rem">
                                             <div class="col-md-4">
                                                 <label for="detail">รายละเอียด</label>
-                                                <textarea class="form-control" id="detail" rows="3" name="detail"></textarea>
+                                                <textarea class="form-control" id="detail" rows="3" name="detail" required></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -142,11 +142,8 @@
 
                                 </div>
                                 <div >
-                                    <button type="submit" class="btn btn-primary " data-toggle="modal" data-target="#repair">ส่งคำขอ</button>
-
+                                    <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#repair">ส่งคำขอ</button>
                                 </div>
-
-
                                 <!-- Modal -->
                                 <div class="modal fade" id="repair" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
@@ -158,6 +155,7 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
+                                                ...
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -166,6 +164,8 @@
                                         </div>
                                     </div>
                                 </div>
+
+
 
                             </form>
 
@@ -178,5 +178,10 @@
 
 
     </div>
+@endsection
+
+@section('script')
+
+
 @endsection
 
