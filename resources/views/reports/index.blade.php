@@ -116,7 +116,7 @@
                                 @if($repairs->isEmpty())
                                     <tr>
                                         <td class=" text-black-50" colspan="3">
-                                            ไม่มีเรื่องร้องทุกข์
+                                            ไม่มีเรื่องแจ้งซ่อม
 
                                         </td>
                                     </tr>
