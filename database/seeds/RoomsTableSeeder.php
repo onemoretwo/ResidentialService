@@ -13,64 +13,124 @@ class RoomsTableSeeder extends Seeder
     public function run()
     {
         for($i=1;$i<=9;$i++) {
-            $room = new Room();
-            $room->building_id = 1;
-            $room->floor = $i;
-            $room->available = "no";
             if ($i>=7) {
-                $room->type_id = 2;
-            } else {
-                $room->type_id = 1;
-            }
-            for($j=1;$j<=12;$j++) {
-                if($j>=10) {
-                    $room->number = $i . $j;
-                } else {
-                    $room->number = $i . '0' . $j;
+                for($j=1;$j<=12;$j++) {
+                    if($j>=10) {
+                        $room = new Room();
+                        $room->building_id = 1;
+                        $room->floor = $i;
+                        $room->available = "no";
+                        $room->type_id = 2;
+                        $room->number = $i . $j;
+                    } else {
+                        $room = new Room();
+                        $room->building_id = 1;
+                        $room->floor = $i;
+                        $room->available = "no";
+                        $room->type_id = 2;
+                        $room->number = $i . '0' . $j;
+                    }$room->save();
                 }
-            } $room->save();
+            } else {
+                for($j=1;$j<=12;$j++) {
+                    if($j>=10) {
+                        $room = new Room();
+                        $room->building_id = 1;
+                        $room->floor = $i;
+                        $room->available = "no";
+                        $room->type_id = 1;
+                        $room->number = $i . $j;
+                    } else {
+                        $room = new Room();
+                        $room->building_id = 1;
+                        $room->floor = $i;
+                        $room->available = "no";
+                        $room->type_id = 1;
+                        $room->number = $i . '0' . $j;
+                    }$room->save();
+                }
+            }
         }
 
         for($i=1;$i<=9;$i++) {
-            $room = new Room();
-            $room->building_id = 2;
-            $room->floor = $i;
-            $room->available = "no";
             if ($i>=7) {
-                $room->type_id = 2;
-            } else {
-                $room->type_id = 1;
-            }
-            for($j=1;$j<=12;$j++) {
-                if($j>=10) {
-                    $room->number = $i . $j;
-                } else {
-                    $room->number = $i . '0' . $j;
+                for($j=1;$j<=12;$j++) {
+                    if($j>=10) {
+                        $room = new Room();
+                        $room->building_id = 2;
+                        $room->floor = $i;
+                        $room->available = "no";
+                        $room->type_id = 2;
+                        $room->number = $i . $j;
+                    } else {
+                        $room = new Room();
+                        $room->building_id = 2;
+                        $room->floor = $i;
+                        $room->available = "no";
+                        $room->type_id = 2;
+                        $room->number = $i . '0' . $j;
+                    }$room->save();
                 }
-            } $room->save();
+            } else {
+                for($j=1;$j<=12;$j++) {
+                    if($j>=10) {
+                        $room = new Room();
+                        $room->building_id = 2;
+                        $room->floor = $i;
+                        $room->available = "no";
+                        $room->type_id = 1;
+                        $room->number = $i . $j;
+                    } else {
+                        $room = new Room();
+                        $room->building_id = 2;
+                        $room->floor = $i;
+                        $room->available = "no";
+                        $room->type_id = 1;
+                        $room->number = $i . '0' . $j;
+                    }$room->save();
+                }
+            }
         }
 
         for($i=1;$i<=9;$i++) {
-            $room = new Room();
-            $room->building_id = 3;
-            $room->floor = $i;
-            $room->available = "no";
             if ($i>=7) {
-                $room->type_id = 2;
-            } else {
-                $room->type_id = 1;
-            }
-            for($j=1;$j<=12;$j++) {
-                if($j>=10) {
-                    $room->number = $i . $j;
-                } else {
-                    $room->number = $i . '0' . $j;
+                for($j=1;$j<=12;$j++) {
+                    if($j>=10) {
+                        $room = new Room();
+                        $room->building_id = 3;
+                        $room->floor = $i;
+                        $room->available = "no";
+                        $room->type_id = 2;
+                        $room->number = $i . $j;
+                    } else {
+                        $room = new Room();
+                        $room->building_id = 3;
+                        $room->floor = $i;
+                        $room->available = "no";
+                        $room->type_id = 2;
+                        $room->number = $i . '0' . $j;
+                    }$room->save();
                 }
-            } $room->save();
+            } else {
+                for($j=1;$j<=12;$j++) {
+                    if($j>=10) {
+                        $room = new Room();
+                        $room->building_id = 3;
+                        $room->floor = $i;
+                        $room->available = "no";
+                        $room->type_id = 1;
+                        $room->number = $i . $j;
+                    } else {
+                        $room = new Room();
+                        $room->building_id = 3;
+                        $room->floor = $i;
+                        $room->available = "no";
+                        $room->type_id = 1;
+                        $room->number = $i . '0' . $j;
+                    }$room->save();
+                }
+            }
         }
-
-
-
     }
 
 }
