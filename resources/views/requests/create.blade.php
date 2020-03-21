@@ -22,29 +22,29 @@
                     <h3 class="card-title text-center">ฟอร์มการจองห้อง</h3>
                     <div  class="container m-md-3" style="padding-top: 2rem">
                         <dl class="row">
-                            <dt class="col-sm-3 input-aligned">ชื่อ :</dt>
+                            <dt class="col-sm-2 text-right">ชื่อ :</dt>
                             <dd class="col-sm-9">
-                                <input class="form-control w-25" type="text">
+                                <input class="form-control w-50" type="text" disabled value="{{ Auth::user()->title }}{{ Auth::user()->first_name }}">
                             </dd>
-                            <dt class="col-sm-3 input-aligned">นามสกุล :</dt>
+                            <dt class="col-sm-2 text-right">นามสกุล :</dt>
                             <dd class="col-sm-9">
-                                <input class="form-control w-25" type="text">
-                            </dd>
-
-
-                            <dt class="col-sm-3 input-aligned">ที่อยุ่ :</dt>
-                            <dd class="col-sm-9">
-                                <input class="form-control w-50" type="text">
+                                <input class="form-control w-50" type="text" disabled value="{{ Auth::user()->last_name }}">
                             </dd>
 
-                            <dt class="col-sm-3 input-aligned">เบอร์โทรศัพท์ :</dt>
+
+                            <dt class="col-sm-2 text-right">ที่อยุ่ :</dt>
                             <dd class="col-sm-9">
-                                <input class="form-control w-25" type="text">
+                                <input class="form-control w-50" type="text" disabled value="{{ Auth::user()->address }}">
                             </dd>
 
-                            <dt class="col-sm-3 input-aligned">Email :</dt>
+                            <dt class="col-sm-2 text-right">เบอร์โทรศัพท์ :</dt>
                             <dd class="col-sm-9">
-                                <input class="form-control w-25" type="text">
+                                <input class="form-control w-50" type="text" disabled value="{{ Auth::user()->phone_number_1 }}">
+                            </dd>
+
+                            <dt class="col-sm-2 text-right">Email :</dt>
+                            <dd class="col-sm-9">
+                                <input class="form-control w-50" type="text" disabled value="{{ Auth::user()->email }}">
                             </dd>
 
 
@@ -54,43 +54,46 @@
                     <h3 class="card-title text-center">ข้อมูลห้องที่จอง</h3>
                     <div  class="container m-md-3" style="padding-top: 2rem">
                         <dl class="row">
-                            <dt class="col-sm-3">ตึก :</dt>
-                            <dd class="col-sm-9"></dd>
+                            <dt class="col-sm-2 text-right">ที่อยู่ :</dt>
+                            <dd class="col-sm-9">{{ $room->building->address }}</dd>
 
-                            <dt class="col-sm-3">ชั้น :</dt>
-                            <dd class="col-sm-9"> 1</dd>
+                            <dt class="col-sm-2 text-right">ตึก :</dt>
+                            <dd class="col-sm-9">{{ $room->building->name }}</dd>
 
-                            <dt class="col-sm-3">เลขห้อง :</dt>
-                            <dd class="col-sm-9">101</dd>
+                            <dt class="col-sm-2 text-right">ชั้น :</dt>
+                            <dd class="col-sm-9">{{ $room->floor }}</dd>
 
-                            <dt class="col-sm-3 text-truncate">แบบห้อง :</dt>
-                            <dd class="col-sm-9">1 ห้องน้ำ 1 ห้องนอน</dd>
+                            <dt class="col-sm-2 text-right">เลขห้อง :</dt>
+                            <dd class="col-sm-9">{{ $room->number }}</dd>
 
-                            <dt class="col-sm-3">ขนาด :</dt>
-                            <dd class="col-sm-9">10 ตร.ม</dd>
+                            <dt class="col-sm-2 text-right">แบบห้อง :</dt>
+                            <dd class="col-sm-9">{{ $room->type->name }}</dd>
 
-                            <dt class="col-sm-3">เฟอร์นิเจอร์ :</dt>
+                            <dt class="col-sm-2 text-right">ขนาด :</dt>
+                            <dd class="col-sm-9">{{ $room->type->size }} ตร.ม.</dd>
+
+                            <dt class="col-sm-2 text-right">เฟอร์นิเจอร์ :</dt>
                             <dd class="col-sm-9">เตียงคู่ ตู้เย็น ทีวี โต๊ะ เก้าอี้ ตู้เสื้อผ้า</dd>
 
-                            <dt class="col-sm-3">ราคามัดจำ :</dt>
-                            <dd class="col-sm-9">1000 บาท</dd>
+                            <dt class="col-sm-2 text-right">ราคามัดจำ :</dt>
+                            <dd class="col-sm-9">{{ $room->type->price }} บาท</dd>
 
-                            <dt class="col-sm-3">ราคาเช่า :</dt>
-                            <dd class="col-sm-9">2000 บาท</dd>
+                            <dt class="col-sm-2 text-right">ราคาเช่าล่วงหน้า :</dt>
+                            <dd class="col-sm-9">{{ $room->type->price }} บาท</dd>
 
-                            <dt class="col-sm-3">ค่าน้ำ :</dt>
-                            <dd class="col-sm-9">4 บาทต่อยูนิต</dd>
-                            <dt class="col-sm-3">ค่าไฟ :</dt>
-                            <dd class="col-sm-9">7 บาทต่อยูนิต</dd>
+                            <dt class="col-sm-2 text-right">ค่าน้ำ :</dt>
+                            <dd class="col-sm-9">{{ $room->building->water_rate }} บาทต่อยูนิต</dd>
+                            <dt class="col-sm-2 text-right">ค่าไฟ :</dt>
+                            <dd class="col-sm-9">{{ $room->building->electric_rate }} บาทต่อยูนิต</dd>
 
-                            <dt class="col-sm-3">สัญญา :</dt>
+                            <dt class="col-sm-2 text-right">สัญญา :</dt>
                             <dd class="col-sm-9">1 ปี</dd>
 
                         </dl>
                     </div>
                     <div class="text-center">
                         <button type="button" class="btn btn-secondary btn-lg">รีเซ็ท</button>
-                        <button type="button" class="btn btn-success btn-lg">ยืนยันการส่ง</button>
+                        <button type="submit" class="btn btn-success btn-lg">ยืนยันการส่ง</button>
                     </div>
 
                 </div>

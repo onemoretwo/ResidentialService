@@ -34,7 +34,7 @@
                             <a href="{{ url('/neighborhood') }}" class="nav-link">สถานที่ใกล้เคียง</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('/rooms') }}" class="nav-link">ลงทะเบียนเช่าห้อง</a>
+                            <a href="{{ route('rooms.index', ['type' => 1]) }}" class="nav-link">ลงทะเบียนเช่าห้อง</a>
                         </li>
                     @endif
                 @endif

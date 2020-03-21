@@ -222,14 +222,14 @@
                                     <h3>ติดต่อสอบถาม</h3>
                                 </div>
                                 <div class="card-body">
-                                    <p class="col-6"> เบอร์โทรศัพท์ :</p>
-                                    <p class="col-6"> Email :</p>
+                                    <p class="col-6">เบอร์โทรศัพท์ :</p>
+                                    <p class="col-6">Email :</p>
                                     <p class="col-6">Line ID :</p>
 
                                 </div>
                             </div>
                             <div style="padding-top: 2rem;">
-                                <a href="{{ route('requests.create')}}"><button type="button"   class="btn btn-outline-success w-100">จองห้อง</button></a>
+                                <a href="{{ route('requests.create',[ 'room' => $room->id ] )}}"><button type="button"   class="btn btn-outline-success w-100">จองห้อง</button></a>
                             </div>
 
 

@@ -31,13 +31,21 @@ Route::get('/rooms/show-room-staff/{id}', 'RoomController@showStaff')->name('roo
 Route::get('/rooms/my-room/{id}', 'RoomController@userRoom')->name('rooms.show.user');
 Route::get('/rooms/my-room/{id}/packages','RoomController@roomPackages')->name('room.users.packages');
 Route::get('/rooms/my-room/{room}/packages/{package}', 'PackageController@packageConfirm')->name('package.confirm');
-Route::resource('/rooms','RoomController');
+Route::resource('/rooms','RoomController')->except([
+    'index'
+]);
+Route::get('/rooms/types/{type}','RoomController@index')->name('rooms.index');
 
 Route::post('/reports/repair/','ReportController@storeRepair')->name('reports.repair.store');
 Route::resource('/reports','ReportController');
 Route::resource('/receipts','ReceiptController');
 
-Route::resource('/requests','RequestController');
+Route::resource('/requests','RequestController')->except([
+    'create'
+]);
+Route::get('/requests/create/{room}','RequestController@create')->name('requests.create');
+
+
 Route::resource('/packages','PackageController');
 
 

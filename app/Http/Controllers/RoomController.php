@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Package;
+use App\Type;
 use Illuminate\Http\Request;
 use App\Room;
 
@@ -15,13 +16,23 @@ class RoomController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param $id
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        $rooms = Room::all();
-        return view('rooms.index',['rooms' => $rooms]);
+        $types = Type::all();
+        $type = Type::find($id);
+        if ($type) {
+            $rooms = Room::get()->where('type_id', $type->id);
+            return view('rooms.index',['types' => $types, 'rooms' => $rooms, 'selected_type' => $type]);
+        } else {
+            $rooms = Room::all();
+            return view('rooms.index',['types' => $types, 'rooms' => $rooms]);
+        }
+
     }
+
 
     /**
      * Show the form for creating a new resource.
