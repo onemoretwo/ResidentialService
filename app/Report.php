@@ -13,7 +13,7 @@ class Report extends Model
     }
 
     public function searchReport(){
-        $reports = DB::table('reports')->select('id','title', 'created_at')
+        $reports = DB::table('reports')->select('*')
                     ->where('type', '=', 'รายงาน')
                     ->where('status','=','รอการยืนยัน')
                     ->get();
@@ -21,12 +21,36 @@ class Report extends Model
     }
 
     public function searchRepair(){
-        $repairs = DB::table('reports')->select('id','title', 'created_at')
+        $repairs = DB::table('reports')->select('*')
                     ->where('type', '=', 'แจ้งซ่อม')
                     ->where('status','=','รอการยืนยัน')
                     ->get();
         return $repairs;
     }
+
+    public function searchFilterRepair(){
+        $repairs = DB::table('reports')
+            ->join('rooms', 'reports.id', '=', 'rooms.id')
+//            ->join('reports', 'rooms.id', '=', 'reports.id')
+            ->select('*')
+            ->where('type', '=', 'แจ้งซ่อม')
+            ->where('status','=','รอการยืนยัน')
+            ->get();
+        return $repairs;
+    }
+
+    public function searchFilterReport(){
+        $reports = DB::table('reports')
+            ->join('rooms', 'reports.id', '=', 'rooms.id')
+//            ->join('reports', 'rooms.id', '=', 'reports.id')
+            ->select('*')
+            ->where('type', '=', 'แจ้งซ่อม')
+            ->where('status','=','รอการยืนยัน')
+            ->get();
+        return $reports;
+    }
+
+
 
 
 }

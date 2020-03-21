@@ -140,14 +140,35 @@ class ReportController extends Controller
 
     public function seachRoom(Request $request){
         $building = $request->input('building');
-        $floor = $request->input('floor');
-        $number = $request->input('number');
+        $floor = (int)$request->input('floor');
+        $number = (int)$request->input('number');
 
-        $rooms = Room::all()->where();
+        $reports = (new Report())->searchFilterReport();
+        $repairs = (new Report())->searchFilterRepair();
 
-        if (!empty($building)){
+        dd($building);
+//        dd($floor);
+//        dd($number);
+//        dd($reports);
+//        dd($repairs);
 
-        }
+
+//        if (!empty($building)){
+//            $reports->where('building_id', '=', $building);
+//            $repairs->where('building_id', '=', $building);
+//
+//        }
+//        if (!empty($floor)){
+//            $reports->where('floor', '=', $floor);
+//            $repairs->where('floor', '=', $floor);
+//
+//        }
+//        if (!empty($number)){
+//            $reports->where('number', '=', $number);
+//            $repairs->where('number', '=', $number);
+//
+//        }
+//        return view('reports.index',['reports'=> $reports,'repairs'=> $repairs]);
 
 
 

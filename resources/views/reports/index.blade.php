@@ -19,34 +19,33 @@
                 <div class="row">
                     <div class="col-md-3 mb-3">
                         <label for="building">ตึก</label>
-                        <select class="custom-select" id="building" required>
+                        <select class="custom-select" id="building"  name="building" required>
                             <option selected disabled value="">เลือกตึก</option>
-                            <option>ตึก A</option>
-                            <option>ตึก B</option>
-                            <option>ตึก C</option>
+                            <option value="1">ตึก A</option>
+                            <option value="2">ตึก B</option>
+                            <option value="3">ตึก C</option>
 
                         </select>
                     </div>
                     <div class="col-md-3 mb-3">
                         <label for="floor">ชั้น</label>
-                        <select class="custom-select" id="floor" required>
+                        <select class="custom-select" name="floor" id="floor" required>
                             <option selected disabled value="">เลือกชั้น</option>
-                            <option>ชั้น 1</option>
-                            <option>ชั้น 2</option>
-                            <option>ชั้น 3</option>
-                            <option>ชั้น 4</option>
-                            <option>ชั้น 5</option>
+                            <option value="1">ชั้น 1</option>
+                            <option value="2">ชั้น 2</option>
+                            <option value="3">ชั้น 3</option>
+                            <option value="4">ชั้น 4</option>
+                            <option value="5">ชั้น 5</option>
 
                         </select>
                     </div>
                     <div class="col-md-3 mb-3">
                         <label for="numRoom">เลขห้อง</label>
-                        <input type="text" class="form-control" id="numRoom" required>
+                        <input type="text" class="form-control" id="numRoom"  name="number" required>
 
                     </div>
                     <div class="col-md-3 mb-3" style="padding-top: 2rem">
-                        <button type="button" class="btn btn-outline-primary">ค้นหา</button>
-
+                        <a href="{{route('reports.index.search')}}"><button type="button" class="btn btn-outline-primary">ค้นหา</button></a>
                     </div>
 
                 </div>
