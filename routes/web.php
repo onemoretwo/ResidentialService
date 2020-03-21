@@ -33,6 +33,7 @@ Route::get('/rooms/my-room/{id}/packages','RoomController@roomPackages')->name('
 Route::get('/rooms/my-room/{room}/packages/{package}', 'PackageController@packageConfirm')->name('package.confirm');
 Route::resource('/rooms','RoomController');
 
+Route::post('/reports/repair/','ReportController@storeRepair')->name('reports.repair.store');
 Route::resource('/reports','ReportController');
 Route::resource('/receipts','ReceiptController');
 
