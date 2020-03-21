@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\User;
+use App\Room;
 
 class UsersTableSeeder extends Seeder
 {
@@ -26,11 +27,33 @@ class UsersTableSeeder extends Seeder
         $user->phone_number_1 = "0868214563";
         $user->phone_number_2 = null;
         $user->role = "admin";
-        $user->checkIn_at = NOW();
+        $user->checkIn_at = null;
+        $user->save();
+
+        $user = new User();
+        $user->room_id = null;
+        $user->title = "นาย";
+        $user->first_name = "guest";
+        $user->last_name = "guest";
+        $user->email = "guest@gmail.com";
+        $user->password = Hash::make('1234');
+        $user->birth_date = NOW();
+        $user->gender = 1;
+        $user->citizen_id = "4674567643123";
+        $user->address = "homeless";
+        $user->phone_number_1 = "0868214563";
+        $user->phone_number_2 = null;
+        $user->role = "user";
+        $user->checkIn_at = null;
         $user->save();
 
         $user = new User();
         $user->room_id = 1;
+
+        $room = Room::findOrFail(1);
+        $room->available = 'no';
+        $room->save();
+
         $user->title = "นาย";
         $user->first_name = "อานนท์";
         $user->last_name = "สุขศิริ";
@@ -60,6 +83,11 @@ class UsersTableSeeder extends Seeder
 
         $user = new User();
         $user->room_id = 2;
+
+        $room = Room::findOrFail(2);
+        $room->available = 'no';
+        $room->save();
+
         $user->title = "นาย";
         $user->first_name = "อนุทิน";
         $user->last_name = "จำไม่ได้";
@@ -75,6 +103,11 @@ class UsersTableSeeder extends Seeder
 
         $user = new User();
         $user->room_id = 1;
+
+        $room = Room::findOrFail(1);
+        $room->available = 'no';
+        $room->save();
+
         $user->title = "นาย";
         $user->first_name = "โกมิน";
         $user->last_name = "ไม่รู้เหมือนกัน";

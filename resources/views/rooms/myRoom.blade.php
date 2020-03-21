@@ -5,7 +5,7 @@
             background-color:#1d1d1d !important;
             font-family: "Asap", sans-serif;
             /*margin:10px;*/
-            font-size:16px;
+            /*font-size:16px;*/
         }
 
         .newwidth{
