@@ -10,7 +10,7 @@ class BookingRequest extends Model
 //    protected $table = 'booking_requests';
 
     public function room(){
-        return $this->hasOne(Room::class);
+        return $this->belongsTo(Room::class);
     }
 
     public function  user(){

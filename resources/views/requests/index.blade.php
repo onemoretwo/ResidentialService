@@ -77,7 +77,7 @@
                                 <td>{{ $request->room->floor }}</td>
                                 <td>{{ $request->room->number }}</td>
                                 <td>{{ $request->room->type->name }}</td>
-                                <td><a href="{{ route("request.show",['request' => $request->id]) }}"><button type="button" class="btn btn-outline-success">แสดง</button></a></td>
+                                <td><a href="{{ route("requests.show",['request' => $request->id]) }}"><button type="button" class="btn btn-outline-success">แสดง</button></a></td>
                             </tr>
                         @endif
                     @endforeach

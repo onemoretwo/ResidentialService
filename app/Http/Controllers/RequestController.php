@@ -63,6 +63,8 @@ class RequestController extends Controller
      */
     public function show($id)
     {
+        $request = BookingRequest::findOrFail($id);
+
         return view('requests.show');
 
     }
