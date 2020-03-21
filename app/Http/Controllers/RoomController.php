@@ -82,8 +82,8 @@ class RoomController extends Controller
     }
 
     public function roomPackages($id){
-        $room = Room::findOrFail($id);
-        return view('rooms.showPackages',['packages' => $room->packages]);
+        $packages = Package::where('room_id',$id)->where('status','รอรับของ')->get();
+        return view('rooms.showPackages',['packages' => $packages]);
     }
 
     /**

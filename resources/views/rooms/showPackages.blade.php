@@ -63,27 +63,32 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 
-                        @foreach($packages as $package)
-                            <div>
-                                <div class="card card-adapt">
-                                    <div class="card-body card-bot">
-                                        <img class="icon" src="images/gift.png" alt="">
-                                        <div class="inline">
-                                            <div class="package-detail">
-                                                <p><b style="color: #777b7e">ชื่อผู้รับพัสดุ :</b>&nbsp;&nbsp;&nbsp; {{ $package->recipient }} </p>
-                                                <p><b style="color: #777b7e">รายละเอียด :</b>&nbsp;&nbsp;&nbsp;&nbsp; {{ $package->detail }}</p>
-                                                <p class="date" style="color: #808588">{{ $package->created_at }}</p>
+                        @if($packages->count() === 0)
+                            <h3>ไม่มีพัสดุ</h3>
+                        @else
+
+                            @foreach($packages as $package)
+                                <div>
+                                    <div class="card card-adapt">
+                                        <div class="card-body card-bot">
+                                            <img class="icon" src="images/gift.png" alt="">
+                                            <div class="inline">
+                                                <div class="package-detail">
+                                                    <p><b style="color: #777b7e">ชื่อผู้รับพัสดุ :</b>&nbsp;&nbsp;&nbsp; {{ $package->recipient }} </p>
+                                                    <p><b style="color: #777b7e">รายละเอียด :</b>&nbsp;&nbsp;&nbsp;&nbsp; {{ $package->detail }}</p>
+                                                    <p class="date" style="color: #808588">{{ $package->created_at }}</p>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <hr style="margin: 0.4rem 0">
-                                        <div class="marg">
-                                            <p style="margin-bottom: 0.1rem;color: #808588">ผู้รับผิดชอบ :  {{ $package->user->first_name }}    {{ $package->user->last_name }}</p>
-                                            <a class="icon-con btn btn-outline-info" style="color: #0080fe;">รับพัสดุแล้ว</a>
+                                            <hr style="margin: 0.4rem 0">
+                                            <div class="marg">
+                                                <p style="margin-bottom: 0.1rem;color: #808588">ผู้รับผิดชอบ :  {{ $package->user->first_name }}    {{ $package->user->last_name }}</p>
+                                                <a class="icon-con btn btn-outline-info" style="color: #0080fe;" href="{{ route('package.confirm',['room' => $package->room->id, 'package' => $package->id]) }}">รับพัสดุแล้ว</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        @endforeach
+                            @endforeach
+                        @endif
 
                     </div>
                     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
