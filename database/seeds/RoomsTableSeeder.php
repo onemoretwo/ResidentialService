@@ -19,14 +19,12 @@ class RoomsTableSeeder extends Seeder
                         $room = new Room();
                         $room->building_id = 1;
                         $room->floor = $i;
-                        $room->available = "no";
                         $room->type_id = 2;
                         $room->number = $i . $j;
                     } else {
                         $room = new Room();
                         $room->building_id = 1;
                         $room->floor = $i;
-                        $room->available = "no";
                         $room->type_id = 2;
                         $room->number = $i . '0' . $j;
                     }$room->save();
@@ -37,14 +35,12 @@ class RoomsTableSeeder extends Seeder
                         $room = new Room();
                         $room->building_id = 1;
                         $room->floor = $i;
-                        $room->available = "no";
                         $room->type_id = 1;
                         $room->number = $i . $j;
                     } else {
                         $room = new Room();
                         $room->building_id = 1;
                         $room->floor = $i;
-                        $room->available = "no";
                         $room->type_id = 1;
                         $room->number = $i . '0' . $j;
                     }$room->save();
@@ -59,14 +55,12 @@ class RoomsTableSeeder extends Seeder
                         $room = new Room();
                         $room->building_id = 2;
                         $room->floor = $i;
-                        $room->available = "no";
                         $room->type_id = 2;
                         $room->number = $i . $j;
                     } else {
                         $room = new Room();
                         $room->building_id = 2;
                         $room->floor = $i;
-                        $room->available = "no";
                         $room->type_id = 2;
                         $room->number = $i . '0' . $j;
                     }$room->save();
@@ -77,14 +71,12 @@ class RoomsTableSeeder extends Seeder
                         $room = new Room();
                         $room->building_id = 2;
                         $room->floor = $i;
-                        $room->available = "no";
                         $room->type_id = 1;
                         $room->number = $i . $j;
                     } else {
                         $room = new Room();
                         $room->building_id = 2;
                         $room->floor = $i;
-                        $room->available = "no";
                         $room->type_id = 1;
                         $room->number = $i . '0' . $j;
                     }$room->save();
