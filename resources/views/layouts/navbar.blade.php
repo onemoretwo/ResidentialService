@@ -18,7 +18,7 @@
                 @if(auth()->check())
                     @if(auth()->user()->isAdmin() or auth()->user()->isStaff())
                         <li class="nav-item">
-                            <a href="{{ url('/rooms') }}" class="nav-link">ดูทุกห้อง</a>
+                            <a href="{{ route('rooms.index', ['type' => 1]) }}" class="nav-link">ดูทุกห้อง</a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ url('/reports') }}" class="nav-link">รายงานจากทุกห้อง
