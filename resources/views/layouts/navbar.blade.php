@@ -21,7 +21,15 @@
                             <a href="{{ url('/rooms') }}" class="nav-link">ดูทุกห้อง</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('/reports') }}" class="nav-link">รายงานจากทุกห้อง <span class="badge badge-danger">{{  $r }}</span></a>
+                            <a href="{{ url('/reports') }}" class="nav-link">รายงานจากทุกห้อง
+                                @if($r > 0)
+                                    <span class="badge badge-danger">
+                                        {{  $r }}
+                                    </span>
+                                @endif
+
+                            </a>
+
                         </li>
                         <li class="nav-item">
                             <a href="{{ url('/requests') }}" class="nav-link">คำขอจองห้อง</a>
