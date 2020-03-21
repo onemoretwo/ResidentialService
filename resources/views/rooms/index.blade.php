@@ -59,8 +59,9 @@
                 <table class="table table-hover">
                     <thead>
                     <tr>
-                        <th scope="col">ห้อง</th>
+                        <th scope="col">ตึก</th>
                         <th scope="col">ชั้น</th>
+                        <th scope="col">ห้อง</th>
                         <th scope="col"></th>
                     </tr>
                     </thead>
@@ -69,15 +70,17 @@
                             @if(auth()->check())
                                 @if(auth()->user()->isAdmin())
                                     <tr>
-                                        <th scope="row">{{ $room->number }}</th>
+                                        <td>{{ $room->building_id }}</td>
                                         <td>{{ $room->floor }}</td>
+                                        <th scope="row">{{ $room->number }}</th>
                                         <td><a href="{{ route("rooms.show.staff", ['id' => $room->id]) }}"><button type="button" class="btn btn-outline-primary">แสดง</button></a>
                                         </td>
                                     </tr>
                                 @else
                                     <tr>
+                                        <td>{{ $room->building->name }}</td>
+                                        <td>{{ $room->floor }}</td>
                                         <th scope="row">{{ $room->number }}</th>
-                                        <td >{{ $room->floor }}</td>
                                         <td><a href="{{ route("rooms.show",['room' => $room->id]) }}"><button type="button" class="btn btn-outline-success">แสดง</button></a>
                                         </td>
 

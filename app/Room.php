@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Room extends Model
 {
@@ -36,6 +37,18 @@ class Room extends Model
 
     public function isStaff(){
         return $this->role === 'staff' ;
+    }
+
+    public function allRoom(){
+
+        $rooms = DB::table('rooms')->select('*')
+            ->where('available','=',"no")
+            ->orderBy('building_id','asc')
+            ->orderBy('floor','asc')
+            ->orderBy('number','asc')
+            ->get();
+        return $rooms;
+
     }
 
 }

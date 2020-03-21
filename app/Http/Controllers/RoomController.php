@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Package;
 use Illuminate\Http\Request;
 use App\Room;
+use Illuminate\Support\Facades\DB;
 
 class RoomController extends Controller
 {
@@ -19,7 +20,13 @@ class RoomController extends Controller
      */
     public function index()
     {
-        $rooms = Room::all();
+//        $rooms = DB::table('rooms')->select('id','building_id','type_id','floor','number')
+//            ->where('available','=',"no")
+//            ->orderBy('building_id','asc')
+//            ->orderBy('floor','asc')
+//            ->orderBy('number','asc')
+//            ->get();
+        $rooms = (new Room())->allRoom();
         return view('rooms.index',['rooms' => $rooms]);
     }
 

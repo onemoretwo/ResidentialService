@@ -18,11 +18,9 @@ class ReportController extends Controller
      */
     public function index()
     {
-        $reports = DB::table('reports')->select('id','title', 'created_at')
-            ->where('type', '=', 'รายงาน')->where('status','=','รอการยืนยัน')->get();
+        $reports = (new Report())->searchReport();
+        $repairs = (new Report())->searchRepair();
 
-        $repairs = DB::table('reports')->select('id','title', 'created_at')
-            ->where('type', '=', 'แจ้งซ่อม')->where('status','=','รอการยืนยัน')->get();
         return view('reports.index',['reports'=> $reports,'repairs'=> $repairs]);
     }
 
@@ -138,5 +136,9 @@ class ReportController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function seachRoom(Request $request){
+
     }
 }
