@@ -91,7 +91,7 @@ class RoomController extends Controller
     {
         $room = Room::findOrFail($id);
         $n_packages = Package::where('room_id',$id)->where('status','รอรับของ')->count();
-        return view('rooms.myRoom',['room' => $room,'r' => $n_packages]);
+        return view('rooms.myRoom',['room' => $room, 'c' => $n_packages]);
     }
 
     public function roomPackages($id){
