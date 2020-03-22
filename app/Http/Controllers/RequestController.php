@@ -55,7 +55,7 @@ class RequestController extends Controller
         $room->save();
 
         $req->save();
-        return $req;
+        return redirect()->route('home.index');
     }
 
     /**

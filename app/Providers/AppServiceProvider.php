@@ -35,9 +35,11 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('*', function ($view)
         {
             $r = Report::all()->where('status','=','รอการยืนยัน')->count();
-            //...with this variable
-            $view->with('r', $r );
+            $b = BookingRequest::all()->where('status','=','รอการยืนยัน')->count();
+
+            $view->with(['r' => $r, 'b' => $b] );
         });
+
 
 
     }

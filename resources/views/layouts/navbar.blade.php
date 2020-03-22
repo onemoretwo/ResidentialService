@@ -32,15 +32,20 @@
 
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('/requests') }}" class="nav-link">คำขอจองห้อง</a>
+                            <a href="{{ url('/requests') }}" class="nav-link">คำขอจองห้อง
+                                @if($b > 0)
+                                    <span class="badge badge-danger">
+                                        {{  $b }}
+                                    </span>
+                                @endif</a>
                         </li>
                     @else
                         <li class="nav-item">
                             <a href="{{ url('/gallery') }}" class="nav-link">อัลบั้มภาพ </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{ url('/neighborhood') }}" class="nav-link">สถานที่ใกล้เคียง</a>
-                        </li>
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="{{ url('/neighborhood') }}" class="nav-link">สถานที่ใกล้เคียง</a>--}}
+{{--                        </li>--}}
                         @if(Auth::user()->room )
                             <li class="nav-item">
                                 <a href="{{ route('rooms.show.user', ['id' => Auth::user()->room_id]) }}" class="nav-link">ห้องของฉัน</a>
