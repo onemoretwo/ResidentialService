@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\BookingRequest;
 use App\Room;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 
 class RequestController extends Controller
 {
@@ -89,9 +91,15 @@ class RequestController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $user_now = Auth::user();
         $request = BookingRequest::findOrFail($id);
+//        $request->admin_id = $user_now;
         $request->status = 'ยืนยันแล้ว';
         $request->save();
+
+        $user = User::findOrFail($request->user_id);
+        $user->room_id = $request->room_id;
+        $user->save();
 
         return redirect()->route('requests.index');
 

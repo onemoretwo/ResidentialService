@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\BookingRequest;
 use App\Report;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\DB;
@@ -37,6 +38,7 @@ class AppServiceProvider extends ServiceProvider
             //...with this variable
             $view->with('r', $r );
         });
+
 
     }
 }
