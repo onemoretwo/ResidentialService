@@ -170,6 +170,7 @@
                             <li class="list-group-item"><i class="fas fa-file-invoice-dollar bill-sign"></i>&nbsp;&nbsp;&nbsp;<a href="{{ route('receipts.show',['receipt' => $room->id]) }}" class="text">บิลประจำเดือน</a></li>
                             <li class="list-group-item"><i class="fas fa-box-open package-sign"></i>&nbsp;&nbsp;<a class="text" href="{{ route('room.users.packages',['id' => $room->id]) }}">ตรวจสอบพัสดุ</a><span class="badge badge-danger">{{ $c }}</span></li>
                             <li class="list-group-item"><i class="fas fa-wifi wifi-sign"></i>&nbsp;&nbsp;&nbsp;<a class="text" href="{{ route('room.user.wifi', ['room' => $room->id]) }}">ซื้อ wifi package</a></li>
+                            <li class="list-group-item"><i class="far fa-money-bill-alt" style="color: darkgreen"></i>&nbsp;&nbsp;&nbsp;<a class="text" href="{{ route('buyCash',['id' => $room->id]) }}">เติมเงินในระบบ</a></li>
                             <li class="list-group-item"><i class="fas fa-receipt" style="font-size: 120%"></i>&nbsp;&nbsp;&nbsp;<a class="text" href="{{ route('room.user.statement',['room' => $room->id]) }}">ประวัติการชำระเงินของฉัน</a></li>
                             <li class="list-group-item"><i class="fas fa-user-friends colla-sign"></i>&nbsp;&nbsp;&nbsp;<a class="text" href="{{ route('room.user.roommate',['room' => $room->id]) }}">เพิ่มผู้อยู่อาศัย</a></li>
                         </ul>

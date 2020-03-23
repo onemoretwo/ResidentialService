@@ -49,4 +49,16 @@ class UserController extends Controller
         $user->save();
         return redirect()->route('home.index');
     }
+
+    public function buyCashView($id){
+        return view('rooms.cash',['room' => $id]);
+    }
+
+    public function buyCashUpdate($id,Request $request){
+        $cash = $request->input('cash');
+        $user = User::findOrFail(Auth::id());
+        $user->money += $cash;
+        $user->save();
+        return redirect()->route('rooms.show.user',['id' => $id]);
+    }
 }
