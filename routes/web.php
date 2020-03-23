@@ -35,6 +35,9 @@ Route::resource('/rooms','RoomController')->except([
     'index'
 ]);
 Route::get('/rooms/types/{type}','RoomController@index')->name('rooms.index');
+Route::get('/rooms/types/{type}/building/{building}','RoomController@indexBuilding')->name('rooms.index.building');
+Route::get('/rooms/types/{type}/building/{building}/floor/{floor}','RoomController@indexBuildingFloor')->name('rooms.index.building.floor');
+
 
 Route::post('/reports/repair/','ReportController@storeRepair')->name('reports.repair.store');
 
