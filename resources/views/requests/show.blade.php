@@ -52,7 +52,7 @@
                                 <dt for="checkin_date" class="col-sm-2 col-form-label text-md-right">วันที่ต้องการย้ายเข้า :</dt>
 
                                 <dd class="col-sm-9">
-                                    <input type="date" class="form-control w-50" id="checkin_date" name="checkin_date" value="{{ $request->checkIn_at }}">
+                                    <input type="date" class="form-control w-50" id="checkin_date" name="checkin_date" value="{{ $request->checkIn_at }}" disabled>
                                     <span class="input-group-addon">
                                         <span class="glyphicon glyphicon-time"></span>
                                     </span>
@@ -61,8 +61,6 @@
                                 <input type="hidden" name="user_id" value="{{ $request->user->id }}">
                                 <input type="hidden" name="room_id" value="{{ $request->room->id }}">
 
-                                <dt class="col-sm-3 text-truncate">เข้าอยู่วันที่ :</dt>
-                                <dd class="col-sm-9">{{ $request->checkIn_at}}</dd>
 
                             </dl>
                         </div>

@@ -77,7 +77,7 @@ class ReceiptController extends Controller
         $bill->total_price = $totalPrice;
         $bill->status = 'รอชำระ';
         $date = Carbon::today()->addMonth(1)->format('Y-m-d');
-        $bill->bill_date_at = $date;;
+        $bill->activated_at = $date;;
 
         $bill->save();
 
@@ -95,7 +95,7 @@ class ReceiptController extends Controller
         $room = Room::findOrFail($id);
         $user = User::findOrFail(Auth::id());
         $bill = Bill::all()->where('room_id',$user->room_id)->where('status','รอชำระ')->first();
-        return view('receipts.show',['bill' => $bill,'room' => '$room']);
+        return view('receipts.show',['bill' => $bill,'room' => '$room','user' => $user]);
     }
 
     /**

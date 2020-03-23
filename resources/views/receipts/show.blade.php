@@ -106,17 +106,37 @@
 <script src="https://kit.fontawesome.com/56e49317d8.js" crossorigin="anonymous"></script>
 
 @section('content')
-    <div class="head-bot container row center-item">
-        <img class="icon-head" src="/images/wifi.png" alt="no img">
-        <div style="margin-left: 50px">
-            <h1 class="header-text">Wifi Packages</h1>
+    <div class="container">
+        <div class="">
+            <h1 class="text-center">จ่ายบิลออนไลน์</h1>
+            <div class="row">
+                <div class="col-6 text-left">
+                    <dl class="row">
+                        <dt class="col-2">ชื่อ : </dt>
+                        <dd class="col-10">{{ $user->title }} {{ $user->first_name }}  {{ $user->last_name }}</dd>
+                        <dt class="col-2">ที่อยู่ : </dt>
+                        <dd class="col-10"> {{$user->address}}</dd>
+                    </dl>
+
+                </div>
+                <div class="col-6 ">
+                    <dl class="row">
+                        <dt class="col-10 text-right">เลขประจำตัวผู้เสียภาษี : </dt>
+                        <dd class="col-2">0016302283835</dd>
+                        <dt class="col-10 text-right">วันที่  : </dt>
+                        <dd class="col-2"> {{ \Carbon\Carbon::parse($bill->activated_at)->format('d/m/Y')}} </dd>
+                    </dl>
+
+                </div>
+            </div>
         </div>
     </div>
     <div class="container row center" style="margin-top: 50px;max-width: 1300px">
         <div class="col-md-7 inner">
             <div class="card">
                 <div class="card-header" style="text-align: center">
-                    Packages Wifi
+                    รายละเอียดบิล
+
                 </div>
                 <div class="card-body">
                     <div class="alert-message" style="color: darkgray">
@@ -212,12 +232,12 @@
                 <div class="card-header" style="text-align: center">
                     จัดการ
                 </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><i class="fas fa-home"></i>&nbsp;&nbsp;<a class="text" href="{{ route('rooms.show.user',['id' => $room]) }}">ห้องของฉัน</a></li>
-                    <li class="list-group-item"><i class="fas fa-exclamation-triangle errer-sign"></i>&nbsp;&nbsp;<a class="text" href="{{ route('user.create.report',['room' => $room]) }}">แจ้งซ่อมและรายงานปัญหา</a></li>
-                    <li class="list-group-item"><i class="fas fa-file-invoice-dollar bill-sign"></i>&nbsp;&nbsp;&nbsp;<a class="text">บิลประจำเดือน</a></li>
-                    <li class="list-group-item"><i class="fas fa-box-open package-sign"></i><a class="text" href="{{ route('room.users.packages',['id' => $room]) }}">ตรวจสอบพัสดุ</a><span class="badge badge-danger"></span></li>
-                </ul>
+{{--                <ul class="list-group list-group-flush">--}}
+{{--                    <li class="list-group-item"><i class="fas fa-home"></i>&nbsp;&nbsp;<a class="text" href="{{ route('rooms.show.user',['id' => $room]) }}">ห้องของฉัน</a></li>--}}
+{{--                    <li class="list-group-item"><i class="fas fa-exclamation-triangle errer-sign"></i>&nbsp;&nbsp;<a class="text" href="{{ route('user.create.report',['room' => $room]) }}">แจ้งซ่อมและรายงานปัญหา</a></li>--}}
+{{--                    <li class="list-group-item"><i class="fas fa-file-invoice-dollar bill-sign"></i>&nbsp;<a href="{{ route('receipts.show',['id' => $room]) }}" class="text">บิลประจำเดือน</a></li>--}}
+{{--                    <li class="list-group-item"><i class="fas fa-box-open package-sign"></i><a class="text" href="{{ route('room.users.packages',['id' => $room]) }}">ตรวจสอบพัสดุ</a><span class="badge badge-danger"></span></li>--}}
+{{--                </ul>--}}
             </div>
         </div>
     </div>

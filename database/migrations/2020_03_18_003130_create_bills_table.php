@@ -21,7 +21,7 @@ class CreateBillsTable extends Migration
             $table->float('electric_unit');
             $table->float('room_price');
             $table->float('total_price');
-            $table->date('bill_date_at')->nullable();
+            $table->date('activated_at')->nullable();
             $table->enum('status',['รอชำระ','ชำระแล้ว','บิลใหม่'])->default('รอชำระ');
             $table->timestamps();
 

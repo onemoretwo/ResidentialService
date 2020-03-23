@@ -178,22 +178,22 @@ class RequestController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user_now = Auth::id();
-        $request = BookingRequest::findOrFail($id);
-        $room = Room::findOrFail($request->room_id);
-        $request->admin_id = $user_now;
-        $request->status = 'ยืนยันแล้ว';
-        $request->save();
-
-
-        $user = User::findOrFail($request->user_id);
-        $user->room_id = $request->room_id;
-        $user->checkIn_at = $request->checkIn_at;
-        $user->save();
-
-
-
-        return redirect()->route('requests.index');
+//        $user_now = Auth::id();
+//        $request = BookingRequest::findOrFail($id);
+//        $room = Room::findOrFail($request->room_id);
+//        $request->admin_id = $user_now;
+//        $request->status = 'ยืนยันแล้ว';
+//        $request->save();
+//
+//
+//        $user = User::findOrFail($request->user_id);
+//        $user->room_id = $request->room_id;
+//        $user->checkIn_at = $request->checkIn_at;
+//        $user->save();
+//
+//
+//
+//        return redirect()->route('requests.index');
 
 
 
@@ -214,7 +214,7 @@ class RequestController extends Controller
         $bill->room_price = $req->room->type->price;
         $bill->total_price = ($req->room->type->price) * 2;
         $bill->status = 'รอชำระ';
-        $bill->bill_date_at = $req->user->checkIn_at;
+        $bill->activated_at = $req->user->checkIn_at;
 
         $bill->save();
 
