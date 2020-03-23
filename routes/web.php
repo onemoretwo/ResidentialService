@@ -31,10 +31,15 @@ Route::get('/rooms/my-room/{id}/packages','RoomController@roomPackages')->name('
 Route::get('/rooms/my-room/{room}/packages/{package}', 'PackageController@packageConfirm')->name('package.confirm');
 
 Route::get('/rooms/my-room/{room}/report/create','ReportController@userCreateReport')->name('user.create.report');
+Route::get('/rooms/my-room/{room}/wifi','WifiCodeController@userBuyWifi')->name('room.user.wifi');
+Route::resource('/wifi','WifiCodeController');
 Route::resource('/rooms','RoomController')->except([
     'index'
 ]);
 Route::get('/rooms/types/{type}','RoomController@index')->name('rooms.index');
+Route::get('/rooms/types/{type}/building/{building}','RoomController@indexBuilding')->name('rooms.index.building');
+Route::get('/rooms/types/{type}/building/{building}/floor/{floor}','RoomController@indexBuildingFloor')->name('rooms.index.building.floor');
+
 
 Route::post('/reports/repair/','ReportController@storeRepair')->name('reports.repair.store');
 
@@ -50,5 +55,4 @@ Route::get('/requests/create/{room}','RequestController@create')->name('requests
 
 
 Route::resource('/packages','PackageController');
-
 
