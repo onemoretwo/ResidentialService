@@ -185,7 +185,7 @@
                             </tr>
                             </tbody>
                         </table>
-                        <form action="{{route('receipt.pay.bill',['receipt'=> $bill->id])}}" method="post" >
+                        <form action="{{route('receipts.update',['receipt'=> $bill->id])}}" >
                             @csrf
 
                             <button type="button" data-toggle="modal"

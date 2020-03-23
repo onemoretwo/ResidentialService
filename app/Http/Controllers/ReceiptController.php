@@ -134,6 +134,7 @@ class ReceiptController extends Controller
         $req->status = 'สำเร็จ';
         $req->save();
 
+        dd($req);
 
         $bill = new Bill();
         $bill->room_id = $user->room_id;
@@ -145,6 +146,9 @@ class ReceiptController extends Controller
         $bill->status = 'บิลใหม่';
         $bill->activated_at = Carbon::parse($old_bill->activated_at)->addMonth(1);
         $bill->save();
+
+        return redirect()->route('home.index');
+
 
 
 

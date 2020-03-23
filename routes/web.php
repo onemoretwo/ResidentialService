@@ -52,9 +52,11 @@ Route::post('/reports/repair/','ReportController@storeRepair')->name('reports.re
 Route::get('/reports/building/{building}', 'ReportController@indexBuilding')->name('reports.index.building');
 Route::get('/reports/building/{building}/floor/{floor}', 'ReportController@indexBuildingFloor')->name('reports.index.building.floor');
 
-Route::post('/receipts/pay/{receipt}','ReceiptController@payBill')->name('receipt.pay.bill');
+//Route::get('/receipts/pay/{receipt}','ReceiptController@payBill')->name('receipt.pay.bill');
 Route::get('/reports/search','ReportController@seachRoom')->name('reports.index.search');
 Route::resource('/reports','ReportController');
+
+
 Route::resource('/receipts','ReceiptController');
 Route::post('/receipts/create/process','ReceiptController@billCreateShowReport')->name('receipt.show.report');
 
