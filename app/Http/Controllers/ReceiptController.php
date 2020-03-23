@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Bill;
+use App\BookingRequest;
 use App\Building;
 use App\Report;
 use App\Room;
@@ -95,8 +96,10 @@ class ReceiptController extends Controller
     {
         $room = Room::findOrFail($id);
         $user = User::findOrFail(Auth::id());
+        $request = BookingRequest::get()->where('room_id', $id)->where('deleted_at', null)->first();
+//        dd($request);
         $bill = Bill::all()->where('room_id',$user->room_id)->where('status','รอชำระ')->first();
-        return view('receipts.show',['bill' => $bill,'room' => '$room','user' => $user]);
+        return view('receipts.show',['bill' => $bill,'room' => '$room','user' => $user , 'request'=> $request,'room'=> $user->room_id]);
     }
 
     /**
@@ -119,7 +122,65 @@ class ReceiptController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $old_bill = Bill::findOrFail($id);
+        $old_bill->status = "ชำระแล้ว";
+        $old_bill->save();
+
+        $user = User::findOrFail(Auth::id());
+        $user->money = ($user->money)-($old_bill->total_price);
+        $user->save();
+
+        $req = BookingRequest::findOrFail($user->id);
+        $req->status = 'สำเร็จ';
+        $req->save();
+
+
+        $bill = new Bill();
+        $bill->room_id = $user->room_id;
+        $bill->user_id = Auth::id();
+        $bill->water_unit = 0;
+        $bill->electric_unit = 0;
+        $bill->room_price = $user->room->type->price;
+        $bill->total_price = 0;
+        $bill->status = 'บิลใหม่';
+        $bill->activated_at = Carbon::parse($old_bill->activated_at)->addMonth(1);
+        $bill->save();
+
+
+
+    }
+
+    public function payBill($id){
+        $old_bill = Bill::findOrFail($id);
+        $old_bill->status = "ชำระแล้ว";
+        $old_bill->save();
+
+        $user = User::findOrFail(Auth::id());
+        $user->money = ($user->money)-($old_bill->total_price);
+        $user->save();
+
+        $req = BookingRequest::findOrFail($user->id);
+        $req->status = 'สำเร็จ';
+        $req->save();
+
+        dd($req);
+
+
+        $bill = new Bill();
+        $bill->room_id = $user->room_id;
+        $bill->user_id = Auth::id();
+        $bill->water_unit = 0;
+        $bill->electric_unit = 0;
+        $bill->room_price = $user->room->type->price;
+        $bill->total_price = 0;
+        $bill->status = 'บิลใหม่';
+        $bill->activated_at = Carbon::parse($old_bill->activated_at)->addMonth(1);
+        $bill->save();
+
+        return redirect()->route('home.index');
+
+
+
     }
 
     /**
