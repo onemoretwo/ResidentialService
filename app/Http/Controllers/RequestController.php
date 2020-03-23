@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\BookingRequest;
 use App\Room;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 
@@ -51,8 +52,12 @@ class RequestController extends Controller
         $room->available = 'no';
         $room->save();
 
+        $user = User::findOrFail($request->input('user_id'));
+        $user->room_id = $req->room_id;
+        $user->save();
+
         $req->save();
-        return $req;
+        return redirect()->route('home.index');
     }
 
     /**
