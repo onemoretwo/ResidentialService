@@ -106,7 +106,12 @@
                             </dl>
                         </div>
                         <div class="text-center">
-                            <a type="submit" class="btn btn-danger btn-lg" href="{{ route('requests.destroy', ['request' => $request->id]) }}">ไม่อนุมัติ</a>
+                            <form id="deleteForm" onsubmit="return confirm('Are you sure to delete this post?')"
+                                  action="{{ route('requests.destroy', ['request' => $request->id]) }}" method="post">
+                                @method('DELETE')
+                                @csrf
+                                <button class="btn btn-danger btn-lg" type="submit">ไม่อนุมัติ</button>
+                            </form>
                             <a type="button" class="btn btn-success btn-lg" href="{{ route('requests.admin.confirm', ['request' => $request->id]) }}">อนุมัติ</a>
                         </div>
                     </form>
