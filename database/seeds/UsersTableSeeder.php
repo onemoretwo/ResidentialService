@@ -13,22 +13,22 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-//        $user = new User();
-//        $user->room_id = null;
-//        $user->title = "นาย";
-//        $user->first_name = "admin";
-//        $user->last_name = "admin";
-//        $user->email = "admin@gmail.com";
-//        $user->password = Hash::make('admin1234');
-//        $user->birth_date = NOW();
-//        $user->gender = 1;
-//        $user->citizen_id = "1234567890123";
-//        $user->address = "homeless";
-//        $user->phone_number_1 = "0868214563";
-//        $user->phone_number_2 = null;
-//        $user->role = "admin";
-//        $user->checkIn_at = null;
-//        $user->save();
+        $user = new User();
+        $user->room_id = null;
+        $user->title = "นาย";
+        $user->first_name = "admin";
+        $user->last_name = "admin";
+        $user->email = "admin@gmail.com";
+        $user->password = Hash::make('admin1234');
+        $user->birth_date = NOW();
+        $user->gender = 1;
+        $user->citizen_id = "1234567890123";
+        $user->address = "homeless";
+        $user->phone_number_1 = "0868214563";
+        $user->phone_number_2 = null;
+        $user->role = "admin";
+        $user->checkIn_at = null;
+        $user->save();
 //
 //        $user = new User();
 //        $user->room_id = null;
@@ -54,6 +54,7 @@ class UsersTableSeeder extends Seeder
 //        $room->available = 'no';
 //        $room->save();
 //
+//        $user = new User();
 //        $user->title = "นาย";
 //        $user->first_name = "อานนท์";
 //        $user->last_name = "สุขศิริ";
@@ -62,6 +63,7 @@ class UsersTableSeeder extends Seeder
 //        $user->birth_date = NOW();
 //        $user->gender = 1;
 //        $user->citizen_id = "1234561234561";
+//        $user->money = 100000;
 //        $user->address = "homeless";
 //        $user->phone_number_1 = "0868214563";
 //        $user->role = "user";
@@ -184,21 +186,21 @@ class UsersTableSeeder extends Seeder
 //        $user->checkIn_at = null;
 //        $user->save();
 ///
-        $user = new User();
-        $user->title = "นาย";
-        $user->first_name = "tester";
-        $user->last_name = "สมญ";
-        $user->email = "tester@gmail.com";
-        $user->password = Hash::make('1234');
-        $user->birth_date = NOW();
-        $user->gender = 1;
-        $user->citizen_id = "1101702968669";
-        $user->address = "homeless";
-        $user->phone_number_1 = "0868214563";
-        $user->phone_number_2 = null;
-        $user->role = "user";
-        $user->checkIn_at = null;
-        $user->save();
+//        $user = new User();
+//        $user->title = "นาย";
+//        $user->first_name = "tester";
+//        $user->last_name = "สมญ";
+//        $user->email = "tester@gmail.com";
+//        $user->password = Hash::make('1234');
+//        $user->birth_date = NOW();
+//        $user->gender = 1;
+//        $user->citizen_id = "1101702968669";
+//        $user->address = "homeless";
+//        $user->phone_number_1 = "0868214563";
+//        $user->phone_number_2 = null;
+//        $user->role = "user";
+//        $user->checkIn_at = null;
+//        $user->save();
     }
 
 

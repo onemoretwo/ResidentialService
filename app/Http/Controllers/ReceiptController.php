@@ -96,7 +96,7 @@ class ReceiptController extends Controller
     {
         $room = Room::findOrFail($id);
         $user = User::findOrFail(Auth::id());
-        $req = BookingRequest::get()->where('room_id', $id)->where('deleted_at', null)->first();
+        $req = BookingRequest::get()->where('room_id', $id)->first();
 //        dd($request);
         $bill = Bill::all()->where('room_id',$user->room_id)->where('status','รอชำระ')->first();
         return view('receipts.show',['bill' => $bill,'user' => $user , 'req'=> $req, 'room'=> $user->room_id]);
@@ -133,8 +133,6 @@ class ReceiptController extends Controller
         $req = BookingRequest::findOrFail($user->id);
         $req->status = 'สำเร็จ';
         $req->save();
-
-        dd($req);
 
         $bill = new Bill();
         $bill->room_id = $user->room_id;

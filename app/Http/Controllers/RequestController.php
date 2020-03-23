@@ -202,9 +202,8 @@ class RequestController extends Controller
     public function updateConfirm($id) {
         $req = BookingRequest::findOrFail($id);
         $req->status = 'รอการชำระเงิน';
-        $req->save();
-
         $req->admin_id = Auth::user()->id;
+        $req->save();
 
         $bill = new Bill();
         $bill->room_id = $req->room_id;

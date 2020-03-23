@@ -185,7 +185,9 @@
                             </tr>
                             </tbody>
                         </table>
-                        <form action="{{route('receipts.update',['receipt'=> $bill->id])}}" >
+                        <form action="{{route('receipts.update',['receipt'=> $bill->id])}}" method="post">
+                            @method('PUT')
+                            @csrf
                             <button type="button" data-toggle="modal"
                                     @if(($user->money) > ($bill->total_price))
                                         data-target="#update"
@@ -258,7 +260,7 @@
                 <div class="card-body" style="font-size: 30px">
                     &nbsp;&nbsp;{{ $user->money }}฿
                 </div>
-                <button type="button" class="btn btn-outline-success w-100">เติมเงิน</button>
+                <a type="button" href="{{ route('buyCash') }}" class="btn btn-outline-success w-100">เติมเงิน</a>
             </div>
             <div class="card" style="margin-top: 50px;">
                 <div class="card-header" style="text-align: center">

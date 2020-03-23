@@ -95,7 +95,7 @@
                     เติมเงิน
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('updateCash',['id' => $room]) }}" method="post">
+                    <form action="{{ route('updateCash') }}" method="post">
                         @csrf
                         <div class="form-check divider marg">
                             <input class="form-check-input" type="radio" name="cash" id="exampleRadios1" value="100">
@@ -160,18 +160,6 @@
                 <div class="card-body" style="font-size: 30px">
                     {{ Auth::user()->money }} &nbsp;&nbsp;฿
                 </div>
-            </div>
-            <div class="card" style="margin-top: 50px;">
-                <div class="card-header" style="text-align: center">
-                    จัดการ
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><i class="fas fa-home"></i>&nbsp;&nbsp;<a class="text" href="{{ route('rooms.show.user',['id' => $room]) }}">ห้องของฉัน</a></li>
-                    <li class="list-group-item"><i class="fas fa-exclamation-triangle errer-sign"></i>&nbsp;&nbsp;<a class="text" href="{{ route('user.create.report',['room' => $room]) }}">แจ้งซ่อมและรายงานปัญหา</a></li>
-                    <li class="list-group-item"><i class="fas fa-file-invoice-dollar bill-sign"></i>&nbsp;&nbsp;&nbsp;<a class="text">บิลประจำเดือน</a></li>
-                    <li class="list-group-item"><i class="fas fa-box-open package-sign"></i>&nbsp;&nbsp;<a class="text" href="{{ route('room.users.packages',['id' => $room]) }}">ตรวจสอบพัสดุ</a><span class="badge badge-danger">{{ Auth::user()->room->packages->count() }}</span></li>
-                    <li class="list-group-item"><i class="fas fa-receipt" style="font-size: 120%"></i>&nbsp;&nbsp;&nbsp;<a class="text" href="{{ route('room.user.statement',['room' => $room]) }}">ประวัติการชำระเงินของฉัน</a></li>
-                </ul>
             </div>
         </div>
     </div>
