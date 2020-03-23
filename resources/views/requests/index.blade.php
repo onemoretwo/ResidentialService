@@ -18,37 +18,60 @@
     <div class="container justify-content-center">
         <div class="card" style="height: 40rem;">
             <div class="card-header">
+                <div class="row">
+                    @foreach($types as $type)
+                        <a class="btn btn-outline-primary type-button
+                        @if($type->id == $selected_type->id)
+                            active
+                        @endif
+                            " href="{{ route('requests.index.type' ,[ 'type' => $type->id ]) }}">{{ $type->name }}</a>
+                    @endforeach
+                </div>
+            </div>
+            <div class="card-header">
                 <div class="form-row" style="padding-top: 1rem">
                     <div class="row">
-                        <div class="col-md-3 mb-3">
-                            <label for="building">ตึก</label>
-                            <select class="custom-select" id="building" required>
-                                <option selected disabled value="">เลือกตึก</option>
-                                <option>ตึก A</option>
-                                <option>ตึก B</option>
-                                <option>ตึก C</option>
+                        <div class="col-md-4">
+                            <label for="building">ตึก </label>
+                            <select class="custom-select" id="building" onchange="location = this.value">
+                                <option selected disabled>เลือกตึก</option>
+                                @foreach($buildings as $b)
+                                    <option
+                                        @isset($building)
+                                        @if($b->id == $building->id)
+                                        selected
+                                        @endif
+                                        @endisset
+                                        value="{{ route('requests.index.building', ['type' => $selected_type->id, 'building' => $b->id]) }}">
+                                        ตึก {{ $b->name }}
+                                    </option>
+                                @endforeach
                             </select>
                         </div>
-                        <div class="col-md-3 mb-3">
-                            <label for="floor">ชั้น</label>
-                            <select class="custom-select" id="floor" required>
-                                <option selected disabled value="">เลือกชั้น</option>
-                                <option>ชั้น 1</option>
-                                <option>ชั้น 2</option>
-                                <option>ชั้น 3</option>
-                                <option>ชั้น 4</option>
-                                <option>ชั้น 5</option>
-
+                        <div class="col-md-4">
+                            <label for="floor">ชั้น </label>
+                            <select class="custom-select" id="floor" onchange="location = this.value"
+                                    @empty($building)
+                                    disabled
+                                @endempty
+                            >
+                                <option selected disabled>เลือกชั้น </option>
+                                @isset($building)
+                                    @for($i=1; $i <= $building->total_floor; $i++)
+                                        <option
+                                            @isset($selected_floor)
+                                            @if($i == $selected_floor)
+                                            selected
+                                            @endif
+                                            @endisset
+                                            value="{{ route('requests.index.building.floor', ['type' => $selected_type->id, 'building' => $building->id, 'floor' => $i]) }}"
+                                        >ชั้น {{ $i }}</option>
+                                    @endfor
+                                @endisset
                             </select>
                         </div>
-                        <div class="col-md-3 mb-3">
-                            <label for="numRoom">เลขห้อง</label>
-                            <input type="text" class="form-control" id="numRoom" required>
-
-                        </div>
-                        <div class="col-md-3 mb-3" style="padding-top: 2rem">
-                            <button type="button" class="btn btn-outline-primary">ค้นหา</button>
-
+                        <div class="col-md-4" style="padding-top: 2rem">
+                            <a type="button" class="btn btn-outline-primary" href="{{ route('requests.index', ['type' => $selected_type]) }}">ล้าง</a>
                         </div>
 
                     </div>
@@ -65,21 +88,44 @@
                         <th scope="col">ตึก</th>
                         <th scope="col">ชั้น</th>
                         <th scope="col">ห้อง</th>
+                        <th scope="col">ขนาด(ตร.ม.)</th>
                         <th scope="col">ประเภท</th>
-                        <th scope="col"></th>
+                        <th scope="col">สถานะ</th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($requests as $request)
-                        @if(auth()->check())
-                            <tr>
-                                <td>{{ $request->room->building->name }}</td>
-                                <td>{{ $request->room->floor }}</td>
-                                <td>{{ $request->room->number }}</td>
-                                <td>{{ $request->room->type->name }}</td>
-                                <td><a href="{{ route("requests.show",['request' => $request->id]) }}"><button type="button" class="btn btn-outline-success">แสดง</button></a></td>
-                            </tr>
+                    @foreach($requests as $req)
+                        @if($req->status == 'สำเร็จ')
+                            @continue
                         @endif
+                        @isset($selected_type)
+                            @if($selected_type->id != $req->room->type_id)
+                                @continue
+                            @endif
+                        @endisset
+                        @isset($building)
+                            @if($building->id != $req->room->building_id)
+                                @continue
+                            @endif
+                        @endisset
+                        @isset($selected_floor)
+                            @if($selected_floor != $req->room->floor)
+                                @continue
+                            @endif
+                        @endisset
+                        <tr>
+                            <td>{{ $req->room->building->name }}</td>
+                            <td>{{ $req->room->floor }}</td>
+                            <td>{{ $req->room->number }}</td>
+                            <td>{{ $req->room->type->size }}</td>
+                            <td>{{ $req->room->type->name }}</td>
+                            @if($req->status == 'รอการยืนยัน')
+                                <td style="color: orange">รอการยืนยัน</td>
+                            @else
+                                <td style="color: blue">รอการชำระเงิน</td>
+                            @endif
+                            <td><a href="{{ route("requests.show", ['request' => $req->id]) }}" type="button" class="btn btn-outline-primary">แสดง</a></td>
+                        </tr>
                     @endforeach
                     </tbody>
                 </table>

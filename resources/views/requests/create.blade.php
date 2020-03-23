@@ -19,7 +19,7 @@
         <div class="">
             <div class="card" >
                 <div class="card-body">
-                    <h3 class="card-title text-center">ฟอร์มการจองห้อง</h3>
+                    <h3 class="card-title text-center">แบบฟอร์มการจองห้องพัก</h3>
                     <form action="{{ route('requests.store') }}" METHOD="POST">
                         @csrf
                         <div  class="container m-md-3" style="padding-top: 2rem">
@@ -70,7 +70,7 @@
                             </dl>
                         </div>
 
-                        <h3 class="card-title text-center">ข้อมูลห้องที่จอง</h3>
+                        <h3 class="card-title text-center">ข้อมูลห้อง</h3>
                         <div  class="container m-md-3" style="padding-top: 2rem">
                             <dl class="row">
                                 <dt class="col-sm-2 text-right">ที่อยู่ :</dt>
@@ -111,8 +111,7 @@
                             </dl>
                         </div>
                         <div class="text-center">
-                            <button type="button" class="btn btn-secondary btn-lg">รีเซ็ท</button>
-                            <button type="submit" class="btn btn-success btn-lg">ยืนยันการส่ง</button>
+                            <button type="submit" class="btn btn-success btn-lg">ยืนยันการจองห้องพัก</button>
                         </div>
                     </form>
                 </div>

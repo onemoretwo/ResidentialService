@@ -19,7 +19,7 @@ class CreateBookingRequestsTable extends Migration
             $table->bigInteger('room_id')->unsigned();
             $table->bigInteger('admin_id')->unsigned()->nullable();
             $table->date('checkIn_at');
-            $table->enum('status',['รอการยืนยัน','ยืนยันแล้ว'])->default('รอการยืนยัน');
+            $table->enum('status',['รอการยืนยัน','สำเร็จ', 'รอการชำระเงิน'])->default('รอการยืนยัน');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
