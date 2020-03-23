@@ -25,8 +25,6 @@ Route::get('/information', 'HomeController@information')->name('home.information
 Route::get('/gallery', 'HomeController@gallery')->name('home.gallery');
 Route::get('/neighborhood', 'HomeController@neighborhood')->name('home.neighborhood');
 
-Route::get('/register-rental', 'LeaseController@register')->name('leases.register');
-
 Route::get('/rooms/show-room-staff/{id}', 'RoomController@showStaff')->name('rooms.show.staff');
 Route::get('/rooms/my-room/{id}', 'RoomController@userRoom')->name('rooms.show.user');
 Route::get('/rooms/my-room/{id}/packages','RoomController@roomPackages')->name('room.users.packages');
@@ -37,6 +35,9 @@ Route::resource('/rooms','RoomController')->except([
     'index'
 ]);
 Route::get('/rooms/types/{type}','RoomController@index')->name('rooms.index');
+Route::get('/rooms/types/{type}/building/{building}','RoomController@indexBuilding')->name('rooms.index.building');
+Route::get('/rooms/types/{type}/building/{building}/floor/{floor}','RoomController@indexBuildingFloor')->name('rooms.index.building.floor');
+
 
 Route::post('/reports/repair/','ReportController@storeRepair')->name('reports.repair.store');
 
