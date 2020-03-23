@@ -27,6 +27,8 @@ Route::get('/neighborhood', 'HomeController@neighborhood')->name('home.neighborh
 
 Route::get('/rooms/show-room-staff/{id}', 'RoomController@showStaff')->name('rooms.show.staff');
 Route::get('/rooms/my-room/{id}', 'RoomController@userRoom')->name('rooms.show.user');
+Route::get('/rooms/my-room/{room}/accept','UserController@acceptInvite')->name('accept');
+Route::get('/rooms/my-room/{room}/deny','UserController@denyInvite')->name('deny');
 Route::get('/rooms/my-room/{id}/packages','RoomController@roomPackages')->name('room.users.packages');
 Route::get('/rooms/my-room/{room}/packages/{package}', 'PackageController@packageConfirm')->name('package.confirm');
 
@@ -35,6 +37,8 @@ Route::get('/rooms/my-room/{room}/wifi','WifiCodeController@userBuyWifi')->name(
 Route::get('/rooms/my-room/{room}/myStatements','UserStatementController@myStatements')->name('room.user.statement');
 Route::post('/rooms/my-room/{room}/myStatements','UserStatementController@statementDayFix')->name('room.statement.day');
 Route::get('/rooms/my-room/{room}/myStatements/back','UserStatementController@allStatement')->name('backToAll');
+Route::get('/rooms/my-room/{room}/addRoommate','UserController@addRoommateView')->name('room.user.roommate');
+Route::post('/rooms/my-room/{room}/addRoommate/add','UserController@sendInvite')->name('sendInvite');
 Route::resource('/wifi','WifiCodeController');
 Route::resource('/rooms','RoomController')->except([
     'index'

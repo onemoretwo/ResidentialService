@@ -52,9 +52,16 @@
 {{--                        <li class="nav-item">--}}
 {{--                            <a href="{{ url('/neighborhood') }}" class="nav-link">สถานที่ใกล้เคียง</a>--}}
 {{--                        </li>--}}
-                        @if(Auth::user()->room )
+                        @if(Auth::user()->room)
                             <li class="nav-item">
                                 <a href="{{ route('rooms.show.user', ['id' => Auth::user()->room_id]) }}" class="nav-link">ห้องของฉัน</a>
+                            </li>
+
+                            @elseif(Auth::user()->invited != null)
+                            <li class="nav-item">
+                                <a href="{{ route('rooms.show.user', ['id' => Auth::user()->invited]) }}" class="nav-link">ห้องของฉัน<span class="badge badge-danger">
+                                        คำเชิญ
+                                    </span></a>
                             </li>
 
                         @else
