@@ -41,49 +41,52 @@
             <h1 style="margin: 20px 0;">แบบฟอร์มออกบิล</h1>
             <hr>
             <div class="card-body row">
-                <div class="col-md-6">
-                <form class="container" action="{{route('receipts.store')}}" method="POST">
-                    @csrf
-                    <form method="post" action="{{ route('receipt.show.report') }}">
-                        @csrf
-                    <div class="form-row" style="padding-top: 1rem">
-                        <div class="col-md-3 mb-3">
-                            <label for="building">ตึก</label>
-                            <select class="custom-select" id="building" name="building_name" required>
-                                <option selected disabled value="">เลือกตึก</option>
-                                <option value="A">ตึก A</option>
-                                <option value="B">ตึก B</option>
-                                <option value="C">ตึก C</option>
+                <div class="col-md-6" style="border-right: solid 1px lightgray">
 
-                            </select>
-                        </div>
-                        <div class="col-md-3 mb-3">
-                            <label for="floor">ชั้น</label>
-                            <select class="custom-select" id="floor" name="building_floor" required>
-                                <option selected disabled value="">เลือกชั้น</option>
-                                <option value="1">ชั้น 1</option>
-                                <option value="2">ชั้น 2</option>
-                                <option value="3">ชั้น 3</option>
-                                <option value="4">ชั้น 4</option>
-                                <option value="5">ชั้น 5</option>
-                                <option value="6">ชั้น 6</option>
-                                <option value="7">ชั้น 7</option>
-                                <option value="8">ชั้น 8</option>
-                                <option value="9">ชั้น 9</option>
 
-                            </select>
-                            <div class="invalid-feedback">
-                                Please select a valid state.
-                            </div>
-                        </div>
-                        <div class="col-md-3 mb-3">
-                            <label for="numRoom">เลขห้อง</label>
-                            <input type="text" class="form-control" id="numRoom" name="room_number" required>
-                            <div class="invalid-feedback">
-                                Please provide a valid zip.
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-outline-info" style="height: 37px;margin-top: 30px;margin-left: 20px">ดูรายงาน</button>
+                    <form method="post" action="{{ route('receipts.store') }}">
+                        <div class="container">
+                                @csrf
+                                <div class="form-row" style="padding-top: 1rem">
+
+                                    <div class="col-md-3 mb-3">
+                                        <label for="building">ตึก</label>
+                                        <select class="custom-select" id="building" name="building_name" required>
+                                            <option selected disabled value="">เลือกตึก</option>
+                                            <option value="A">ตึก A</option>
+                                            <option value="B">ตึก B</option>
+                                            <option value="C">ตึก C</option>
+
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label for="floor">ชั้น</label>
+                                        <select class="custom-select" id="floor" name="building_floor" required>
+                                            <option selected disabled value="">เลือกชั้น</option>
+                                            <option value="1">ชั้น 1</option>
+                                            <option value="2">ชั้น 2</option>
+                                            <option value="3">ชั้น 3</option>
+                                            <option value="4">ชั้น 4</option>
+                                            <option value="5">ชั้น 5</option>
+                                            <option value="6">ชั้น 6</option>
+                                            <option value="7">ชั้น 7</option>
+                                            <option value="8">ชั้น 8</option>
+                                            <option value="9">ชั้น 9</option>
+
+                                        </select>
+                                        <div class="invalid-feedback">
+                                            Please select a valid state.
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label for="numRoom">เลขห้อง</label>
+                                        <input type="text" class="form-control" id="numRoom" name="room_number" required>
+                                        <div class="invalid-feedback">
+                                            Please provide a valid zip.
+                                        </div>
+                                    </div>
+
+
                     </div>
                     <div class="row">
                         <div class="col-md-6">
@@ -102,11 +105,11 @@
                         </div>
                     </div>
                     <button type="submit" class="btn btn-outline-success">ออกบิล</button>
-                </form>
+                    </form>
 
 
-                </div>
-
+            </div>
+        </div>
                 <div class="col-6 scroll">
                     <form method="post" action="{{ route('receipt.show.report') }}">
                         @csrf

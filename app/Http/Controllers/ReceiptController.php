@@ -20,12 +20,12 @@ class ReceiptController extends Controller
      */
     public function index()
     {
-//        $users = User::where( 'created_at', '<', Carbon::now()->subMonth(1))
-//            ->get();
+        $bill = Bill::where( 'updaeted_at', '<', Carbon::now()->subMonth(1))
+            ->get();
 
-//        dd($users);
+        dd($bill);
 
-        return view('receipts.index');
+//        return view('receipts.index');
 
     }
 
