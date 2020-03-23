@@ -186,4 +186,6 @@ class UsersTableSeeder extends Seeder
     }
 
 
+
+
 }

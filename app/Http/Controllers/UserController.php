@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Room;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -39,12 +40,13 @@ class UserController extends Controller
         $user->invited = null;
         $user->save();
 
-        return redirect()->route('rooms.show.user',['room' => $id]);
+        return redirect()->route('rooms.show.user',['id' => $id]);
     }
 
     public function denyInvite($id){
         $user = User::findOrFail(Auth::id());
         $user->invited = null;
-        return redirect()->route('/');
+        $user->save();
+        return redirect()->route('home.index');
     }
 }
