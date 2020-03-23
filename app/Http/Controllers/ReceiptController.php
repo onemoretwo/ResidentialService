@@ -19,10 +19,10 @@ class ReceiptController extends Controller
      */
     public function index()
     {
-        $users = User::where( 'created_at', '<', Carbon::now()->subHour(10))
-            ->get();
+//        $users = User::where( 'created_at', '<', Carbon::now()->subMonth(1))
+//            ->get();
 
-        dd($users);
+//        dd($users);
 
         return view('receipts.index');
 

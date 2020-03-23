@@ -17,16 +17,8 @@
 @section('content')
     <div class="container justify-content-center">
         <div class="card border-primary" style="height: 40rem;">
-            <div class="card-header ">
-                <div class="row">
-                    @foreach($types as $type)
-                        <a class="btn btn-outline-primary type-button
-                           @if($type->id == $selected_type->id)
-                               active
-                           @endif
-                            " href="{{ route('rooms.index' ,[ 'type' => $type->id ]) }}">{{ $type->name }}</a>
-                    @endforeach
-                </div>
+            <div class="card-header text-dark text-center ">
+                <h3> ดูห้องทั้งหมด</h3>
             </div>
             <div class="card-header">
                 <div class="form-row" style="padding-top: 1rem">
@@ -59,8 +51,14 @@
                         </div>
                         <div class="col-md-3 mb-3" style="padding-top: 2rem">
                             <button type="button" class="btn btn-outline-primary">ค้นหา</button>
-
                         </div>
+                        @foreach($types as $type)
+                            <a class="btn btn-outline-primary type-button
+                           @if($type->id == $selected_type->id)
+                                active
+                            @endif
+                                " href="{{ route('rooms.index' ,[ 'type' => $type->id ]) }}">{{ $type->name }}</a>
+                        @endforeach
 
                     </div>
 

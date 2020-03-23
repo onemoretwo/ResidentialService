@@ -18,6 +18,10 @@
     <div class="container justify-content-center">
         <div class="card" style="height: 40rem;">
             <div class="card-header">
+                <div class="text-center">
+                    <h3> ดูคำขอจองห้องทั้งหมด</h3>
+                </div>
+
                 <div class="form-row" style="padding-top: 1rem">
                     <div class="row">
                         <div class="col-md-3 mb-3">

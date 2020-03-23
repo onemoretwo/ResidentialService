@@ -16,6 +16,9 @@
     <div class="container justify-content-center">
         <div class="card " style="height: 40rem">
             <div class="card-header ">
+                <div class="text-center">
+                    <h3>รายงานและแจ้งซ่อม</h3>
+                </div>
                 <form action="{{ route('reports.index.search') }}" method="GET">
                     <div class="row">
                         <div class="col-md-2 mb-3">

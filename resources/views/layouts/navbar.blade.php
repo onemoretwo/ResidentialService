@@ -42,6 +42,9 @@
                         <li class="nav-item">
                             <a href="{{ route('packages.index') }}" class="nav-link">แจ้งพัสดุ</a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ route('receipts.index') }}" class="nav-link">แจ้งบิล</a>
+                        </li>
                     @else
                         <li class="nav-item">
                             <a href="{{ url('/gallery') }}" class="nav-link">อัลบั้มภาพ </a>
