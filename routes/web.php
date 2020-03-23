@@ -33,6 +33,8 @@ Route::get('/rooms/my-room/{room}/packages/{package}', 'PackageController@packag
 Route::get('/rooms/my-room/{room}/report/create','ReportController@userCreateReport')->name('user.create.report');
 Route::get('/rooms/my-room/{room}/wifi','WifiCodeController@userBuyWifi')->name('room.user.wifi');
 Route::get('/rooms/my-room/{room}/myStatements','UserStatementController@myStatements')->name('room.user.statement');
+Route::post('/rooms/my-room/{room}/myStatements','UserStatementController@statementDayFix')->name('room.statement.day');
+Route::get('/rooms/my-room/{room}/myStatements/back','UserStatementController@allStatement')->name('backToAll');
 Route::resource('/wifi','WifiCodeController');
 Route::resource('/rooms','RoomController')->except([
     'index'

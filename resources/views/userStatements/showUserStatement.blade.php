@@ -100,6 +100,16 @@
             margin: 20px;
             border-color: seagreen;
         }
+
+        .filter{
+            margin: auto;
+            margin-top: 20px;
+        }
+
+        .dateshow{
+            margin: auto;
+            margin-top: 15px;
+        }
     </style>
 @endsection
 <script src="https://kit.fontawesome.com/56e49317d8.js" crossorigin="anonymous"></script>
@@ -125,7 +135,41 @@
 
                     </div>
                 </div>
-                <div class="card" style="margin: 1.25rem">
+
+                <div class="filter">
+                    <form action="{{ route('room.statement.day',['room' => $room]) }}" method="post">
+                        @csrf
+                        <div class="form-row align-items-center">
+                            <div class="col-auto">
+                                <h4>เริ่ม : </h4>
+                            </div>
+                            <div class="col-auto">
+                                <label class="sr-only" for="inlineFormInput">Name</label>
+                                <input type="date" class="form-control mb-2" id="inlineFormInput" placeholder="start date" name="start">
+                            </div>
+                            <div class="col-auto">
+                                <h4>ถึง : </h4>
+                            </div>
+                            <div class="col-auto">
+                                <label class="sr-only" for="inlineFormInput">Name</label>
+                                <input type="date" class="form-control mb-2" id="inlineFormInput" name="end">
+                            </div>
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                            </div>
+                            @if($start_date != null)
+                                <div class="col-auto">
+                                    <a href="{{ route('backToAll',['room' => $room]) }}" class="btn btn-outline-primary mb-2">See All</a>
+                                </div>
+                            @endif
+                        </div>
+                    </form>
+                </div>
+
+                <div class="card" style="margin: 1.25rem;margin-top: 0">
+                    @if($start_date != null)
+                    <p class="dateshow">{{ $start_date }} ถึง {{ $end_date }}</p>
+                    @endif
                     <div class="card-body">
                         @foreach($statements as $statement)
                         <div class="card card-body slot">
