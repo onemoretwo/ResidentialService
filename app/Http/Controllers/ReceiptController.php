@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Bill;
+use App\BookingRequest;
 use App\Building;
 use App\Report;
 use App\Room;
@@ -94,9 +95,12 @@ class ReceiptController extends Controller
     public function show($id)
     {
         $room = Room::findOrFail($id);
+
         $user = User::findOrFail(Auth::id());
+        $request = BookingRequest::get()->where('room_id', $id)->where('deleted_at', null)->first();
+//        dd($request);
         $bill = Bill::all()->where('room_id',$user->room_id)->where('status','รอชำระ')->first();
-        return view('receipts.show',['bill' => $bill,'room' => '$room','user' => $user]);
+        return view('receipts.show',['bill' => $bill,'room' => '$room','user' => $user , 'request'=> $request,'room'=> $user->room_id]);
     }
 
     /**

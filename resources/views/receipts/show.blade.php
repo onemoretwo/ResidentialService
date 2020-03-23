@@ -2,6 +2,7 @@
 
 @section('style')
     <style>
+
         .head-bot{
             margin: auto;
             height: 160px;
@@ -23,9 +24,6 @@
             justify-content: center;
         }
 
-        .inner{
-            margin-right: 50px;
-        }
 
         .alert-message{
             padding: 20px 20px 0;
@@ -101,46 +99,93 @@
             margin-bottom: 15px;
             color: red;
         }
+
     </style>
 @endsection
 <script src="https://kit.fontawesome.com/56e49317d8.js" crossorigin="anonymous"></script>
 
 @section('content')
-    <div class="container">
+    <div class="">
         <div class="">
             <h1 class="text-center">จ่ายบิลออนไลน์</h1>
-            <div class="row">
-                <div class="col-6 text-left">
-                    <dl class="row">
-                        <dt class="col-2">ชื่อ : </dt>
-                        <dd class="col-10">{{ $user->title }} {{ $user->first_name }}  {{ $user->last_name }}</dd>
-                        <dt class="col-2">ที่อยู่ : </dt>
-                        <dd class="col-10"> {{$user->address}}</dd>
-                    </dl>
-
-                </div>
-                <div class="col-6 ">
-                    <dl class="row">
-                        <dt class="col-10 text-right">เลขประจำตัวผู้เสียภาษี : </dt>
-                        <dd class="col-2">0016302283835</dd>
-                        <dt class="col-10 text-right">วันที่  : </dt>
-                        <dd class="col-2"> {{ \Carbon\Carbon::parse($bill->activated_at)->format('d/m/Y')}} </dd>
-                    </dl>
-
-                </div>
-            </div>
         </div>
     </div>
     <div class="container row center" style="margin-top: 50px;max-width: 1300px">
-        <div class="col-md-7 inner">
+        <div class="col-md-8 inner">
             <div class="card">
                 <div class="card-header" style="text-align: center">
                     รายละเอียดบิล
-
                 </div>
                 <div class="card-body">
                     <div class="card-body">
+                        <div class="row">
+                            <div class="col-6 text-left">
+                                <dl class="row">
+                                    <dt class="col-12">ชื่อ : {{ $user->title }} {{ $user->first_name }}  {{ $user->last_name }}</dt>
+                                    <dt class="col-12">ที่อยู่ : {{ $user->address }} </dt>
+                                    <dt class="col-12">ห้อง : ตึก {{ $user->room->building->name }} ชั้น {{ $user->room->floor }} เลขห้อง {{ $user->room->number }} </dt>
 
+                                </dl>
+
+                            </div>
+                            <div class="col-6 ">
+                                <dl class="row">
+                                    <dt class="col-12 ">เลขประจำตัวผู้เสียภาษี : 0016302283835</dt>
+                                    <dt class="col-12 ">วันที่ : {{ \Carbon\Carbon::parse($bill->activated_at)->format('d/m/Y')}} </dt>
+                                </dl>
+                            </div>
+                        </div>
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th >รายการ</th>
+                                <th >จำนวนยูนิต</th>
+                                <th >ราคาต่อยูนิต</th>
+                                <th >จำนวนเงิน</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th >ค่าไฟ </th>
+                                <td>{{ $bill->electric_unit }}</td>
+                                <td>{{ $bill->room->building->electric_rate }}</td>
+                                <td>{{ $bill->electric_unit * $bill->room->building->electric_rate }}</td>
+                            </tr>
+                            <tr>
+                                <th >ค่าน้ำ</th>
+                                <td>{{ $bill->water_unit }}</td>
+                                <td>{{ $bill->room->building->water_rate }}</td>
+                                <td>{{ $bill->water_unit * $bill->room->building->water_rate }}</td>
+                            </tr>
+                            <tr>
+                                <th>ค่าห้อง</th>
+                                <td colspan="2"></td>
+                                <td>{{ $bill->room_price }}</td>
+                            </tr>
+                            @if($request->status == 'รอการชำระเงิน')
+                            <tr>
+                                <th>ค่ามัดจำ</th>
+                                <td colspan="2"></td>
+                                <td>
+                                    {{ $bill->room_price }}
+                                </td>
+                            </tr>
+                            @endif
+                            <tr>
+                                <th colspan="2"></th>
+                                <td  >รวม</td>
+                                <td>
+                                    @if($request->status == 'รอการชำระเงิน')
+                                        {{ ($bill->room_price)*2 }}
+                                    @else
+                                        {{ $bill->total_price  }}
+
+                                    @endif
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <button type="button" class="btn btn-primary w-100">จ่ายเงิน</button>
                     </div>
                 </div>
             </div>
@@ -153,17 +198,18 @@
                 <div class="card-body" style="font-size: 30px">
                     &nbsp;&nbsp;{{ $user->money }}฿
                 </div>
+                <button type="button" class="btn btn-outline-success w-100">เติมเงิน</button>
             </div>
             <div class="card" style="margin-top: 50px;">
                 <div class="card-header" style="text-align: center">
                     จัดการ
                 </div>
-{{--                <ul class="list-group list-group-flush">--}}
-{{--                    <li class="list-group-item"><i class="fas fa-home"></i>&nbsp;&nbsp;<a class="text" href="{{ route('rooms.show.user',['id' => $room]) }}">ห้องของฉัน</a></li>--}}
-{{--                    <li class="list-group-item"><i class="fas fa-exclamation-triangle errer-sign"></i>&nbsp;&nbsp;<a class="text" href="{{ route('user.create.report',['room' => $room]) }}">แจ้งซ่อมและรายงานปัญหา</a></li>--}}
-{{--                    <li class="list-group-item"><i class="fas fa-file-invoice-dollar bill-sign"></i>&nbsp;<a href="{{ route('receipts.show',['id' => $room]) }}" class="text">บิลประจำเดือน</a></li>--}}
-{{--                    <li class="list-group-item"><i class="fas fa-box-open package-sign"></i><a class="text" href="{{ route('room.users.packages',['id' => $room]) }}">ตรวจสอบพัสดุ</a><span class="badge badge-danger"></span></li>--}}
-{{--                </ul>--}}
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><i class="fas fa-home"></i>&nbsp;&nbsp;<a class="text" href="{{ route('rooms.show.user',['id' => $room]) }}">ห้องของฉัน</a></li>
+                    <li class="list-group-item"><i class="fas fa-exclamation-triangle errer-sign"></i>&nbsp;&nbsp;<a class="text" href="{{ route('user.create.report',['room' => $room]) }}">แจ้งซ่อมและรายงานปัญหา</a></li>
+                    <li class="list-group-item"><i class="fas fa-file-invoice-dollar bill-sign"></i>&nbsp;<a href="{{ route('receipts.show',['receipt' => $room]) }}" class="text">บิลประจำเดือน</a></li>
+                    <li class="list-group-item"><i class="fas fa-box-open package-sign"></i><a class="text" href="{{ route('room.users.packages',['id' => $room]) }}">ตรวจสอบพัสดุ</a><span class="badge badge-danger"></span></li>
+                </ul>
             </div>
         </div>
     </div>
