@@ -225,6 +225,11 @@ class RequestController extends Controller
     public function destroy($id)
     {
         $req = BookingRequest::findOrFail($id);
+
+        $user = User::findOrFail($req->user_id);
+        $user->room_id = null;
+        $user->save();
+
         $req->delete();
         return redirect()->route('requests.index');
     }
