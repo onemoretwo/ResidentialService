@@ -47,6 +47,8 @@ Route::get('/rooms/types/{type}/building/{building}/floor/{floor}','RoomControll
 
 
 Route::post('/reports/repair/','ReportController@storeRepair')->name('reports.repair.store');
+Route::get('/reports/building/{building}', 'ReportController@indexBuilding')->name('reports.index.building');
+Route::get('/reports/building/{building}/floor/{floor}', 'ReportController@indexBuildingFloor')->name('reports.index.building.floor');
 
 Route::get('/reports/search','ReportController@seachRoom')->name('reports.index.search');
 Route::resource('/reports','ReportController');
@@ -56,7 +58,11 @@ Route::post('/receipts/create/process','ReceiptController@billCreateShowReport')
 Route::resource('/requests','RequestController')->except([
     'create'
 ]);
+Route::get('/requests/{type}', 'RequestController@indexType')->name('requests.index.type');
+Route::get('/requests/{type}/building/{building}', 'RequestController@indexBuilding')->name('requests.index.building');
+Route::get('/requests/{type}/building/{building}/floor/{floor}', 'RequestController@indexBuildingFloor')->name('requests.index.building.floor');
 Route::get('/requests/create/{room}','RequestController@create')->name('requests.create');
+Route::get('/requests/{request}/update/admin-confirm','RequestController@updateConfirm')->name('requests.admin.confirm');
 
 
 Route::resource('/packages','PackageController');

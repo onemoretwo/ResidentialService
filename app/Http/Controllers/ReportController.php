@@ -22,14 +22,46 @@ class ReportController extends Controller
      */
     public function index()
     {
+        $buildings = Building::all();
+        $reports = Report::get()
+            ->where('type', '=', 'รายงาน')
+            ->where('status','=','รอการยืนยัน');
+        $repairs = Report::get()
+            ->where('type', '=', 'แจ้งซ่อม')
+            ->where('status','=','รอการยืนยัน');
+        return view('reports.index',['reports'=> $reports,'repairs'=> $repairs, 'buildings' => $buildings]);
+    }
+
+    /**
+     * @param $building_id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function indexBuilding($building_id) {
+        $buildings = Building::all();
+        $building = Building::findOrFail($building_id);
+
+        $reports = Report::get()
+            ->where('type', '=', 'รายงาน')
+            ->where('status','=','รอการยืนยัน');
+        $repairs = Report::get()
+            ->where('type', '=', 'แจ้งซ่อม')
+            ->where('status','=','รอการยืนยัน');
+        return view('reports.index',['reports'=> $reports,'repairs'=> $repairs, 'buildings' => $buildings, 'building' => $building]);
+
+    }
+
+    public function indexBuildingFloor($building_id, $floor) {
+        $buildings = Building::all();
+        $building = Building::findOrFail($building_id);
+
         $reports = Report::all()
             ->where('type', '=', 'รายงาน')
             ->where('status','=','รอการยืนยัน');
         $repairs = Report::all()
             ->where('type', '=', 'แจ้งซ่อม')
             ->where('status','=','รอการยืนยัน');
+        return view('reports.index',['reports'=> $reports,'repairs'=> $repairs, 'buildings' => $buildings, 'building' => $building, 'floor' => $floor]);
 
-        return view('reports.index',['reports'=> $reports,'repairs'=> $repairs]);
     }
 
     /**

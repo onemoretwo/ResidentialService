@@ -107,7 +107,7 @@
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                <h5 class="modal-title" id="exampleModalLabel">ยืนยันรายงาน</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
@@ -116,8 +116,8 @@
                                                 ยืนยันการส่ง รายงานนี้หรือไม่
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn btn-primary">Save changes</button>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                                                <button type="submit" class="btn btn-primary">ยืนยัน</button>
                                             </div>
                                         </div>
                                     </div>
@@ -161,7 +161,7 @@
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                <h5 class="modal-title" id="exampleModalLabel">ยืนยันแจ้งซ่อม</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
@@ -170,8 +170,8 @@
                                                 ยืนยัน ส่งเรื่องแจ้งซ่อมหรือไม่
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn btn-primary">Save changes</button>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                                                <button type="submit" class="btn btn-primary">ยืนยัน</button>
                                             </div>
                                         </div>
                                     </div>

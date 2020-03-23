@@ -20,12 +20,10 @@ class ReceiptController extends Controller
      */
     public function index()
     {
-//        $users = User::where( 'created_at', '<', Carbon::now()->subMonth(1))
-//            ->get();
+        $bills = Bill::where( 'bill_date_at', '=', Carbon::today())
+                        ->where('status','บิลใหม่]')->get();
 
-//        dd($users);
-
-        return view('receipts.index');
+        return view('receipts.index',['bills' => $bills]);
 
     }
 
@@ -77,7 +75,13 @@ class ReceiptController extends Controller
         $bill->electric_unit = $electric_unit;
         $bill->room_price = $price;
         $bill->total_price = $totalPrice;
+        $bill->status = 'รอชำระ';
+        $date = Carbon::today()->addMonth(1)->format('Y-m-d');
+        $bill->activated_at = $date;;
+
         $bill->save();
+
+        return redirect()->route('receipts.index');
     }
 
     /**
@@ -88,7 +92,10 @@ class ReceiptController extends Controller
      */
     public function show($id)
     {
-        //
+        $room = Room::findOrFail($id);
+        $user = User::findOrFail(Auth::id());
+        $bill = Bill::all()->where('room_id',$user->room_id)->where('status','รอชำระ')->first();
+        return view('receipts.show',['bill' => $bill,'room' => '$room','user' => $user]);
     }
 
     /**
@@ -124,4 +131,6 @@ class ReceiptController extends Controller
     {
         //
     }
+
+
 }

@@ -83,7 +83,6 @@ class UsersTableSeeder extends Seeder
 
         $user = new User();
         $user->room_id = 27;
-
         $user->title = "นาย";
         $user->first_name = "อนุทิน";
         $user->last_name = "จำไม่ได้";
@@ -118,7 +117,7 @@ class UsersTableSeeder extends Seeder
         $user->save();
 
         $user = new User();
-        $user->room_id = null;
+        $user->room_id = 107;
         $user->title = "นาย";
         $user->first_name = "โกมินทร์";
         $user->last_name = "ปะวันเตา";
@@ -127,6 +126,57 @@ class UsersTableSeeder extends Seeder
         $user->birth_date = NOW();
         $user->gender = 1;
         $user->citizen_id = "1100702968665";
+        $user->address = "homeless";
+        $user->phone_number_1 = "0868214563";
+        $user->phone_number_2 = null;
+        $user->role = "user";
+        $user->checkIn_at = null;
+        $user->save();
+
+        $user = new User();
+        $user->room_id = 311;
+        $user->title = "นาย";
+        $user->first_name = "test1";
+        $user->last_name = "ปะวันเตา";
+        $user->email = "user2@gmail.com";
+        $user->password = Hash::make('1234');
+        $user->birth_date = NOW();
+        $user->gender = 1;
+        $user->citizen_id = "1100702918665";
+        $user->address = "homeless";
+        $user->phone_number_1 = "0868214563";
+        $user->phone_number_2 = null;
+        $user->role = "user";
+        $user->checkIn_at = null;
+        $user->save();
+
+        $user = new User();
+        $user->room_id = 143;
+        $user->title = "นาย";
+        $user->first_name = "ปฎิพัด";
+        $user->last_name = "ปะวันเตา";
+        $user->email = "user3@gmail.com";
+        $user->password = Hash::make('1234');
+        $user->birth_date = NOW();
+        $user->gender = 1;
+        $user->citizen_id = "1110702968665";
+        $user->address = "homeless";
+        $user->phone_number_1 = "0868214563";
+        $user->phone_number_2 = null;
+        $user->role = "user";
+        $user->checkIn_at = null;
+        $user->save();
+
+        $user = new User();
+        $user->room_id = 227;
+        $user->title = "นาย";
+        $user->first_name = "test2";
+        $user->last_name = "ปะวันเตา";
+        $user->email = "user4@gmail.com";
+        $user->password = Hash::make('1234');
+        $user->birth_date = NOW();
+        $user->gender = 1;
+        $user->citizen_id = "1101702968665";
         $user->address = "homeless";
         $user->phone_number_1 = "0868214563";
         $user->phone_number_2 = null;

@@ -19,7 +19,7 @@
         <div class="">
             <div class="card" >
                 <div class="card-body">
-                    <h3 class="card-title text-center">ฟอร์มการจองห้อง</h3>
+                    <h3 class="card-title text-center">แบบฟอร์มการจองห้องพัก</h3>
                     <form action="{{ route('requests.store') }}" METHOD="POST">
                         @csrf
                         <div  class="container m-md-3" style="padding-top: 2rem">
@@ -70,7 +70,7 @@
                             </dl>
                         </div>
 
-                        <h3 class="card-title text-center">ข้อมูลห้องที่จอง</h3>
+                        <h3 class="card-title text-center">ข้อมูลห้อง</h3>
                         <div  class="container m-md-3" style="padding-top: 2rem">
                             <dl class="row">
                                 <dt class="col-sm-2 text-right">ที่อยู่ :</dt>
@@ -112,21 +112,18 @@
                                     <input class="form-check-input position-static" type="checkbox" id="accept" value="option1" aria-label="..." required>
                                 </dt>
                                 <dd>
-                                    <label for="accept"> ยอมรับเงื่อนไข</label>
+                                    <label for="accept">ยอมรับเงื่อนไข</label>
                                     <a href="#policy" data-toggle="modal" data-taget="#policy" style="color: deepskyblue">
                                         นโยบายความเป็นส่วนตัว</a>
 
                                 </dd>
 
 
-
-
                             </dl>
                         </div>
 
                         <div class="text-center">
-                            <button type="button" class="btn btn-secondary btn-lg">รีเซ็ท</button>
-                            <button type="button" class="btn btn-success btn-lg" data-toggle="modal"  data-target="#request" >ยืนยันการส่ง</button>
+                            <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#request">ยืนยันการจองห้องพัก</button>
                         </div>
 
                         <!-- Modal -->
@@ -140,11 +137,11 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        ยืนยันการส่ง รายงานนี้หรือไม่
+                                        ยืนยันการส่งรายงานนี้หรือไม่
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                                        <button type="submit" class="btn btn-primary">ยืนยัน</button>
                                     </div>
                                 </div>
                             </div>
@@ -265,7 +262,6 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
                     </div>
                 </div>
             </div>

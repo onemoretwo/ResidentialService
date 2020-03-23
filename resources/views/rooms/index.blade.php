@@ -70,7 +70,7 @@
                            @if($type->id == $selected_type->id)
                                 active
                             @endif
-                                " href="{{ route('rooms.index' ,[ 'type' => $type->id ]) }}">{{ $type->name }}</a>
+                                " href="{{ route('rooms.index' ,[ 'type' => $type->id ]) }}" style="margin-top: 10px">{{ $type->name }}</a>
                         @endforeach
 
                     </div>
