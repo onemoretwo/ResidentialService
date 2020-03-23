@@ -16,7 +16,7 @@ class CreateBillsTable extends Migration
         Schema::create('bills', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('room_id')->unsigned();
-            $table->bigInteger('admin_id')->unsigned();
+            $table->bigInteger('user_id')->unsigned();
             $table->float('water_unit');
             $table->float('electric_unit');
             $table->float('room_price');
@@ -25,7 +25,7 @@ class CreateBillsTable extends Migration
             $table->timestamps();
 
             $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade');
-            $table->foreign('admin_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->softDeletes();
         });
     }

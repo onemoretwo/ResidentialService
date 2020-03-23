@@ -143,8 +143,9 @@ class RoomController extends Controller
      */
     public function userRoom($id)
     {
-        $room = Room::where('id',$id)->first();
-        return view('rooms.myRoom',['room' => $room]);
+        $room = Room::findOrFail($id);
+        $n_packages = Package::where('room_id',$id)->where('status','รอรับของ')->count();
+        return view('rooms.myRoom',['room' => $room, 'c' => $n_packages]);
     }
 
     public function roomPackages($id){

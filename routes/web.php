@@ -31,6 +31,8 @@ Route::get('/rooms/my-room/{id}/packages','RoomController@roomPackages')->name('
 Route::get('/rooms/my-room/{room}/packages/{package}', 'PackageController@packageConfirm')->name('package.confirm');
 
 Route::get('/rooms/my-room/{room}/report/create','ReportController@userCreateReport')->name('user.create.report');
+Route::get('/rooms/my-room/{room}/wifi','WifiCodeController@userBuyWifi')->name('room.user.wifi');
+Route::resource('/wifi','WifiCodeController');
 Route::resource('/rooms','RoomController')->except([
     'index'
 ]);
@@ -44,6 +46,7 @@ Route::post('/reports/repair/','ReportController@storeRepair')->name('reports.re
 Route::get('/reports/search','ReportController@seachRoom')->name('reports.index.search');
 Route::resource('/reports','ReportController');
 Route::resource('/receipts','ReceiptController');
+Route::post('/receipts/create/process','ReceiptController@billCreateShowReport')->name('receipt.show.report');
 
 Route::resource('/requests','RequestController')->except([
     'create'
@@ -52,5 +55,4 @@ Route::get('/requests/create/{room}','RequestController@create')->name('requests
 
 
 Route::resource('/packages','PackageController');
-
 
