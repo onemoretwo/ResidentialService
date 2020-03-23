@@ -48,7 +48,6 @@ class WifiCodeController extends Controller
         $wifi->available = 'no';
         $wifi->user_id = Auth::id();
         $wifi->expire_at = Carbon::today()->addDays((int)$wifi_duration);
-        $wifi->save();
 
         if ($wifi_duration === '1') $price = 30;
         elseif ($wifi_duration === '3') $price = 81;
@@ -64,6 +63,7 @@ class WifiCodeController extends Controller
             return redirect()->route('rooms.show.user',['id' => $room_id]);
         }else{
             $user->save();
+            $wifi->save();
         }
         // create user statement
         $statement = new UserStatement();

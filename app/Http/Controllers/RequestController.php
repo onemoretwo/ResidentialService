@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Bill;
 use App\BookingRequest;
+use App\Building;
 use App\Room;
+use App\Type;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -20,10 +22,84 @@ class RequestController extends Controller
      */
     public function index()
     {
-        $requests = BookingRequest::all()
-        ->where('status','=','รอการยืนยัน');
-//        dd($requests);
-        return view('requests.index',['requests' => $requests ]);
+        $requests = BookingRequest::all();
+        $types = Type::all();
+        $type = Type::find(1);
+        $buildings = Building::all();
+        return view('requests.index', [
+            'types' => $types,
+            'buildings' => $buildings,
+            'selected_type' => $type,
+            'requests' => $requests
+        ]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @param $type_id
+     * @return \Illuminate\Http\Response
+     */
+    public function indexType($type_id)
+    {
+        $requests = BookingRequest::all();
+        $types = Type::all();
+        $type = Type::find($type_id);
+        $buildings = Building::all();
+        return view('requests.index', [
+            'types' => $types,
+            'buildings' => $buildings,
+            'selected_type' => $type,
+            'requests' => $requests
+        ]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @param $type_id
+     * @param $building_id
+     * @return \Illuminate\Http\Response
+     */
+    public function indexBuilding($type_id, $building_id)
+    {
+        $requests = BookingRequest::all();
+        $types = Type::all();
+        $type = Type::find($type_id);
+        $buildings = Building::all();
+        $building = Building::findOrFail($building_id);
+        return view('requests.index', [
+            'types' => $types,
+            'buildings' => $buildings,
+            'building' => $building,
+            'selected_type' => $type,
+            'requests' => $requests
+        ]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @param $type_id
+     * @param $building_id
+     * @param $floor
+     * @return \Illuminate\Http\Response
+     */
+    public function indexBuildingFloor($type_id, $building_id, $floor)
+    {
+        $requests = BookingRequest::all();
+        $types = Type::all();
+        $type = Type::find($type_id);
+        $buildings = Building::all();
+        $building = Building::findOrFail($building_id);
+        return view('requests.index', [
+            'types' => $types,
+            'buildings' => $buildings,
+            'building' => $building,
+            'selected_type' => $type,
+            'requests' => $requests,
+            'selected_floor' => $floor
+        ]);
     }
 
     /**
@@ -47,6 +123,10 @@ class RequestController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'checkin_date' => ['required', 'date', 'after:today']
+        ]);
+
         $req = new BookingRequest;
         $req->user_id = $request->input('user_id');
         $req->room_id = $request->input('room_id');
@@ -55,6 +135,10 @@ class RequestController extends Controller
         $room = Room::findOrFail($request->input('room_id'));
         $room->available = 'no';
         $room->save();
+
+        $user = User::findOrFail($request->input('user_id'));
+        $user->room_id = $req->room_id;
+        $user->save();
 
         $req->save();
         return redirect()->route('home.index');
@@ -69,7 +153,7 @@ class RequestController extends Controller
     public function show($id)
     {
         $request = BookingRequest::findOrFail($id);
-        return view('requests.show',['request' => $request]);
+        return view('requests.show', ['request' => $request]);
 
     }
 
@@ -122,6 +206,16 @@ class RequestController extends Controller
 
     }
 
+    public function updateConfirm($id) {
+        $req = BookingRequest::findOrFail($id);
+        $req->status = 'รอการชำระเงิน';
+        $req->save();
+
+        $req->admin_id = Auth::user()->id;
+
+        return redirect()->route('requests.index');
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -130,12 +224,8 @@ class RequestController extends Controller
      */
     public function destroy($id)
     {
-        $request = BookingRequest::findOrFail($id);
-        $request->delete();
-
-//        $requests = BookingRequest::all()
-//            ->where('status','=','รอการยืนยัน');
+        $req = BookingRequest::findOrFail($id);
+        $req->delete();
         return redirect()->route('requests.index');
-
     }
 }
