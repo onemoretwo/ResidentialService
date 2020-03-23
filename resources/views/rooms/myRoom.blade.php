@@ -144,6 +144,7 @@
                         <li class="list-group-item"><i class="fas fa-file-invoice-dollar bill-sign"></i>&nbsp;&nbsp;&nbsp;<a class="text">บิลประจำเดือน</a></li>
                         <li class="list-group-item"><i class="fas fa-box-open package-sign"></i>&nbsp;&nbsp;<a class="text" href="{{ route('room.users.packages',['id' => $room->id]) }}">ตรวจสอบพัสดุ</a><span class="badge badge-danger">{{ $c }}</span></li>
                         <li class="list-group-item"><i class="fas fa-wifi wifi-sign"></i>&nbsp;&nbsp;&nbsp;<a class="text" href="{{ route('room.user.wifi', ['room' => $room->id]) }}">ซื้อ wifi package</a></li>
+                        <li class="list-group-item"><i class="fas fa-receipt" style="font-size: 120%"></i>&nbsp;&nbsp;&nbsp;<a class="text" href="{{ route('room.user.statement',['room' => $room->id]) }}">ประวัติการชำระเงินของฉัน</a></li>
                     </ul>
                 </div>
             </div>
