@@ -107,7 +107,7 @@
 
                                 <dt class="col-sm-2 text-right">สัญญา :</dt>
                                 <dd class="col-sm-9">1 ปี</dd>
-                                
+
                                 <dt class="form-check col-sm-2 text-right">
                                     <input class="form-check-input position-static" type="checkbox" id="accept" value="option1" aria-label="..." required>
                                 </dt>
@@ -123,7 +123,7 @@
                         </div>
 
                         <div class="text-center">
-                            <button type="submit" class="btn btn-success btn-lg" data-toggle="modal" data-target="#request">ยืนยันการจองห้องพัก</button>
+                            <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#request">ยืนยันการจองห้องพัก</button>
                         </div>
 
                         <!-- Modal -->
@@ -262,7 +262,6 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
                     </div>
                 </div>
             </div>
