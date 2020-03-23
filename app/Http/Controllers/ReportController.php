@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use function GuzzleHttp\Promise\all;
+use Illuminate\Database\Eloquent\Builder;
+
 
 class ReportController extends Controller
 {
@@ -153,36 +155,34 @@ class ReportController extends Controller
 
 
     public function seachRoom(Request $request){
-        $building = (int)$request->input('building');
         $floor = (int)$request->input('floor');
+        $building = (int)$request->input('building');
         $number = (int)$request->input('number');
 
-        $reports = (new Report())->searchFliterReport($building);
-        $repairs = (new Report())->searchFilterRepair();
 
-        dd($reports);
+        if ($request->has('building')) {
+            $repairs = DB::table('reports')
+                ->leftJoin('rooms', 'reports.room_id', '=', 'rooms.id')
+                ->select('*')
+                ->where('building_id', '=', $building)
+                ->where('floor', '=', $floor)
+                ->where('number', '=', $number)
+                ->where('type', '=', 'แจ้งซ่อม')
+                ->where('status', '=', 'รอการยืนยัน')
+                ->get();
 
-//        if (!empty($building)){
-//            $reports->where('building_id', '=', $building);
-//            $repairs->where('building_id', '=', $building);
-//
-//            dd($reports);
-//
-//        }
-//        if (!empty($floor)){
-//            $reports->where('floor', '=', $floor);
-//            $repairs->where('floor', '=', $floor);
-//
-//        }
-//        if (!empty($number)){
-//            $reports->where('number', '=', $number);
-//            $repairs->where('number', '=', $number);
+            $reports = DB::table('reports')
+                ->join('rooms', 'reports.room_id', '=', 'rooms.id')
+                ->select('*')
+                ->where('building_id', '=', $building)
+                ->where('floor', '=', $floor)
+                ->where('number', '=', $number)
+                ->where('type', '=', 'รายงาน')
+                ->where('status', '=', 'รอการยืนยัน')
+                ->get();
+        }
 
-//        }
-//        return view('reports.index',['reports'=> $reports,'repairs'=> $repairs]);
-
-
-
+        return view('reports.index',['reports'=> $reports,'repairs'=> $repairs]);
 
 
     }

@@ -6,7 +6,9 @@ use App\Bill;
 use App\Building;
 use App\Report;
 use App\Room;
+use App\User;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class ReceiptController extends Controller
@@ -18,6 +20,11 @@ class ReceiptController extends Controller
      */
     public function index()
     {
+//        $users = User::where( 'created_at', '<', Carbon::now()->subMonth(1))
+//            ->get();
+
+//        dd($users);
+
         return view('receipts.index');
 
     }
@@ -71,11 +78,6 @@ class ReceiptController extends Controller
         $bill->room_price = $price;
         $bill->total_price = $totalPrice;
         $bill->save();
-
-
-
-
-
     }
 
     /**

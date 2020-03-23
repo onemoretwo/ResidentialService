@@ -116,5 +116,24 @@ class UsersTableSeeder extends Seeder
         $user->phone_number_1 = "0868214563";
         $user->role = "user";
         $user->save();
+
+        $user = new User();
+        $user->room_id = null;
+        $user->title = "นาย";
+        $user->first_name = "โกมินทร์";
+        $user->last_name = "ปะวันเตา";
+        $user->email = "user@gmail.com";
+        $user->password = Hash::make('1234');
+        $user->birth_date = NOW();
+        $user->gender = 1;
+        $user->citizen_id = "1100702968665";
+        $user->address = "homeless";
+        $user->phone_number_1 = "0868214563";
+        $user->phone_number_2 = null;
+        $user->role = "user";
+        $user->checkIn_at = null;
+        $user->save();
     }
+
+
 }

@@ -34,7 +34,7 @@
 
 @section('content')
     <div class="container ">
-        <div class="card" >
+        <div class="card border-warning" >
             <div class="card-header">
                 <h1> ตึก {{ $room->building->name }} ชั้น {{ $room->floor }} ห้อง {{ $room->number }}</h1>
             </div>
@@ -184,7 +184,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-8">
-                            <div class="card">
+                            <div class="card border-light">
                                 <div class="card-header">
                                     <h3>สิ่งอำนวยความสะดวก</h3>
                                 </div>
@@ -217,14 +217,18 @@
 
                         </div>
                         <div class="col-md-4">
-                            <div class="card">
+                            <div class="card border-success">
                                 <div class="card-header">
                                     <h3>ติดต่อสอบถาม</h3>
                                 </div>
                                 <div class="card-body">
-                                    <p class="col-6">เบอร์โทรศัพท์ :</p>
-                                    <p class="col-6">Email :</p>
-                                    <p class="col-6">Line ID :</p>
+                                    <div class="row">
+                                        <p class="col-12">เบอร์โทรศัพท์ : 095-865-4531</p>
+                                        <p class="col-12">Email : Gomin.p@ku.th</p>
+                                        <p class="col-12">Line ID : teenoi603</p>
+
+                                    </div>
+
 
                                 </div>
                             </div>

@@ -16,11 +16,14 @@
     <div class="container justify-content-center">
         <div class="card " style="height: 40rem">
             <div class="card-header ">
+                <div class="text-center">
+                    <h3>รายงานและแจ้งซ่อม</h3>
+                </div>
                 <form action="{{ route('reports.index.search') }}" method="GET">
                     <div class="row">
                         <div class="col-md-2 mb-3">
                             <label for="building">ตึก</label>
-                            <select class="custom-select" id="building"  name="building">
+                            <select class="custom-select" id="building"  name="building" required>
                                 <option selected disabled value="">เลือกตึก</option>
                                 <option value="1">ตึก A</option>
                                 <option value="2">ตึก B</option>
@@ -31,7 +34,7 @@
 
                         <div class="col-md-2 mb-3">
                             <label for="floor">ชั้น</label>
-                            <select class="custom-select" name="floor" id="floor">
+                            <select class="custom-select" name="floor" id="floor" required>
                                 <option selected disabled value="">เลือกชั้น</option>
                                 <option value="1">ชั้น 1</option>
                                 <option value="2">ชั้น 2</option>
@@ -44,10 +47,13 @@
 
                         <div class="col-md-2 mb-3">
                             <label for="numRoom">เลขห้อง</label>
-                            <input type="text" class="form-control" id="numRoom"  name="number">
+                            <input type="text" class="form-control" id="numRoom"  name="number" required>
                         </div>
 
                         <div class="col-md-3 mb-3" style="padding-top: 2rem">
+                            <a href="{{ url('/reports') }}"><button type="button" class="btn btn-outline-primary">รีเซ็ท</button></a>
+
+
                             <button type="submit" class="btn btn-outline-primary">ค้นหา</button>
                         </div>
                     </div>
@@ -75,9 +81,6 @@
                         <table class="table table-hover">
                             <thead>
                             <tr>
-                                <th scope="col">ตึก</th>
-                                <th scope="col">ชั้น</th>
-                                <th scope="col">ห้อง</th>
                                 <th scope="col">เรื่อง</th>
                                 <th scope="col">เวลาที่ส่ง</th>
                                 <th scope="col"></th>
@@ -87,9 +90,6 @@
                                 @if($reports)
                                     @foreach( $reports as $report)
                                         <tr>
-                                            <td>{{ $report->room->building->name }}</td>
-                                            <td>{{ $report->room->floor }}</td>
-                                            <td>{{ $report->room->number }}</td>
                                             <td>{{ $report->title}}</td>
                                             <td>{{ $report->created_at}}</td>
                                             <td>
@@ -141,7 +141,6 @@
                                     <tr>
                                         <td class=" text-black-50" colspan="3">
                                             ไม่มีเรื่องแจ้งซ่อม
-
                                         </td>
                                     </tr>
 

@@ -13,7 +13,7 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a href="{{ url('/information') }}" class="nav-link">รายละเอียด</a>
+                    <a href="{{ url('/information') }}" class="nav-link">รายละเอียด </a>
                 </li>
                 @if(auth()->check())
                     @if(auth()->user()->isAdmin() or auth()->user()->isStaff())
@@ -32,19 +32,31 @@
 
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('/requests') }}" class="nav-link">คำขอจองห้อง</a>
+                            <a href="{{ url('/requests') }}" class="nav-link">คำขอจองห้อง
+                                @if($b > 0)
+                                    <span class="badge badge-danger">
+                                        {{  $b }}
+                                    </span>
+                                @endif</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('packages.index') }}" class="nav-link">แจ้งพัสดุ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('receipts.index') }}" class="nav-link">แจ้งบิล</a>
                         </li>
                     @else
                         <li class="nav-item">
-                            <a href="{{ url('/gallery') }}" class="nav-link">อัลบั้มภาพ</a>
+                            <a href="{{ url('/gallery') }}" class="nav-link">อัลบั้มภาพ </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{ url('/neighborhood') }}" class="nav-link">สถานที่ใกล้เคียง</a>
-                        </li>
-                        @if(Auth::user()->room)
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="{{ url('/neighborhood') }}" class="nav-link">สถานที่ใกล้เคียง</a>--}}
+{{--                        </li>--}}
+                        @if(Auth::user()->room )
                             <li class="nav-item">
                                 <a href="{{ route('rooms.show.user', ['id' => Auth::user()->room_id]) }}" class="nav-link">ห้องของฉัน</a>
                             </li>
+
                         @else
                         <li class="nav-item">
                             <a href="{{ route('rooms.index', ['type' => 1]) }}" class="nav-link">ลงทะเบียนจองห้อง</a>

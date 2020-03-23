@@ -18,15 +18,7 @@
     <div class="container justify-content-center">
         <div class="card" style="height: 40rem;">
             <div class="card-header">
-                <div class="row">
-                    @foreach($types as $type)
-                        <a class="btn btn-outline-primary type-button
-                        @if($type->id == $selected_type->id)
-                            active
-                        @endif
-                        " href="{{ route('rooms.index' ,[ 'type' => $type->id ]) }}">{{ $type->name }}</a>
-                    @endforeach
-                </div>
+             <h3 class="text-center"> ดูห้องทั้งหมด </h3>
             </div>
             <div class="card-header">
                 <div class="form-row" style="padding-top: 1rem">
@@ -73,6 +65,13 @@
                         <div class="col-md-4" style="padding-top: 2rem">
                             <a type="button" class="btn btn-outline-primary" href="{{ route('rooms.index', ['type' => $selected_type]) }}">ล้าง</a>
                         </div>
+                        @foreach($types as $type)
+                            <a class="btn btn-outline-primary type-button
+                           @if($type->id == $selected_type->id)
+                                active
+                            @endif
+                                " href="{{ route('rooms.index' ,[ 'type' => $type->id ]) }}">{{ $type->name }}</a>
+                        @endforeach
 
                     </div>
 
@@ -82,7 +81,7 @@
 
             </div>
             <div class="card-body table-responsive">
-                <table class="table table-hover text-center">
+                <table class="table table-hover text-center ">
                     <thead>
                     <tr>
                         <th scope="col">ตึก</th>

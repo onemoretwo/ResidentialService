@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('style')
     <style>
-        .upper {
-            margin-top: 50px;
-        }
+        /*.upper {*/
+        /*    margin-top: 50px;*/
+        /*}*/
         .row {
             margin: 50px 0;
         }
@@ -24,16 +24,14 @@
 
         <div class="card ">
             <div class="card-header">
-                <h1 class="card-title">แบบฟอร์ม พัสดุ</h1>
+                <h1 class="card-title">แบบฟอร์มแจ้งพัสดุ</h1>
             </div>
 
             <div class="card-body">
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                         <form method="post" action="{{ route('packages.store') }}">
-
                             @csrf
-
                             <div class="card" >
                                 <div class="card-body">
                                     <div class="container">

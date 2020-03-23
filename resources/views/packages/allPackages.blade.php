@@ -46,8 +46,20 @@
 
         <div class="card ">
             <div class="card-header">
-                <h1 class="card-title">พัสดุทั้งหมด</h1>
+                <div class="row">
+                    <div class="col-8">
+                        <h1 class="card-title">พัสดุทั้งหมด</h1>
+
+
+                    </div>
+                    <div class="col-4 text-right">
+                        <a href="{{ route('packages.create') }}"><button class="btn btn-outline-success"><i class="fas fa-plus" ></i> เพิ่มพัสดุ</button></a>
+                    </div>
+
+                </div>
+
             </div>
+
 
             <div class="card-body">
                 <div class="tab-content" id="myTabContent">
