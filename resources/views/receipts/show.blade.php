@@ -2,6 +2,7 @@
 
 @section('style')
     <style>
+
         .head-bot{
             margin: auto;
             height: 160px;
@@ -23,9 +24,6 @@
             justify-content: center;
         }
 
-        .inner{
-            margin-right: 50px;
-        }
 
         .alert-message{
             padding: 20px 20px 0;
@@ -101,120 +99,155 @@
             margin-bottom: 15px;
             color: red;
         }
+
     </style>
 @endsection
 <script src="https://kit.fontawesome.com/56e49317d8.js" crossorigin="anonymous"></script>
 
 @section('content')
-    <div class="container">
+    <div class="">
         <div class="">
             <h1 class="text-center">จ่ายบิลออนไลน์</h1>
-            <div class="row">
-                <div class="col-6 text-left">
-                    <dl class="row">
-                        <dt class="col-2">ชื่อ : </dt>
-                        <dd class="col-10">{{ $user->title }} {{ $user->first_name }}  {{ $user->last_name }}</dd>
-                        <dt class="col-2">ที่อยู่ : </dt>
-                        <dd class="col-10"> {{$user->address}}</dd>
-                    </dl>
-
-                </div>
-                <div class="col-6 ">
-                    <dl class="row">
-                        <dt class="col-10 text-right">เลขประจำตัวผู้เสียภาษี : </dt>
-                        <dd class="col-2">0016302283835</dd>
-                        <dt class="col-10 text-right">วันที่  : </dt>
-                        <dd class="col-2"> {{ \Carbon\Carbon::parse($bill->activated_at)->format('d/m/Y')}} </dd>
-                    </dl>
-
-                </div>
-            </div>
         </div>
     </div>
     <div class="container row center" style="margin-top: 50px;max-width: 1300px">
-        <div class="col-md-7 inner">
+        <div class="col-md-8 inner">
             <div class="card">
                 <div class="card-header" style="text-align: center">
                     รายละเอียดบิล
-
                 </div>
                 <div class="card-body">
-                    <div class="alert-message" style="color: darkgray">
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp; หมายเหตุ : Wifi ของทางหอพักสามารถซื้อได้จากช่องทางนี้เท่านั้น และ 1 คนสามารถซื้อได้เพียง 1 แพ็คเกตเท่านั้น หากต้องการเปลี่ยนแพคเกตต้องรอแพ็คเกตเดิมหมดก่อน หากมีข้อสงสัยโปรดติดต่อนิติบุคคล</p>
-                        <hr>
-                        <p>เบอร์ติดต่อนิติบุคคล : 081-3425966</p>
-
-                    </div>
                     <div class="card-body">
-                        <h4 style="margin-bottom: 15px">โปรดเลือก wifi packages </h4>
-                            <p id="have">**คุณมี wifi package ของทางหอพักอยู่แล้ว สามารถดูได้ที่หน้าห้องของฉัน หากมีข้อสงสัยติดต่อนิติบุคคล</p>
-                        <form action="{{ route('wifi.store') }}" method="post">
-                            @csrf
-                            <div class="form-check divider">
-                                <input class="form-check-input" type="radio" name="wifi" id="exampleRadios1" value="1" >
-                                <label class="form-check-label" for="exampleRadios1">
-                                    1 วัน ( 100Mbps / 50Mbps )
-                                </label>
-                                <p class="price">&nbsp;&nbsp;&nbsp; ราคา 30 บาท</p>
-                            </div>
-                            <div class="form-check divider">
-                                <input class="form-check-input" type="radio" name="wifi" id="exampleRadios2" value="3" >
-                                <label class="form-check-label" for="exampleRadios2">
-                                    3 วัน ( 100Mbps / 50Mbps )
-                                </label>
-                                <p class="price">&nbsp;&nbsp;&nbsp; ราคา 81 บาท</p>
-                            </div>
-                            <div class="form-check divider">
-                                <input class="form-check-input" type="radio" name="wifi" id="exampleRadios1" value="7" checked >
-                                <label class="form-check-label" for="exampleRadios1">
-                                    7 วัน ( 100Mbps / 50Mbps )
-                                </label>
-                                <p class="price">&nbsp;&nbsp;&nbsp; ราคา 190 บาท</p>
-                            </div>
-                            <div class="form-check divider">
-                                <input class="form-check-input" type="radio" name="wifi" id="exampleRadios1" value="30">
-                                <label class="form-check-label" for="exampleRadios1">
-                                    30 วัน ( 150Mbps / 80Mbps )
-                                </label>
-                                <p class="price">&nbsp;&nbsp;&nbsp; ราคา 490 บาท</p>
-                            </div>
-                            <div class="form-check divider">
-                                <input class="form-check-input" type="radio" name="wifi" id="exampleRadios1" value="90" >
-                                <label class="form-check-label" for="exampleRadios1">
-                                    90 วัน ( 200Mbps / 120Mbps )
-                                </label>
-                                <p class="price">&nbsp;&nbsp;&nbsp; ราคา 1390 บาท</p>
-                            </div>
-                            <div class="form-check divider">
-                                <input class="form-check-input" type="radio" name="wifi" id="exampleRadios1" value="365" >
-                                <label class="form-check-label" for="exampleRadios1">
-                                    365 วัน ( 200Mbps / 120Mbps ) + บริการล้างแอร์ฟรี 2 ครั้ง
-                                </label>
-                                <p class="price">&nbsp;&nbsp;&nbsp; ราคา 4490 บาท</p>
-                            </div>
-                            <input type="hidden" name="room_id" value="{{ $room }}">
-                                <button type="button" class="btn btn-success my" data-toggle="modal" data-target="#wifi" style="width: 100px">ซื้อ</button>
+                        <div class="row">
+                            <div class="col-6 text-left">
+                                <dl class="row">
+                                    <dt class="col-12">ชื่อ : {{ $user->title }} {{ $user->first_name }}  {{ $user->last_name }}</dt>
+                                    <dt class="col-12">ที่อยู่ : {{ $user->address }} </dt>
+                                    <dt class="col-12">ห้อง : ตึก {{ $user->room->building->name }} ชั้น {{ $user->room->floor }} เลขห้อง {{ $user->room->number }} </dt>
 
-                            <div class="modal fade" id="wifi" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                </dl>
+
+                            </div>
+                            <div class="col-6 ">
+                                <dl class="row">
+                                    <dt class="col-12 ">เลขประจำตัวผู้เสียภาษี : 0016302283835</dt>
+                                    <dt class="col-12 ">วันที่ : {{ \Carbon\Carbon::parse($bill->activated_at)->format('d/m/Y')}} </dt>
+                                </dl>
+                            </div>
+                        </div>
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th >รายการ</th>
+                                <th >จำนวนยูนิต</th>
+                                <th >ราคาต่อยูนิต</th>
+                                <th >จำนวนเงิน</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th >ค่าไฟ </th>
+                                <td>{{ $bill->electric_unit }}</td>
+                                <td>{{ $bill->room->building->electric_rate }}</td>
+                                <td>{{ $bill->electric_unit * $bill->room->building->electric_rate }}</td>
+                            </tr>
+                            <tr>
+                                <th >ค่าน้ำ</th>
+                                <td>{{ $bill->water_unit }}</td>
+                                <td>{{ $bill->room->building->water_rate }}</td>
+                                <td>{{ $bill->water_unit * $bill->room->building->water_rate }}</td>
+                            </tr>
+                            <tr>
+                                <th>ค่าห้อง</th>
+                                <td colspan="2"></td>
+                                <td>{{ $bill->room_price }}</td>
+                            </tr>
+                            @if($request->status == 'รอการชำระเงิน')
+                            <tr>
+                                <th>ค่ามัดจำ</th>
+                                <td colspan="2"></td>
+                                <td>
+                                    {{ $bill->room_price }}
+                                </td>
+                            </tr>
+                            @endif
+                            <tr>
+                                <th colspan="2"></th>
+                                <td  >รวม</td>
+                                <td>
+                                    @if($request->status == 'รอการชำระเงิน')
+                                        {{ ($bill->room_price)*2 }}
+                                    @else
+                                        {{ $bill->total_price  }}
+
+                                    @endif
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <form action="{{route('receipt.pay.bill',['receipt'=> $bill->id])}}" method="post" >
+                            @csrf
+
+                            <button type="button" data-toggle="modal"
+                                    @if(($user->money) > ($bill->total_price))
+                                        data-target="#update"
+                                    @else
+                                        data-target="#cancel"
+
+                                    @endif
+                                    class="btn btn-primary w-100">จ่ายเงิน</button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="update" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">ยืนยันสั่งซื้อ</h5>
+                                            <h5 class="modal-title" id="exampleModalLabel">ยืนยัน</h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            ยืนยันซื้อ packages นี้หรือไม่
+                                            ยืนยันการจ่ายเงิน จำนวน
+                                            @if($request->status == 'รอการชำระเงิน')
+                                                {{ ($bill->room_price)*2 }}
+                                            @else
+                                                {{ $bill->total_price  }}
+
+                                            @endif
+                                            บาท
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button type="submit" class="btn btn-primary">Save changes</button>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                                            <button type="submit" class="btn btn-primary">ยืนยัน</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
+
                         </form>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="cancel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">จำนวนเงินไม่เพียงพอ</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body ">
+                                        <p style="color:red;"> *จำนวนเงินไม่เพียงพอ กรุณาเติมเงิน</p>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" data-dismiss="modal" class="btn btn-primary">ยืนยัน</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -225,19 +258,20 @@
                     My Cash
                 </div>
                 <div class="card-body" style="font-size: 30px">
-                    &nbsp;&nbsp;฿
+                    &nbsp;&nbsp;{{ $user->money }}฿
                 </div>
+                <button type="button" class="btn btn-outline-success w-100">เติมเงิน</button>
             </div>
             <div class="card" style="margin-top: 50px;">
                 <div class="card-header" style="text-align: center">
                     จัดการ
                 </div>
-{{--                <ul class="list-group list-group-flush">--}}
-{{--                    <li class="list-group-item"><i class="fas fa-home"></i>&nbsp;&nbsp;<a class="text" href="{{ route('rooms.show.user',['id' => $room]) }}">ห้องของฉัน</a></li>--}}
-{{--                    <li class="list-group-item"><i class="fas fa-exclamation-triangle errer-sign"></i>&nbsp;&nbsp;<a class="text" href="{{ route('user.create.report',['room' => $room]) }}">แจ้งซ่อมและรายงานปัญหา</a></li>--}}
-{{--                    <li class="list-group-item"><i class="fas fa-file-invoice-dollar bill-sign"></i>&nbsp;<a href="{{ route('receipts.show',['id' => $room]) }}" class="text">บิลประจำเดือน</a></li>--}}
-{{--                    <li class="list-group-item"><i class="fas fa-box-open package-sign"></i><a class="text" href="{{ route('room.users.packages',['id' => $room]) }}">ตรวจสอบพัสดุ</a><span class="badge badge-danger"></span></li>--}}
-{{--                </ul>--}}
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><i class="fas fa-home"></i>&nbsp;&nbsp;<a class="text" href="{{ route('rooms.show.user',['id' => $room]) }}">ห้องของฉัน</a></li>
+                    <li class="list-group-item"><i class="fas fa-exclamation-triangle errer-sign"></i>&nbsp;&nbsp;<a class="text" href="{{ route('user.create.report',['room' => $room]) }}">แจ้งซ่อมและรายงานปัญหา</a></li>
+                    <li class="list-group-item"><i class="fas fa-file-invoice-dollar bill-sign"></i>&nbsp;<a href="{{ route('receipts.show',['receipt' => $room]) }}" class="text">บิลประจำเดือน</a></li>
+                    <li class="list-group-item"><i class="fas fa-box-open package-sign"></i><a class="text" href="{{ route('room.users.packages',['id' => $room]) }}">ตรวจสอบพัสดุ</a><span class="badge badge-danger"></span></li>
+                </ul>
             </div>
         </div>
     </div>
