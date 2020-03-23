@@ -236,6 +236,10 @@ class RequestController extends Controller
         $user->checkIn_at = null;
         $user->save();
 
+        $room = Room::findOrFail($req->room_id);
+        $room->available = 'yes';
+        $room->save();
+
         $req->delete();
         return redirect()->route('requests.index');
     }

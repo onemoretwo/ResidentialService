@@ -61,6 +61,14 @@
             background-color:lightgreen;
         }
 
+        a:hover {
+            text-decoration: none;
+        }
+
+        .colla-sign{
+            color: darkslateblue;
+        }
+
     </style>
 @endsection
 <script src="https://kit.fontawesome.com/56e49317d8.js" crossorigin="anonymous"></script>
@@ -79,6 +87,7 @@
                             <div class="row ">
                                 <p class="col-3"><i class="fas fa-check-circle" style="color: #1c7430"></i> เลขห้อง : {{ $room->number }}</p>
                                 <p class="col-3"><i class="fas fa-check-circle" style="color: #1c7430"></i> ประเภทห้อง : {{ $room->type->name }}</p>
+                                <p class="col-3"><i class="fas fa-users" style="font-size: 130%"></i> ความจุ : {{ $room->type->capacity }}</p>
                             </div>
                             <hr>
                             <dl class="row" style="padding-top: 1rem; margin-left: 2rem">
@@ -139,7 +148,14 @@
                     <div class="card-header" style="text-align: center">
                         จัดการ
                     </div>
-                    @if($request->status == 'รอการยืนยัน')
+
+                    @if(Auth::user()->invited != null)
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">สถานะ : <span style="color: blue">มีคำเชิญใหม่ ยืนยันหรือไม่?</span><li>
+                            <li class="list-group-item"><a class="btn btn-outline-success" href="{{ route('accept',['room' => $room->id]) }}">ยืนยัน</a></li>
+                            <li class="list-group-item"><a class="btn btn-outline-danger" href="{{ route('deny',['room' => $room->id]) }}">ปฏิเสธ</a></li>
+                        </ul>
+                    @elseif($request->status == 'รอการยืนยัน')
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">สถานะ : <span style="color: orange">รอการยืนยันจากผู้ดูแล</span><li>
                         </ul>
@@ -155,6 +171,7 @@
                             <li class="list-group-item"><i class="fas fa-box-open package-sign"></i>&nbsp;&nbsp;<a class="text" href="{{ route('room.users.packages',['id' => $room->id]) }}">ตรวจสอบพัสดุ</a><span class="badge badge-danger">{{ $c }}</span></li>
                             <li class="list-group-item"><i class="fas fa-wifi wifi-sign"></i>&nbsp;&nbsp;&nbsp;<a class="text" href="{{ route('room.user.wifi', ['room' => $room->id]) }}">ซื้อ wifi package</a></li>
                             <li class="list-group-item"><i class="fas fa-receipt" style="font-size: 120%"></i>&nbsp;&nbsp;&nbsp;<a class="text" href="{{ route('room.user.statement',['room' => $room->id]) }}">ประวัติการชำระเงินของฉัน</a></li>
+                            <li class="list-group-item"><i class="fas fa-user-friends colla-sign"></i>&nbsp;&nbsp;&nbsp;<a class="text" href="{{ route('room.user.roommate',['room' => $room->id]) }}">เพิ่มผู้อยู่อาศัย</a></li>
                         </ul>
                     @endif
 
