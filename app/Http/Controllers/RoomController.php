@@ -122,7 +122,6 @@ class RoomController extends Controller
     public function show($id)
     {
         $room = Room::findOrFail($id);
-
         $room_images = DB::table('room_images')->select('*')->where('room_id',$room->id)->get();
 //        dd($room_images);
         return view('rooms.show',['room' => $room, 'room_images' => $room_images]);

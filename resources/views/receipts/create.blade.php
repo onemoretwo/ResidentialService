@@ -48,7 +48,6 @@
                         <div class="container">
                                 @csrf
                                 <div class="form-row" style="padding-top: 1rem">
-
                                     <div class="col-md-3 mb-3">
                                         <label for="building">ตึก</label>
                                         <select class="custom-select" id="building" name="building_name" required>

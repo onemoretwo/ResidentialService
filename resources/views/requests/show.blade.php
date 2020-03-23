@@ -16,7 +16,7 @@
             <div class="">
                 <div class="card" >
                     <div class="card-body">
-                        <h3 class="card-title text-center">ข้อมูลผู้ที้จองห้อง</h3>
+                        <h3 class="card-title text-center">ข้อมูลผู้ที่จองห้อง</h3>
                         <div  class="container m-md-3" style="padding-top: 2rem">
                             <dl class="row">
                                 <dt class="col-sm-3">ชื่อ-นามสกุล :</dt>
@@ -29,8 +29,12 @@
 
                                 <dt class="col-sm-3"> เบอร์โทรศัพท์ : </dt>
                                 <dd class="col-sm-9">{{ $request->user->phone_number_1}}</dd>
+
                                 <dt class="col-sm-3 text-truncate">Email :</dt>
                                 <dd class="col-sm-9">{{ $request->user->email}}</dd>
+
+                                <dt class="col-sm-3 text-truncate">เข้าอยู่วันที่ :</dt>
+                                <dd class="col-sm-9">{{ $request->checkIn_at}}</dd>
 
                             </dl>
                         </div>

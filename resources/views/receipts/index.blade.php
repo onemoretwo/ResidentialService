@@ -69,17 +69,17 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-{{--                                @foreach($requests as $request)--}}
-{{--                                    @if(auth()->check())--}}
-{{--                                        <tr>--}}
-{{--                                            <td>{{ $request->room->building->name }}</td>--}}
-{{--                                            <td>{{ $request->room->floor }}</td>--}}
-{{--                                            <td>{{ $request->room->number }}</td>--}}
-{{--                                            <td>{{ $request->room->type->name }}</td>--}}
-{{--                                            <td><a href="{{ route("requests.show",['request' => $request->id]) }}"><button type="button" class="btn btn-outline-success">แสดง</button></a></td>--}}
-{{--                                        </tr>--}}
-{{--                                    @endif--}}
-{{--                                @endforeach--}}
+                                @foreach($bills as $bill)
+                                    @if(auth()->check())
+                                        <tr>
+                                            <td>{{ $bill->room->building->name }}</td>
+                                            <td>{{ $bill->room->floor }}</td>
+                                            <td>{{ $bill->room->number }}</td>
+                                            <td>{{ $bill->room->type->name }}</td>
+                                            <td><a href="{{ route("receipts.create",['receipt' => $bill->id]) }}"><button type="button" class="btn btn-outline-success">ออกบิล</button></a></td>
+                                        </tr>
+                                    @endif
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>

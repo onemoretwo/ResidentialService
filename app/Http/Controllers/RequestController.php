@@ -56,6 +56,7 @@ class RequestController extends Controller
         $room->available = 'no';
         $room->save();
 
+
         $req->save();
         return redirect()->route('home.index');
     }
@@ -99,21 +100,26 @@ class RequestController extends Controller
         $request->admin_id = $user_now;
         $request->status = 'ยืนยันแล้ว';
         $request->save();
+
+
         $user = User::findOrFail($request->user_id);
         $user->room_id = $request->room_id;
+        $user->checkIn_at = $request->checkIn_at;
         $user->save();
 
 
-//        $bill = new Bill();
-//        $bill->room_id = $room->id;
-//        $bill->admin_id = Auth::id();
-//        $bill->water_unit = 4.20;
-//        $bill->electric_unit = 7.10;
-//        $bill->room_price = 3000.41;
-//        $bill->total_price = 3400.45;
-//        $bill->status = 'รอชำระ';
-//
-//        $bill->save();
+
+        $bill = new Bill();
+        $bill->room_id = $room->id;
+        $bill->user_id = $user_now;
+        $bill->water_unit = 0;
+        $bill->electric_unit = 0;
+        $bill->room_price = $room->type->price;
+        $bill->total_price = ($room->type->price) * 2;
+        $bill->status = 'รอชำระ';
+        $bill->bill_date_at = $user->checkIn_at;
+
+        $bill->save();
 
 
         return redirect()->route('requests.index');
@@ -131,7 +137,11 @@ class RequestController extends Controller
     public function destroy($id)
     {
         $request = BookingRequest::findOrFail($id);
+
+
         $request->delete();
+
+
 
 //        $requests = BookingRequest::all()
 //            ->where('status','=','รอการยืนยัน');
