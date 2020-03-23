@@ -138,6 +138,7 @@ class RequestController extends Controller
 
         $user = User::findOrFail($request->input('user_id'));
         $user->room_id = $req->room_id;
+        $user->checkIn_at = $req->checkIn_at;
         $user->save();
 
         $req->save();
@@ -192,19 +193,6 @@ class RequestController extends Controller
 
 
 
-        $bill = new Bill();
-        $bill->room_id = $room->id;
-        $bill->user_id = $user_now;
-        $bill->water_unit = 0;
-        $bill->electric_unit = 0;
-        $bill->room_price = $room->type->price;
-        $bill->total_price = ($room->type->price) * 2;
-        $bill->status = 'รอชำระ';
-        $bill->bill_date_at = $user->checkIn_at;
-
-        $bill->save();
-
-
         return redirect()->route('requests.index');
 
 
@@ -217,6 +205,18 @@ class RequestController extends Controller
         $req->save();
 
         $req->admin_id = Auth::user()->id;
+
+        $bill = new Bill();
+        $bill->room_id = $req->room_id;
+        $bill->user_id = $req->user_id;
+        $bill->water_unit = 0;
+        $bill->electric_unit = 0;
+        $bill->room_price = $req->room->type->price;
+        $bill->total_price = ($req->room->type->price) * 2;
+        $bill->status = 'รอชำระ';
+        $bill->bill_date_at = $req->user->checkIn_at;
+
+        $bill->save();
 
         return redirect()->route('requests.index');
     }
