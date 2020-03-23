@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -33,7 +34,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-
+        return view('admin.create');
     }
 
     /**
@@ -44,7 +45,40 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => ['required'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'birth_date' => ['required', 'date', 'before:today'],
+            'citizen_id' => ['required', 'digits:13'],
+            'address' => ['required'],
+            'phone_number_1' => ['required', 'digits:10'],
+        ]);
+
+        $password = $request->input('first_name') . '@' . $request->input('phone_number_1');
+        $gender = 1;
+        if ($request->input('title') != 'นาย') {
+            $gender = 0;
+        }
+
+        $user = new User;
+        $user->title = $request->input('title');
+        $user->first_name = $request->input('first_name');
+        $user->last_name = $request->input('last_name');
+        $user->email = $request->input('email');
+        $user->password = Hash::make($password);
+        $user->gender = $gender;
+        $user->birth_date = $request->input('birth_date');
+        $user->citizen_id = $request->input('citizen_id');
+        $user->address = $request->input('address');
+        $user->phone_number_1 = $request->input('phone_number_1');
+        $user->role = 'staff';
+        $user->save();
+
+        $user = User::get()->where('email', $request->input('email'))->first();
+
+        return redirect()->route('admin.show',['admin' => $user->id] );
     }
 
     /**
@@ -55,7 +89,8 @@ class AdminController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::findOrFail($id);
+        return view('admin.show', ['user' => $user]);
     }
 
     /**

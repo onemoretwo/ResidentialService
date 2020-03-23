@@ -78,6 +78,11 @@ class RegisterController extends Controller
             $gender = 1;
         }
 
+        $role = 'user';
+        if(isset($data['role'])) {
+            $role = 'admin';
+        }
+
         return User::create([
             'title' => $data['title'],
             'first_name' => $data['first_name'],
@@ -89,7 +94,8 @@ class RegisterController extends Controller
             'address' => $data['address'],
             'phone_number_1' => $data['phone_number_1'],
             'phone_number_2' => $data['phone_number_2'],
-            'gender' => $gender
+            'gender' => $gender,
+            'role' => $role
         ]);
 //        return $data;
     }
