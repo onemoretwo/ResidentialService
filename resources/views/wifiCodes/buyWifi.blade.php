@@ -69,10 +69,6 @@
             color: cadetblue;
         }
 
-        .wifi-sign{
-            color: steelblue;
-        }
-
         .package-sign{
             color: mediumseagreen;
         }
@@ -99,6 +95,12 @@
             margin-top: 30px;
             width: 100px;
         }
+
+        #have {
+            margin-top: 15px;
+            margin-bottom: 15px;
+            color: red;
+        }
     </style>
     @endsection
     <script src="https://kit.fontawesome.com/56e49317d8.js" crossorigin="anonymous"></script>
@@ -124,53 +126,58 @@
 
                     </div>
                     <div class="card-body">
-                        <h4 style="margin-bottom: 15px">โปรดเลือก wifi packages</h4>
+                        <h4 style="margin-bottom: 15px">โปรดเลือก wifi packages @if($have)<p style="color: red;display: inline">( ไม่สามารถซื้อได้ )</p>@endif</h4>
+                        @if($have)
+                        <p id="have">**คุณมี wifi package ของทางหอพักอยู่แล้ว สามารถดูได้ที่หน้าห้องของฉัน หากมีข้อสงสัยติดต่อนิติบุคคล</p>
+                        @endif
                         <form action="{{ route('wifi.store') }}" method="post">
                             @csrf
                             <div class="form-check divider">
-                                <input class="form-check-input" type="radio" name="wifi" id="exampleRadios1" value="1" >
+                                <input class="form-check-input" type="radio" name="wifi" id="exampleRadios1" value="1" @if($have)disabled @endif>
                                 <label class="form-check-label" for="exampleRadios1">
                                     1 วัน ( 100Mbps / 50Mbps )
                                 </label>
                                 <p class="price">&nbsp;&nbsp;&nbsp; ราคา 30 บาท</p>
                             </div>
                             <div class="form-check divider">
-                                <input class="form-check-input" type="radio" name="wifi" id="exampleRadios2" value="3">
+                                <input class="form-check-input" type="radio" name="wifi" id="exampleRadios2" value="3" @if($have)disabled @endif>
                                 <label class="form-check-label" for="exampleRadios2">
                                     3 วัน ( 100Mbps / 50Mbps )
                                 </label>
                                 <p class="price">&nbsp;&nbsp;&nbsp; ราคา 81 บาท</p>
                             </div>
                             <div class="form-check divider">
-                                <input class="form-check-input" type="radio" name="wifi" id="exampleRadios1" value="7" checked>
+                                <input class="form-check-input" type="radio" name="wifi" id="exampleRadios1" value="7" checked @if($have)disabled @endif>
                                 <label class="form-check-label" for="exampleRadios1">
                                     7 วัน ( 100Mbps / 50Mbps )
                                 </label>
                                 <p class="price">&nbsp;&nbsp;&nbsp; ราคา 190 บาท</p>
                             </div>
                             <div class="form-check divider">
-                                <input class="form-check-input" type="radio" name="wifi" id="exampleRadios1" value="30">
+                                <input class="form-check-input" type="radio" name="wifi" id="exampleRadios1" value="30" @if($have)disabled @endif>
                                 <label class="form-check-label" for="exampleRadios1">
                                     30 วัน ( 150Mbps / 80Mbps )
                                 </label>
                                 <p class="price">&nbsp;&nbsp;&nbsp; ราคา 490 บาท</p>
                             </div>
                             <div class="form-check divider">
-                                <input class="form-check-input" type="radio" name="wifi" id="exampleRadios1" value="90">
+                                <input class="form-check-input" type="radio" name="wifi" id="exampleRadios1" value="90" @if($have)disabled @endif>
                                 <label class="form-check-label" for="exampleRadios1">
                                     90 วัน ( 200Mbps / 120Mbps )
                                 </label>
                                 <p class="price">&nbsp;&nbsp;&nbsp; ราคา 1390 บาท</p>
                             </div>
                             <div class="form-check divider">
-                                <input class="form-check-input" type="radio" name="wifi" id="exampleRadios1" value="365">
+                                <input class="form-check-input" type="radio" name="wifi" id="exampleRadios1" value="365" @if($have)disabled @endif>
                                 <label class="form-check-label" for="exampleRadios1">
                                     365 วัน ( 200Mbps / 120Mbps ) + บริการล้างแอร์ฟรี 2 ครั้ง
                                 </label>
                                 <p class="price">&nbsp;&nbsp;&nbsp; ราคา 4490 บาท</p>
                             </div>
                             <input type="hidden" name="room_id" value="{{ $room }}">
-                            <button type="button" class="btn btn-success my" data-toggle="modal" data-target="#wifi" style="width: 100px">ซื้อ</button>
+                            @if(!$have)
+                                <button type="button" class="btn btn-success my" data-toggle="modal" data-target="#wifi" style="width: 100px">ซื้อ</button>
+                            @endif
 
                             <div class="modal fade" id="wifi" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
@@ -202,7 +209,7 @@
                     My Cash
                 </div>
                 <div class="card-body" style="font-size: 30px">
-                    0.0 &nbsp;&nbsp;฿
+                    {{ $cash }} &nbsp;&nbsp;฿
                 </div>
             </div>
             <div class="card" style="margin-top: 50px;">

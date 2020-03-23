@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Package;
+use Carbon\Carbon;
 use App\Type;
+use App\WifiCode;
 use Illuminate\Http\Request;
 use App\Room;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class RoomController extends Controller
@@ -91,7 +94,19 @@ class RoomController extends Controller
     {
         $room = Room::findOrFail($id);
         $n_packages = Package::where('room_id',$id)->where('status','รอรับของ')->count();
-        return view('rooms.myRoom',['room' => $room, 'c' => $n_packages]);
+        $wifi_code = WifiCode::where('user_id',Auth::id())->first();
+
+        //update wifi
+        if ($wifi_code != null) {
+            $expiredate = Carbon::create($wifi_code->expire_at);
+            $today = Carbon::today();
+            if ($today->gte($expiredate)) {
+                $wifi_code->delete();
+            }
+        }
+        $wifi_code = WifiCode::where('user_id',Auth::id())->first();
+        //
+        return view('rooms.myRoom',['room' => $room, 'c' => $n_packages,'wifi_code' => $wifi_code]);
     }
 
     public function roomPackages($id){

@@ -3,7 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Package;
+use App\User;
+use App\UserStatement;
+use App\WifiCode;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use function Sodium\add;
 
 class WifiCodeController extends Controller
 {
@@ -35,7 +41,37 @@ class WifiCodeController extends Controller
      */
     public function store(Request $request)
     {
+        $wifi_duration = $request->input('wifi');
         $room_id = $request->input('room_id');
+        $wifi = WifiCode::where('available','yes')->orderBy('created_at')->first();
+        $wifi->duration = $wifi_duration;
+        $wifi->available = 'no';
+        $wifi->user_id = Auth::id();
+        $wifi->expire_at = Carbon::today()->addDays((int)$wifi_duration);
+        $wifi->save();
+
+        if ($wifi_duration === '1') $price = 30;
+        elseif ($wifi_duration === '3') $price = 81;
+        elseif ($wifi_duration === '7') $price = 190;
+        elseif ($wifi_duration === '30') $price = 490;
+        elseif ($wifi_duration === '90') $price = 1390;
+        elseif ($wifi_duration === '365') $price = 4490;
+
+        // update user price
+        $user = User::findOrFail(Auth::id());
+        $user->money = ($user->money - $price);
+        if ($user->money < 0){
+            return redirect()->route('rooms.show.user',['id' => $room_id]);
+        }else{
+            $user->save();
+        }
+        // create user statement
+        $statement = new UserStatement();
+        $statement->user_id = Auth::id();
+        $statement->price = $price;
+        $statement->detail = 'wifi';
+        $statement->save();
+        //
         return redirect()->route('rooms.show.user',['id' => $room_id]);
     }
 
@@ -85,7 +121,9 @@ class WifiCodeController extends Controller
     }
 
     public function userBuyWifi($id){
+        $user = User::findOrFail(Auth::id());
         $n_packages = Package::where('room_id',$id)->where('status','รอรับของ')->count();
-        return view('wifiCodes.buyWifi',['room' => $id, 'c' => $n_packages]);
+        $have = (new User())->haveWifi(Auth::id());
+        return view('wifiCodes.buyWifi',['room' => $id, 'c' => $n_packages,'cash' => $user->money,'have' => $have]);
     }
 }
