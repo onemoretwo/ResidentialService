@@ -104,16 +104,16 @@ class RequestController extends Controller
         $user->save();
 
 
-        $bill = new Bill();
-        $bill->room_id = $room->id;
-        $bill->admin_id = Auth::id();
-        $bill->water_unit = 4.20;
-        $bill->electric_unit = 7.10;
-        $bill->room_price = 3000.41;
-        $bill->total_price = 3400.45;
-        $bill->status = 'รอชำระ';
-
-        $bill->save();
+//        $bill = new Bill();
+//        $bill->room_id = $room->id;
+//        $bill->admin_id = Auth::id();
+//        $bill->water_unit = 4.20;
+//        $bill->electric_unit = 7.10;
+//        $bill->room_price = 3000.41;
+//        $bill->total_price = 3400.45;
+//        $bill->status = 'รอชำระ';
+//
+//        $bill->save();
 
 
         return redirect()->route('requests.index');
