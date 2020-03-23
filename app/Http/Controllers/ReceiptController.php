@@ -20,9 +20,10 @@ class ReceiptController extends Controller
      */
     public function index()
     {
-        $bills = Bill::where( 'bill_date_at', '=', Carbon::today())
+        $bills = Bill::where( 'activated_at', '=', Carbon::today())
                         ->where('status','บิลใหม่]')->get();
-
+//        dd($bills);
+//
         return view('receipts.index',['bills' => $bills]);
 
     }
