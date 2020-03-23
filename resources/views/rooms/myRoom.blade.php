@@ -37,6 +37,10 @@
             color: cadetblue;
         }
 
+        .wifi-sign{
+            color: steelblue;
+        }
+
         .package-sign{
             color: mediumseagreen;
         }
@@ -47,6 +51,14 @@
 
         .margbot {
             margin-bottom: 20px;
+        }
+
+        .wifi{
+            width: 200px;
+            padding:5px 30px;
+            border:none;
+            border-radius:4px;
+            background-color:lightgreen;
         }
 
     </style>
@@ -78,7 +90,16 @@
                                 <dd class="col-sm-9 "> {{ $room->building->address }}</dd>
 
                                 <dt class="col-sm-2"><i class="fas fa-wifi"></i>&nbsp;&nbsp; Wifi Code </dt>
-                                <dd class="col-sm-9">40 ห้อง</dd>
+                                <dd class="col-sm-9">
+                                    @if($wifi_code != null)
+                                        <div class="row">
+                                            <p class="wifi ">{{ $wifi_code->code }}</p>
+                                            <p style="margin-left: 30px">(หมดอายุวันที่ {{ $wifi_code->expire_at }})</p>
+                                        </div>
+                                    @else
+                                        ไม่มี wifi package
+                                        @endif
+                                </dd>
 
                             </dl>
                             <hr>
@@ -122,6 +143,7 @@
                         <li class="list-group-item"><i class="fas fa-exclamation-triangle errer-sign"></i>&nbsp;&nbsp;<a class="text" href="{{ route('user.create.report',['room' => $room->id]) }}">แจ้งซ่อมและรายงานปัญหา</a></li>
                         <li class="list-group-item"><i class="fas fa-file-invoice-dollar bill-sign"></i>&nbsp;&nbsp;&nbsp;<a class="text">บิลประจำเดือน</a></li>
                         <li class="list-group-item"><i class="fas fa-box-open package-sign"></i>&nbsp;&nbsp;<a class="text" href="{{ route('room.users.packages',['id' => $room->id]) }}">ตรวจสอบพัสดุ</a><span class="badge badge-danger">{{ $c }}</span></li>
+                        <li class="list-group-item"><i class="fas fa-wifi wifi-sign"></i>&nbsp;&nbsp;&nbsp;<a class="text" href="{{ route('room.user.wifi', ['room' => $room->id]) }}">ซื้อ wifi package</a></li>
                     </ul>
                 </div>
             </div>

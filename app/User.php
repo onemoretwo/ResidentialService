@@ -33,6 +33,10 @@ class User extends Authenticatable
         return $this->hasMany(BookingRequest::class);
     }
 
+    public function wifiCodes(){
+        return $this->hasMany(WifiCode::class);
+    }
+
     use Notifiable;
 
     protected $fillable = ['title', 'first_name', 'last_name', 'email', 'password', 'gender', 'birth_date', 'money',
@@ -67,5 +71,11 @@ class User extends Authenticatable
     public function getRoomFromUser($title,$first,$last){
         $user = DB::table('users')->where('title',$title)->where('first_name',$first)->where('last_name',$last)->first();
         return $user->id;
+    }
+
+    public function haveWifi($id){
+        $user = User::findOrFail($id);
+        $wifi = $user->wifiCodes;
+        return ($wifi->count() != 0);
     }
 }

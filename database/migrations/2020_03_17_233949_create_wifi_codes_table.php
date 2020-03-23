@@ -16,11 +16,10 @@ class CreateWifiCodesTable extends Migration
         Schema::create('wifi_codes', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id')->unsigned()->nullable();
-            $table->string('code');
-            $table->string('password');
+            $table->string('code')->unique();
             $table->enum('available',['yes','no'])->default('yes');
-            $table->enum('duration',['1','3','7','30','90','365']);
-            $table->timestamp('expire_at');
+            $table->enum('duration',['1','3','7','30','90','365'])->nullable();
+            $table->date('expire_at')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
