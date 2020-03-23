@@ -18,17 +18,6 @@
     <div class="container justify-content-center">
         <div class="card" style="height: 40rem;">
             <div class="card-header">
-                <div class="row">
-                    @foreach($types as $type)
-                        <a class="btn btn-outline-primary type-button
-                        @if($type->id == $selected_type->id)
-                            active
-                        @endif
-                            " href="{{ route('requests.index.type' ,[ 'type' => $type->id ]) }}">{{ $type->name }}</a>
-                    @endforeach
-                </div>
-            </div>
-            <div class="card-header">
                 <div class="form-row" style="padding-top: 1rem">
                     <div class="row">
                         <div class="col-md-4">
@@ -73,7 +62,13 @@
                         <div class="col-md-4" style="padding-top: 2rem">
                             <a type="button" class="btn btn-outline-primary" href="{{ route('requests.index', ['type' => $selected_type]) }}">ล้าง</a>
                         </div>
-
+                        @foreach($types as $type)
+                            <a class="btn btn-outline-primary type-button
+                           @if($type->id == $selected_type->id)
+                                active
+                            @endif
+                                " href="{{ route('requests.index' ,[ 'type' => $type->id ]) }}" style="margin-top: 10px">{{ $type->name }}</a>
+                        @endforeach
                     </div>
 
 

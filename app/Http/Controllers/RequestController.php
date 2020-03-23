@@ -228,6 +228,7 @@ class RequestController extends Controller
 
         $user = User::findOrFail($req->user_id);
         $user->room_id = null;
+        $user->checkIn_at = null;
         $user->save();
 
         $req->delete();

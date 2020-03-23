@@ -45,6 +45,8 @@ Route::get('/rooms/types/{type}/building/{building}/floor/{floor}','RoomControll
 
 
 Route::post('/reports/repair/','ReportController@storeRepair')->name('reports.repair.store');
+Route::get('/reports/building/{building}', 'ReportController@indexBuilding')->name('reports.index.building');
+Route::get('/reports/building/{building}/floor/{floor}', 'ReportController@indexBuildingFloor')->name('reports.index.building.floor');
 
 Route::get('/reports/search','ReportController@seachRoom')->name('reports.index.search');
 Route::resource('/reports','ReportController');
