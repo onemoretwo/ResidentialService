@@ -27,6 +27,8 @@ Route::get('/neighborhood', 'HomeController@neighborhood')->name('home.neighborh
 
 Route::get('/rooms/show-room-staff/{id}', 'RoomController@showStaff')->name('rooms.show.staff');
 Route::get('/rooms/my-room/{id}', 'RoomController@userRoom')->name('rooms.show.user');
+Route::get('/rooms/show-room-staff/{id}/accept','UserController@acceptInvite')->name('accept');
+Route::get('/rooms/show-room-staff/{id}/deny','UserController@denyInvite')->name('deny');
 Route::get('/rooms/my-room/{id}/packages','RoomController@roomPackages')->name('room.users.packages');
 Route::get('/rooms/my-room/{room}/packages/{package}', 'PackageController@packageConfirm')->name('package.confirm');
 

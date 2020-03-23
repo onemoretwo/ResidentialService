@@ -32,4 +32,19 @@ class UserController extends Controller
         }
         return $this->addRoommateView($id,$message);
     }
+
+    public function acceptInvite($id){
+        $user = User::findOrFail(Auth::id());
+        $user->room_id = $id;
+        $user->invited = null;
+        $user->save();
+
+        return redirect()->route('rooms.show.user',['room' => $id]);
+    }
+
+    public function denyInvite($id){
+        $user = User::findOrFail(Auth::id());
+        $user->invited = null;
+        return redirect()->route('/');
+    }
 }

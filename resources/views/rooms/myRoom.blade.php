@@ -152,8 +152,8 @@
                     @if(Auth::user()->invited != null)
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">สถานะ : <span style="color: blue">มีคำเชิญใหม่ ยืนยันหรือไม่?</span><li>
-                            <li class="list-group-item"><a class="btn btn-outline-success">ยืนยัน</a></li>
-                            <li class="list-group-item"><a class="btn btn-outline-danger">ปฏิเสธ</a></li>
+                            <li class="list-group-item"><a class="btn btn-outline-success" href="{{ route('accept',['$room' => $room->id]) }}">ยืนยัน</a></li>
+                            <li class="list-group-item"><a class="btn btn-outline-danger" href="{{ route('deny',['$room' => $room->id]) }}">ปฏิเสธ</a></li>
                         </ul>
                     @elseif($request->status == 'รอการยืนยัน')
                         <ul class="list-group list-group-flush">
