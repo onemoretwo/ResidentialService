@@ -170,7 +170,7 @@
                             <div class="form-check divider">
                                 <input class="form-check-input" type="radio" name="wifi" id="exampleRadios1" value="365" @if($have)disabled @endif>
                                 <label class="form-check-label" for="exampleRadios1">
-                                    365 วัน ( 200Mbps / 120Mbps ) + บริการล้างแอร์ฟรี 2 ครั้ง
+                                    365 วัน ( 200Mbps / 120Mbps )
                                 </label>
                                 <p class="price">&nbsp;&nbsp;&nbsp; ราคา 4490 บาท</p>
                             </div>
@@ -221,6 +221,7 @@
                     <li class="list-group-item"><i class="fas fa-exclamation-triangle errer-sign"></i>&nbsp;&nbsp;<a class="text" href="{{ route('user.create.report',['room' => $room]) }}">แจ้งซ่อมและรายงานปัญหา</a></li>
                     <li class="list-group-item"><i class="fas fa-file-invoice-dollar bill-sign"></i>&nbsp;&nbsp;&nbsp;<a class="text">บิลประจำเดือน</a></li>
                     <li class="list-group-item"><i class="fas fa-box-open package-sign"></i>&nbsp;&nbsp;<a class="text" href="{{ route('room.users.packages',['id' => $room]) }}">ตรวจสอบพัสดุ</a><span class="badge badge-danger">{{ $c }}</span></li>
+                    <li class="list-group-item"><i class="far fa-money-bill-alt" style="color: darkgreen"></i>&nbsp;&nbsp;&nbsp;<a class="text" href="{{ route('buyCash',['$id' => $room]) }}">เติมเงินในระบบ</a></li>
                     <li class="list-group-item"><i class="fas fa-receipt" style="font-size: 120%"></i>&nbsp;&nbsp;&nbsp;<a class="text" href="{{ route('room.user.statement',['room' => $room]) }}">ประวัติการชำระเงินของฉัน</a></li>
                 </ul>
             </div>
