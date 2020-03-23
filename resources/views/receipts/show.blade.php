@@ -185,7 +185,69 @@
                             </tr>
                             </tbody>
                         </table>
-                        <button type="button" class="btn btn-primary w-100">จ่ายเงิน</button>
+                        <form action="{{route('receipt.pay.bill',['receipt'=> $bill->id])}}" method="post" >
+                            @csrf
+
+                            <button type="button" data-toggle="modal"
+                                    @if(($user->money) > ($bill->total_price))
+                                        data-target="#update"
+                                    @else
+                                        data-target="#cancel"
+
+                                    @endif
+                                    class="btn btn-primary w-100">จ่ายเงิน</button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="update" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">ยืนยัน</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            ยืนยันการจ่ายเงิน จำนวน
+                                            @if($request->status == 'รอการชำระเงิน')
+                                                {{ ($bill->room_price)*2 }}
+                                            @else
+                                                {{ $bill->total_price  }}
+
+                                            @endif
+                                            บาท
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                                            <button type="submit" class="btn btn-primary">ยืนยัน</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </form>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="cancel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">จำนวนเงินไม่เพียงพอ</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body ">
+                                        <p style="color:red;"> *จำนวนเงินไม่เพียงพอ กรุณาเติมเงิน</p>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" data-dismiss="modal" class="btn btn-primary">ยืนยัน</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
