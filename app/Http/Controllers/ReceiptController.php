@@ -74,7 +74,7 @@ class ReceiptController extends Controller
         $bill->room_id = $room->id;
         $bill->user_id = Auth::id();
         $bill->water_unit = $water_unit;
-g        $bill->electric_unit = $electric_unit;
+        $bill->electric_unit = $electric_unit;
         $bill->room_price = $price;
         $bill->total_price = $totalPrice;
         $bill->status = 'รอชำระ';
@@ -163,6 +163,8 @@ g        $bill->electric_unit = $electric_unit;
         $req->status = 'สำเร็จ';
         $req->save();
 
+        dd($req);
+
 
         $bill = new Bill();
         $bill->room_id = $user->room_id;
@@ -175,7 +177,7 @@ g        $bill->electric_unit = $electric_unit;
         $bill->activated_at = Carbon::parse($old_bill->activated_at)->addMonth(1);
         $bill->save();
 
-        return redirect()->route('rooms.show.user',['id' => $user->room_id]);
+        return redirect()->route('home.index');
 
 
 
