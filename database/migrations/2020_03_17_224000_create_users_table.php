@@ -30,6 +30,7 @@ class CreateUsersTable extends Migration
             $table->string('phone_number_2',10)->nullable();
             $table->float('money')->default(0);
             $table->enum('role',['user','staff','admin']);
+            $table->bigInteger('invited')->nullable();
 
             $table->rememberToken();
             $table->date("checkIn_at")->nullable();

@@ -35,6 +35,8 @@ Route::get('/rooms/my-room/{room}/wifi','WifiCodeController@userBuyWifi')->name(
 Route::get('/rooms/my-room/{room}/myStatements','UserStatementController@myStatements')->name('room.user.statement');
 Route::post('/rooms/my-room/{room}/myStatements','UserStatementController@statementDayFix')->name('room.statement.day');
 Route::get('/rooms/my-room/{room}/myStatements/back','UserStatementController@allStatement')->name('backToAll');
+Route::get('/rooms/my-room/{room}/addRoommate','UserController@addRoommateView')->name('room.user.roommate');
+Route::post('/rooms/my-room/{room}/addRoommate/add','UserController@sendInvite')->name('sendInvite');
 Route::resource('/wifi','WifiCodeController');
 Route::resource('/rooms','RoomController')->except([
     'index'
