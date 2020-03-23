@@ -162,7 +162,7 @@
                                 <td colspan="2"></td>
                                 <td>{{ $bill->room_price }}</td>
                             </tr>
-                            @if($request->status == 'รอการชำระเงิน')
+                            @if($req->status == 'รอการชำระเงิน')
                             <tr>
                                 <th>ค่ามัดจำ</th>
                                 <td colspan="2"></td>
@@ -175,7 +175,7 @@
                                 <th colspan="2"></th>
                                 <td  >รวม</td>
                                 <td>
-                                    @if($request->status == 'รอการชำระเงิน')
+                                    @if($req->status == 'รอการชำระเงิน')
                                         {{ ($bill->room_price)*2 }}
                                     @else
                                         {{ $bill->total_price  }}
@@ -186,8 +186,6 @@
                             </tbody>
                         </table>
                         <form action="{{route('receipts.update',['receipt'=> $bill->id])}}" >
-                            @csrf
-
                             <button type="button" data-toggle="modal"
                                     @if(($user->money) > ($bill->total_price))
                                         data-target="#update"
@@ -209,7 +207,7 @@
                                         </div>
                                         <div class="modal-body">
                                             ยืนยันการจ่ายเงิน จำนวน
-                                            @if($request->status == 'รอการชำระเงิน')
+                                            @if($req->status == "รอการชำระเงิน")
                                                 {{ ($bill->room_price)*2 }}
                                             @else
                                                 {{ $bill->total_price  }}

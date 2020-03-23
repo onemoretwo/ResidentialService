@@ -96,10 +96,10 @@ class ReceiptController extends Controller
     {
         $room = Room::findOrFail($id);
         $user = User::findOrFail(Auth::id());
-        $request = BookingRequest::get()->where('room_id', $id)->where('deleted_at', null)->first();
+        $req = BookingRequest::get()->where('room_id', $id)->where('deleted_at', null)->first();
 //        dd($request);
         $bill = Bill::all()->where('room_id',$user->room_id)->where('status','รอชำระ')->first();
-        return view('receipts.show',['bill' => $bill,'room' => '$room','user' => $user , 'request'=> $request,'room'=> $user->room_id]);
+        return view('receipts.show',['bill' => $bill,'user' => $user , 'req'=> $req, 'room'=> $user->room_id]);
     }
 
     /**
@@ -182,8 +182,6 @@ class ReceiptController extends Controller
         $bill->save();
 
         return redirect()->route('home.index');
-
-
 
     }
 
