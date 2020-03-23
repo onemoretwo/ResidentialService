@@ -54,7 +54,7 @@
         }
 
         .wifi{
-            width: 200px;
+            /*width: 200px;*/
             padding:5px 30px;
             border:none;
             border-radius:4px;
@@ -139,12 +139,25 @@
                     <div class="card-header" style="text-align: center">
                         จัดการ
                     </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><i class="fas fa-exclamation-triangle errer-sign"></i>&nbsp;&nbsp;<a class="text" href="{{ route('user.create.report',['room' => $room->id]) }}">แจ้งซ่อมและรายงานปัญหา</a></li>
-                        <li class="list-group-item"><i class="fas fa-file-invoice-dollar bill-sign"></i>&nbsp;&nbsp;&nbsp;<a href="{{ route('receipts.show', ['receipt' => $room->id]) }}" class="text">บิลประจำเดือน</a></li>
-                        <li class="list-group-item"><i class="fas fa-box-open package-sign"></i>&nbsp;&nbsp;<a class="text" href="{{ route('room.users.packages',['id' => $room->id]) }}">ตรวจสอบพัสดุ</a><span class="badge badge-danger">{{ $c }}</span></li>
-                        <li class="list-group-item"><i class="fas fa-wifi wifi-sign"></i>&nbsp;&nbsp;&nbsp;<a class="text" href="{{ route('room.user.wifi', ['room' => $room->id]) }}">ซื้อ wifi package</a></li>
-                    </ul>
+                    @if($request->status == 'รอการยืนยัน')
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">สถานะ : <span style="color: orange">รอการยืนยันจากผู้ดูแล</span><li>
+                        </ul>
+                    @elseif($request->status == 'รอการชำระเงิน')
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">สถานะ : <span style="color: blue">รอการชำระเงิน</span><li>
+                            <li class="list-group-item"><a href="">ชำระเงินสำหรับการจองห้องพัก</a></li>
+                        </ul>
+                    @else
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><i class="fas fa-exclamation-triangle errer-sign"></i>&nbsp;&nbsp;<a class="text" href="{{ route('user.create.report',['room' => $room->id]) }}">แจ้งซ่อมและรายงานปัญหา</a></li>
+                            <li class="list-group-item"><i class="fas fa-file-invoice-dollar bill-sign"></i>&nbsp;&nbsp;&nbsp;<a class="text">บิลประจำเดือน</a></li>
+                            <li class="list-group-item"><i class="fas fa-box-open package-sign"></i>&nbsp;&nbsp;<a class="text" href="{{ route('room.users.packages',['id' => $room->id]) }}">ตรวจสอบพัสดุ</a><span class="badge badge-danger">{{ $c }}</span></li>
+                            <li class="list-group-item"><i class="fas fa-wifi wifi-sign"></i>&nbsp;&nbsp;&nbsp;<a class="text" href="{{ route('room.user.wifi', ['room' => $room->id]) }}">ซื้อ wifi package</a></li>
+                            <li class="list-group-item"><i class="fas fa-receipt" style="font-size: 120%"></i>&nbsp;&nbsp;&nbsp;<a class="text" href="{{ route('room.user.statement',['room' => $room->id]) }}">ประวัติการชำระเงินของฉัน</a></li>
+                        </ul>
+                    @endif
+                
                 </div>
             </div>
 {{--            <div class="col-md-3">--}}
