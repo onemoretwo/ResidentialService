@@ -139,82 +139,8 @@
 
                 </div>
                 <div class="card-body">
-                    <div class="alert-message" style="color: darkgray">
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp; หมายเหตุ : Wifi ของทางหอพักสามารถซื้อได้จากช่องทางนี้เท่านั้น และ 1 คนสามารถซื้อได้เพียง 1 แพ็คเกตเท่านั้น หากต้องการเปลี่ยนแพคเกตต้องรอแพ็คเกตเดิมหมดก่อน หากมีข้อสงสัยโปรดติดต่อนิติบุคคล</p>
-                        <hr>
-                        <p>เบอร์ติดต่อนิติบุคคล : 081-3425966</p>
-
-                    </div>
                     <div class="card-body">
-                        <h4 style="margin-bottom: 15px">โปรดเลือก wifi packages </h4>
-                            <p id="have">**คุณมี wifi package ของทางหอพักอยู่แล้ว สามารถดูได้ที่หน้าห้องของฉัน หากมีข้อสงสัยติดต่อนิติบุคคล</p>
-                        <form action="{{ route('wifi.store') }}" method="post">
-                            @csrf
-                            <div class="form-check divider">
-                                <input class="form-check-input" type="radio" name="wifi" id="exampleRadios1" value="1" >
-                                <label class="form-check-label" for="exampleRadios1">
-                                    1 วัน ( 100Mbps / 50Mbps )
-                                </label>
-                                <p class="price">&nbsp;&nbsp;&nbsp; ราคา 30 บาท</p>
-                            </div>
-                            <div class="form-check divider">
-                                <input class="form-check-input" type="radio" name="wifi" id="exampleRadios2" value="3" >
-                                <label class="form-check-label" for="exampleRadios2">
-                                    3 วัน ( 100Mbps / 50Mbps )
-                                </label>
-                                <p class="price">&nbsp;&nbsp;&nbsp; ราคา 81 บาท</p>
-                            </div>
-                            <div class="form-check divider">
-                                <input class="form-check-input" type="radio" name="wifi" id="exampleRadios1" value="7" checked >
-                                <label class="form-check-label" for="exampleRadios1">
-                                    7 วัน ( 100Mbps / 50Mbps )
-                                </label>
-                                <p class="price">&nbsp;&nbsp;&nbsp; ราคา 190 บาท</p>
-                            </div>
-                            <div class="form-check divider">
-                                <input class="form-check-input" type="radio" name="wifi" id="exampleRadios1" value="30">
-                                <label class="form-check-label" for="exampleRadios1">
-                                    30 วัน ( 150Mbps / 80Mbps )
-                                </label>
-                                <p class="price">&nbsp;&nbsp;&nbsp; ราคา 490 บาท</p>
-                            </div>
-                            <div class="form-check divider">
-                                <input class="form-check-input" type="radio" name="wifi" id="exampleRadios1" value="90" >
-                                <label class="form-check-label" for="exampleRadios1">
-                                    90 วัน ( 200Mbps / 120Mbps )
-                                </label>
-                                <p class="price">&nbsp;&nbsp;&nbsp; ราคา 1390 บาท</p>
-                            </div>
-                            <div class="form-check divider">
-                                <input class="form-check-input" type="radio" name="wifi" id="exampleRadios1" value="365" >
-                                <label class="form-check-label" for="exampleRadios1">
-                                    365 วัน ( 200Mbps / 120Mbps ) + บริการล้างแอร์ฟรี 2 ครั้ง
-                                </label>
-                                <p class="price">&nbsp;&nbsp;&nbsp; ราคา 4490 บาท</p>
-                            </div>
-                            <input type="hidden" name="room_id" value="{{ $room }}">
-                                <button type="button" class="btn btn-success my" data-toggle="modal" data-target="#wifi" style="width: 100px">ซื้อ</button>
 
-                            <div class="modal fade" id="wifi" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">ยืนยันสั่งซื้อ</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            ยืนยันซื้อ packages นี้หรือไม่
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button type="submit" class="btn btn-primary">Save changes</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
                     </div>
                 </div>
             </div>
@@ -225,7 +151,7 @@
                     My Cash
                 </div>
                 <div class="card-body" style="font-size: 30px">
-                    &nbsp;&nbsp;฿
+                    &nbsp;&nbsp;{{ $user->money }}฿
                 </div>
             </div>
             <div class="card" style="margin-top: 50px;">
