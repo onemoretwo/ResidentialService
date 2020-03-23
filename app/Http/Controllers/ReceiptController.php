@@ -73,7 +73,7 @@ class ReceiptController extends Controller
         $bill->room_id = $room->id;
         $bill->user_id = Auth::id();
         $bill->water_unit = $water_unit;
-g        $bill->electric_unit = $electric_unit;
+        $bill->electric_unit = $electric_unit;
         $bill->room_price = $price;
         $bill->total_price = $totalPrice;
         $bill->status = 'รอชำระ';
