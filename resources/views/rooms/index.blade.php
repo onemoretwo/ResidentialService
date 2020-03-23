@@ -16,8 +16,8 @@
 
 @section('content')
     <div class="container justify-content-center">
-        <div class="card" style="height: 40rem;">
-            <div class="card-header">
+        <div class="card border-primary" style="height: 40rem;">
+            <div class="card-header ">
                 <div class="row">
                     @foreach($types as $type)
                         <a class="btn btn-outline-primary type-button
@@ -70,7 +70,7 @@
 
             </div>
             <div class="card-body table-responsive">
-                <table class="table table-hover text-center">
+                <table class="table table-hover text-center ">
                     <thead>
                     <tr>
                         <th scope="col">ตึก</th>

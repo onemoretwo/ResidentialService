@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Bill;
 use App\BookingRequest;
 use App\Room;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
@@ -91,15 +93,28 @@ class RequestController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user_now = Auth::user();
+        $user_now = Auth::id();
         $request = BookingRequest::findOrFail($id);
-//        $request->admin_id = $user_now;
+        $room = Room::findOrFail($request->room_id);
+        $request->admin_id = $user_now;
         $request->status = 'ยืนยันแล้ว';
         $request->save();
-
         $user = User::findOrFail($request->user_id);
         $user->room_id = $request->room_id;
         $user->save();
+
+
+        $bill = new Bill();
+        $bill->room_id = $room->id;
+        $bill->admin_id = Auth::id();
+        $bill->water_unit = 4.20;
+        $bill->electric_unit = 7.10;
+        $bill->room_price = 3000.41;
+        $bill->total_price = 3400.45;
+        $bill->status = 'รอชำระ';
+
+        $bill->save();
+
 
         return redirect()->route('requests.index');
 

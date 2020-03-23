@@ -42,7 +42,8 @@
             <hr>
             <div class="card-body row">
                 <div class="col-md-6">
-                <div class="container">
+                <form class="container" action="{{route('receipts.store')}}" method="POST">
+                    @csrf
                     <form method="post" action="{{ route('receipt.show.report') }}">
                         @csrf
                     <div class="form-row" style="padding-top: 1rem">
@@ -101,12 +102,12 @@
                             <input type="number" class="form-control" id="roomPrice" min="0" data-bind="value:replyNumber" />
                         </div>
                     </div>
-                    <button type="button" class="btn btn-outline-success">ออกบิล</button>
+                    <button type="submit" class="btn btn-outline-success">ออกบิล</button>
+                </form>
 
 
                 </div>
 
-            </div>
                 <div class="col-6 scroll">
                     <div class="card h-set">
                         <div class="card-header" style="text-align: center">รายงานของห้อง</div>
@@ -124,9 +125,9 @@
                             @endphp
                             @foreach($reports as $report)
                                 @php( $i++ )
-                            <div class="card inner row">
+                                <div class="card inner row">
                                     <div style="text-align: left;font-size: 14px">
-                                    <p style="color: #808588;margin-bottom: 0">ผู้แจ้ง : {{ $report->user->tile . " " . $report->user->first_name . "     " . $report->user->last_name }}</p>
+                                        <p style="color: #808588;margin-bottom: 0">ผู้แจ้ง : {{ $report->user->tile . " " . $report->user->first_name . "     " . $report->user->last_name }}</p>
                                         <p class="numberf">{{ $i }}</p>
                                     </div>
                                     <hr style="margin: 0.3rem">
@@ -134,11 +135,14 @@
                                         <p>เรื่อง : {{ $report->title }}</p>
                                         <p>{{ $report->detail }}</p>
                                     </div>
-                            </div>
-                                @endforeach
-                            @endif
+                                </div>
+                            @endforeach
+                        @endif
                     </div>
                 </div>
+
+            </div>
+
             </div>
         </div>
 

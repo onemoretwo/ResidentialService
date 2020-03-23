@@ -19,14 +19,38 @@
                     <div class="card-body">
                         <h5 class="card-title text-center">ข้อมูลหอพัก</h5>
                         <div class="container">
-                            <dl class="row" style="padding-top: 1rem; margin-left: 2rem">
-                                <dt class="col-sm-3">จำนวนห้อง</dt>
-                                <dd class="col-sm-9">40 ห้อง</dd>
+                            <dl class="row" style="padding-top: 1rem;">
+                                <dt class="col-sm-9">จำนวนห้องทั้งหมด</dt>
+                                <dd class="col-sm-3">326 ห้อง</dd>
 
-                                <dt class="col-sm-3">ประเภทห้อง</dt>
-                                <dd class="col-sm-9 ">
+                                <dt class="col-sm-9">จำนวนห้องพักอาศัย</dt>
+                                <dd class="col-sm-3">324 ห้อง</dd>
+
+                                <dt class="col-sm-9">จำนวนห้องเชิงพาณิชย์</dt>
+                                <dd class="col-sm-3 ">2 ห้อง</dd>
+
+                                <dt class="col-sm-9">ประเภทห้อง</dt>
+                                <dd class="col-sm-3 ">
                                     <p>2 ห้อง</p>
                                 </dd>
+
+                                <dt class="col-sm-9">ลิฟท์โดยสาร</dt>
+                                <dd class="col-sm-3 ">1 ตัว/อาคาร</dd>
+                                <dt class="col-sm-9">รวม</dt>
+                                <dd class="col-sm-3 ">
+                                    <p>3 ตัว</p>
+                                </dd>
+
+                                <dt class="col-sm-9">อาคาร A ยูนิตพักอาศัย</dt>
+                                <dd class="col-sm-3">108 ห้อง</dd>
+
+
+                                <dt class="col-sm-9">อาคาร B ยูนิตพักอาศัย</dt>
+                                <dd class="col-sm-3">108 ห้อง</dd>
+
+                                <dt class="col-sm-9">อาคาร C ยูนิตพักอาศัย</dt>
+                                <dd class="col-sm-3">108 ห้อง</dd>
+
 
                             </dl>
                         </div>

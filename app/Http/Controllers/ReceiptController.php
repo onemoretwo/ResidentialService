@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Building;
 use App\Report;
 use App\Room;
+use App\User;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class ReceiptController extends Controller
 {
@@ -16,6 +19,11 @@ class ReceiptController extends Controller
      */
     public function index()
     {
+        $users = User::where( 'created_at', '<', Carbon::now()->subHour(10))
+            ->get();
+
+        dd($users);
+
         return view('receipts.index');
 
     }
@@ -32,13 +40,18 @@ class ReceiptController extends Controller
     }
 
     public function billCreateShowReport(Request $request){
-        $building_name = $request->input('building_name');
-        $building_id = Building::where('name',$building_name)->first()->id;
-        $building_floor = $request->input('building_floor');
-        $room_number = $request->input('room_number');
-        $room_id = Room::where('building_id',$building_id)->where('floor',$building_floor)->where('number',$room_number)->first()->id;
-        $reports = Report::where('room_id',$room_id)->where('type','รายงาน')->where('status','รอการยืนยัน')->get();
-        return view('receipts.create',['reports' => $reports]);
+        $now = Carbon::now();
+        dd($now);
+
+//        $building_name = $request->input('building_name');
+//        $building_id = Building::where('name',$building_name)->first()->id;
+//        $building_floor = $request->input('building_floor');
+//        $room_number = $request->input('room_number');
+//        $room_id = Room::where('building_id',$building_id)->where('floor',$building_floor)->where('number',$room_number)->first()->id;
+//
+//
+//        $reports = Report::where('room_id',$room_id)->where('type','รายงาน')->where('status','รอการยืนยัน')->get();
+//        return view('receipts.create',['reports' => $reports]);
     }
 
     /**
@@ -49,7 +62,21 @@ class ReceiptController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $building_name = $request->input('building_name');
+        $building_id = Building::where('name',$building_name)->first()->id;
+        $building_floor = $request->input('building_floor');
+        $building_floor = $request->input('building_floor');
+        $room_number = $request->input('room_number');
+        $user = Auth::id();
+
+        dd($user);
+
+
+
+
+
+
+
     }
 
     /**
