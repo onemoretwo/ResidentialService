@@ -130,7 +130,7 @@ class ReceiptController extends Controller
         $user->money = ($user->money)-($old_bill->total_price);
         $user->save();
 
-        $req = BookingRequest::findOrFail($user->id);
+        $req = BookingRequest::findOrFail(Auth::id());
         $req->status = 'สำเร็จ';
         $req->save();
 
