@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Bill;
 use App\BookingRequest;
 use App\Building;
 use App\Package;
+use App\User;
 use Carbon\Carbon;
 use App\Type;
 use App\WifiCode;
@@ -29,10 +31,17 @@ class RoomController extends Controller
      */
     public function index($id)
     {
+        $u = Auth::id();
+        $user = User::findOrFail($u);
+
         $types = Type::all();
         $type = Type::find($id);
         $buildings = Building::all();
         $rooms = Room::get()->where('type_id', $type->id);
+        $bill = Bill::all()->where('room_id','=', $user->room_id)
+            ->where('activated_at','=','รอชำระ')
+            ->get();
+
         return view('rooms.index', [
                 'types' => $types,
                 'rooms' => $rooms,
@@ -137,6 +146,7 @@ class RoomController extends Controller
     public function showStaff($id)
     {
         $room = Room::findOrFail($id);
+
         return view('rooms.showStaff',['room' => $room]);
     }
 
@@ -149,6 +159,10 @@ class RoomController extends Controller
     public function userRoom($id)
     {
         $room = Room::findOrFail($id);
+        $today =Carbon::today();
+        $bill = Bill::where( 'activated_at', '=', $today)->where('status','รอชำระ')->where('room_id','=',$room->id)->count();
+
+//        dd($bills);
 
         $request = BookingRequest::get()->where('room_id', $id)->where('deleted_at', null)->first();
         if(!$request) {
@@ -168,8 +182,7 @@ class RoomController extends Controller
         }
         $wifi_code = WifiCode::where('user_id',Auth::id())->first();
 
-        //
-        return view('rooms.myRoom',['room' => $room, 'c' => $n_packages,'wifi_code' => $wifi_code, 'request' => $request]);
+        return view('rooms.myRoom',['room' => $room, 'c' => $n_packages,'wifi_code' => $wifi_code, 'request' => $request, 'bill'=> $bill]);
     }
 
     public function roomPackages($id){

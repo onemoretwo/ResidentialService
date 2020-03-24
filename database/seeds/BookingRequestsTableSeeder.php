@@ -12,20 +12,20 @@ class BookingRequestsTableSeeder extends Seeder
      */
     public function run()
     {
-        $request = new BookingRequest();
-        $request->user_id = 3;
-        $request->room_id = 123;
-        $request->checkIn_at = NOW();
-        $request->admin_id = 1;
-        $request->status = 'สำเร็จ';
-        $request->save();
-
-        $request = new BookingRequest();
-        $request->user_id = 4;
-        $request->room_id = 215;
-        $request->checkIn_at = NOW();
-        $request->admin_id = 1;
-        $request->status = 'สำเร็จ';
-        $request->save();
+//        $request = new BookingRequest();
+//        $request->user_id = 3;
+//        $request->room_id = 123;
+//        $request->checkIn_at = NOW();
+//        $request->admin_id = 1;
+//        $request->status = 'สำเร็จ';
+//        $request->save();
+//
+//        $request = new BookingRequest();
+//        $request->user_id = 4;
+//        $request->room_id = 215;
+//        $request->checkIn_at = NOW();
+//        $request->admin_id = 1;
+//        $request->status = 'สำเร็จ';
+//        $request->save();
     }
 }

@@ -12,7 +12,6 @@
         }
     </style>
 @endsection
-<script src="https://kit.fontawesome.com/56e49317d8.js" crossorigin="anonymous"></script>
 
 @section('content')
     <div class="container justify-content-center">
