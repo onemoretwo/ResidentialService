@@ -21,9 +21,8 @@ class ReceiptController extends Controller
      */
     public function index()
     {
-        $bills = Bill::where( 'activated_at', '=', Carbon::today())
-                        ->where('status','บิลใหม่')->get();
-//        dd($bills);
+        $today =Carbon::today();
+        $bills = Bill::where( 'activated_at', '<=', $today)->where('status','บิลใหม่')->get();
 
         return view('receipts.index',['bills' => $bills]);
 
@@ -36,18 +35,13 @@ class ReceiptController extends Controller
      */
     public function create()
     {
-        return view('receipts.create',['reports' => null]);
 
     }
 
-    public function billCreateShowReport(Request $request){
-        $building_name = $request->input('building_name');
-        $building_id = Building::where('name',$building_name)->first()->id;
-        $building_floor = $request->input('building_floor');
-        $room_number = $request->input('room_number');
-        $room_id = Room::where('building_id',$building_id)->where('floor',$building_floor)->where('number',$room_number)->first()->id;
-        $reports = Report::where('room_id',$room_id)->where('type','รายงาน')->where('status','รอการยืนยัน')->orderBy('created_at','desc')->get();
-        return view('receipts.create',['reports' => $reports]);
+    public function billCreateShowReport($id){
+        $bill = Bill::findOrFail($id);
+        $reports = $bill->room->reports;
+        return view('receipts.create',['reports' => $reports,'bill' => $bill]);
     }
 
     /**
@@ -58,30 +52,31 @@ class ReceiptController extends Controller
      */
     public function store(Request $request)
     {
-        $building_name = $request->input('building_name');
-        $building_id = Building::where('name',$building_name)->first()->id;
-        $building_floor = $request->input('building_floor');
-        $room_number = $request->input('room_number');
-        $room = Room::where('building_id',$building_id)->where('floor',$building_floor)->where('number',$room_number)->first();
+        $bill_id = $request->input('bill_id');
+        $bill = Bill::findOrFail($bill_id);
         $price = $request->input('price');
         $water_unit = $request->input('w_unit');
         $electric_unit = $request->input('e_unit');
-        $w_rate = $room->building->water_rate;
-        $e_rate = $room->building->electric_rate;
+        $w_rate = $bill->room->building->water_rate;
+        $e_rate = $bill->room->building->electric_rate;
         $totalPrice = $price + ($w_rate * $water_unit) + ($e_rate * $electric_unit);
 
-        $bill = new Bill();
-        $bill->room_id = $room->id;
         $bill->user_id = Auth::id();
         $bill->water_unit = $water_unit;
         $bill->electric_unit = $electric_unit;
-        $bill->room_price = $price;
         $bill->total_price = $totalPrice;
         $bill->status = 'รอชำระ';
-        $date = Carbon::today()->addMonth(1)->format('Y-m-d');
-        $bill->activated_at = $date;;
-
         $bill->save();
+
+        $newbill = new Bill();
+        $newbill->room_id = $bill->room_id;
+        $newbill->user_id = Auth::id();
+        $newbill->water_unit = 0;
+        $newbill->electric_unit = 0;
+        $newbill->room_price = $bill->room_price;
+        $newbill->total_price = $newbill->room_price;
+        $newbill->activated_at = Carbon::create($bill->activated_at)->addMonth(1)->toDateString();
+        $newbill->save();
 
         return redirect()->route('receipts.index');
     }
@@ -122,38 +117,11 @@ class ReceiptController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $old_bill = Bill::findOrFail($id);
-        $old_bill->status = "ชำระแล้ว";
-        $old_bill->save();
-
-        $user = User::findOrFail(Auth::id());
-        $user->money = ($user->money)-($old_bill->total_price);
-        $user->save();
-
-        $req = BookingRequest::findOrFail($user->id);
-        $req->status = 'สำเร็จ';
-        $req->save();
-
-        $bill = new Bill();
-        $bill->room_id = $user->room_id;
-        $bill->user_id = Auth::id();
-        $bill->water_unit = 0;
-        $bill->electric_unit = 0;
-        $bill->room_price = $user->room->type->price;
-        $bill->total_price = 0;
-        $bill->status = 'บิลใหม่';
-        $bill->activated_at = Carbon::parse($old_bill->activated_at)->addMonth(1);
-        $bill->save();
-
-        return redirect()->route('home.index');
-
-
-
-
     }
 
-    public function payBill($id){
-        $old_bill = Bill::findOrFail($id);
+    public function paid(Request $request){
+        $bill_id = $request->input('bill_id');
+        $old_bill = Bill::findOrFail($bill_id);
         $old_bill->status = "ชำระแล้ว";
         $old_bill->save();
 
@@ -161,12 +129,9 @@ class ReceiptController extends Controller
         $user->money = ($user->money)-($old_bill->total_price);
         $user->save();
 
-        $req = BookingRequest::findOrFail($user->id);
+        $req = BookingRequest::where('user_id',$user->id)->first();
         $req->status = 'สำเร็จ';
         $req->save();
-
-        dd($req);
-
 
         $bill = new Bill();
         $bill->room_id = $user->room_id;
@@ -180,7 +145,6 @@ class ReceiptController extends Controller
         $bill->save();
 
         return redirect()->route('home.index');
-
     }
 
     /**
