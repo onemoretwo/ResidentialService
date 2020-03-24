@@ -124,6 +124,8 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $staff = User::findOrFail($id);
+        $staff->delete();
+        return redirect()->route('admin.index');
     }
 }

@@ -46,8 +46,11 @@
                 </div>
             </div>
         </div>
-        <div class="text-right" style="margin-top: 10px">
-            <a href="{{ route('admin.destroy', ['admin' => $user->id]) }}" type="button" class="btn btn-danger"> ลบผู้ดูแล </a>
-        </div>
+        <form class="text-right" style="margin-top: 10px" onsubmit="return confirm('ต้องการลบผู้ดูแลออกจากระบบหรือไม่')"
+              action="{{ route('admin.destroy', ['admin' => $user->id]) }}" method="post">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-danger" > ลบผู้ดูแล </button>
+        </form>
     </div>
 @endsection

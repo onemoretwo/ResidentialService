@@ -19,7 +19,14 @@
     <div class="container justify-content-center">
         <div class="card" style="height: 40rem;">
             <div class="card-header">
-                <h1>ผู้ดูแลทั้งหมดในระบบ</h1>
+                <div class="row">
+                    <div class="col">
+                        <h1>ผู้ดูแลทั้งหมดในระบบ</h1>
+                    </div>
+                    <div class="col text-right">
+                        <a href="{{ route('admin.create') }}" class="btn btn-outline-primary"><h4>เพิ่มผู้ดูแล</h4></a>
+                    </div>
+                </div>
             </div>
             <div class="card-body table-responsive">
                 <table class="table table-hover text-center">
@@ -46,7 +53,7 @@
                         </tr>
                     @endforeach
                     <tr onclick="window.location='{{ route("admin.create") }}'">
-                        <td colspan="6" class="text-left">+ Add New Staff</td>
+                        <td colspan="6" class="text-left">+ เพิ่มผู้ดูแล</td>
                     </tr>
                     </tbody>
                 </table>
