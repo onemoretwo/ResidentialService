@@ -73,3 +73,5 @@ Route::get('/requests/{request}/update/admin-confirm','RequestController@updateC
 
 Route::resource('/packages','PackageController');
 
+Route::resource('/admin', 'AdminController');
+

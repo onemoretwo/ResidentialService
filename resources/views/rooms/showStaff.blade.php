@@ -93,38 +93,36 @@
 
         </div>
         <div class="row">
-            <div class="col-4">
-                <div style="padding-top: 1rem">
-                    <div class="card">
-                        <div class="card-body">
-                            <div>
-                                <label >ชื่อ :</label>
-                                <label > title name </label>
-                                <label > lastname  </label>
+        @if($room->users->count() > 0)
+            @foreach($room->users as $user)
+                    <div class="col-4">
+                        <div style="padding-top: 1rem">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div>
+                                        <label >ชื่อ :</label>
+                                        <label > title name </label>
+                                        <label > lastname  </label>
+                                    </div>
+                                    <div>
+                                        <label >ที่อยู่ :</label>
+                                        <label >address</label>
+                                    </div>
+                                    <div>
+                                        <label >Email :</label>
+                                        <label >email</label>
+                                    </div>
+                                    <div>
+                                        <label >เบอร์ติดต่อ :</label>
+                                        <label >tel</label>
+                                    </div>
+                                </div>
                             </div>
-
-                            <div>
-                                <label >ที่อยู่ :</label>
-                                <label >address</label>
-                            </div>
-                            <div>
-                                <label >Email :</label>
-                                <label >email</label>
-                            </div>
-                            <div>
-                                <label >เบอร์ติดต่อ :</label>
-                                <label >tel</label>
-                            </div>
-
-
-
-
-
                         </div>
                     </div>
-                </div>
-            </div>
-
-
+            @endforeach
+        @endif
+        </div>
     </div>
+
 @endsection

@@ -62,13 +62,6 @@
                         <div class="col-md-4" style="padding-top: 2rem">
                             <a type="button" class="btn btn-outline-primary" href="{{ route('requests.index', ['type' => $selected_type]) }}">ล้าง</a>
                         </div>
-                        @foreach($types as $type)
-                            <a class="btn btn-outline-primary type-button
-                           @if($type->id == $selected_type->id)
-                                active
-                            @endif
-                                " href="{{ route('requests.index' ,[ 'type' => $type->id ]) }}" style="margin-top: 10px">{{ $type->name }}</a>
-                        @endforeach
                     </div>
 
 
@@ -93,11 +86,6 @@
                         @if($req->status == 'สำเร็จ')
                             @continue
                         @endif
-                        @isset($selected_type)
-                            @if($selected_type->id != $req->room->type_id)
-                                @continue
-                            @endif
-                        @endisset
                         @isset($building)
                             @if($building->id != $req->room->building_id)
                                 @continue

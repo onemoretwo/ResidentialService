@@ -15,6 +15,9 @@
                 <li class="nav-item">
                     <a href="{{ url('/information') }}" class="nav-link">รายละเอียด </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ url('/gallery') }}" class="nav-link">อัลบั้มภาพ </a>
+                </li>
                 @if(auth()->check())
                     @if(auth()->user()->isAdmin() or auth()->user()->isStaff())
                         <li class="nav-item">
@@ -46,9 +49,6 @@
                             <a href="{{ route('receipts.index') }}" class="nav-link">แจ้งบิล</a>
                         </li>
                     @else
-                        <li class="nav-item">
-                            <a href="{{ url('/gallery') }}" class="nav-link">อัลบั้มภาพ </a>
-                        </li>
 {{--                        <li class="nav-item">--}}
 {{--                            <a href="{{ url('/neighborhood') }}" class="nav-link">สถานที่ใกล้เคียง</a>--}}
 {{--                        </li>--}}
@@ -69,6 +69,11 @@
                             <a href="{{ route('rooms.index', ['type' => 1]) }}" class="nav-link">ลงทะเบียนจองห้อง</a>
                         </li>
                         @endif
+                    @endif
+                    @if(auth()->user()->isAdmin())
+                        <li class="nav-item">
+                            <a href="{{ route('admin.index') }}" class="nav-link">จัดการผู้ดูแล</a>
+                        </li>
                     @endif
                 @endif
 
@@ -94,14 +99,14 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            @if(Auth::user()->role === 'user')
+                                <a class="dropdown-item" href="{{ route('buyCash') }}">เติมเงินเข้าระบบ</a>
+                            @endif
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
+                                {{ __('ออกจากระบบ') }}
                             </a>
-                            @if(Auth::user()->role === 'user')
-                                <a class="dropdown-item" href="{{ route('buyCash') }}">เติมเงินเข้าระบบ</a>
-                                @endif
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
