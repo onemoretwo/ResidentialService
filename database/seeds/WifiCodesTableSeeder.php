@@ -29,5 +29,21 @@ class WifiCodesTableSeeder extends Seeder
         $wifi7->code = "kures1_DFGFDFF3FG";
 //        $wifi7->expire_at = Carbon::today()->addDays(7);
         $wifi7->save();
+
+        $wifi1 = new WifiCode();
+        $wifi1->code = "kures1_DFGFDFF3H";
+        $wifi1->save();
+
+        $wifi1 = new WifiCode();
+        $wifi1->code = "kures1_DFGFDFF3FI";
+        $wifi1->save();
+
+        $wifi1 = new WifiCode();
+        $wifi1->code = "kures1_DFGFDFF3FJ";
+        $wifi1->save();
+
+        $wifi1 = new WifiCode();
+        $wifi1->code = "kures1_DFGFDFF3FK";
+        $wifi1->save();
     }
 }
