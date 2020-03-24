@@ -65,7 +65,7 @@ class ReceiptController extends Controller
         $bill->water_unit = $water_unit;
         $bill->electric_unit = $electric_unit;
         $bill->total_price = $totalPrice;
-        $bill->status = 'รอชำระ';
+        $bill->status = 'ชำระแล้ว';
         $bill->save();
 
         $newbill = new Bill();
