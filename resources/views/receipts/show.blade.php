@@ -175,7 +175,7 @@
                                 <th colspan="2"></th>
                                 <td  >รวม</td>
                                 <td>
-                                    @if($req->status == 'รอการชำระเงิน')
+                                    @if($req->status === 'รอการชำระเงิน')
                                         {{ ($bill->room_price)*2 }}
                                     @else
                                         {{ $bill->total_price  }}
@@ -185,8 +185,8 @@
                             </tr>
                             </tbody>
                         </table>
-                        <form action="{{route('receipts.update',['receipt'=> $bill->id])}}" method="post">
-                            @method('PUT')
+                        <form action="{{route('paid')}}" method="post">
+                            <input type="hidden" name="bill_id" value="{{ $bill->id }}">
                             @csrf
                             <button type="button" data-toggle="modal"
                                     @if(($user->money) > ($bill->total_price))

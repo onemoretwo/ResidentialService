@@ -39,6 +39,7 @@ Route::post('/rooms/my-room/{room}/myStatements','UserStatementController@statem
 Route::get('/rooms/my-room/{room}/myStatements/back','UserStatementController@allStatement')->name('backToAll');
 Route::get('/rooms/my-room/{room}/addRoommate','UserController@addRoommateView')->name('room.user.roommate');
 Route::post('/rooms/my-room/{room}/addRoommate/add','UserController@sendInvite')->name('sendInvite');
+Route::post('/receipts/paid','ReceiptController@paid')->name('paid');
 Route::get('/buyCash','UserController@buyCashView')->name('buyCash');
 Route::post('/buyCash','UserController@buyCashUpdate')->name('updateCash');
 Route::resource('/wifi','WifiCodeController');
@@ -54,11 +55,10 @@ Route::post('/reports/repair/','ReportController@storeRepair')->name('reports.re
 Route::get('/reports/building/{building}', 'ReportController@indexBuilding')->name('reports.index.building');
 Route::get('/reports/building/{building}/floor/{floor}', 'ReportController@indexBuildingFloor')->name('reports.index.building.floor');
 
-Route::post('/receipts/pay/{receipt}','ReceiptController@payBill')->name('receipt.pay.bill');
 Route::get('/reports/search','ReportController@seachRoom')->name('reports.index.search');
 Route::resource('/reports','ReportController');
 Route::resource('/receipts','ReceiptController');
-Route::post('/receipts/create/process','ReceiptController@billCreateShowReport')->name('receipt.show.report');
+Route::get('/receipts/{id}/create','ReceiptController@billCreateShowReport')->name('receipt.show.report');
 
 
 Route::resource('/requests','RequestController')->except([

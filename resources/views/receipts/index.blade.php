@@ -39,7 +39,7 @@
                                             <td>{{ $bill->room->floor }}</td>
                                             <td>{{ $bill->room->number }}</td>
                                             <td>{{ $bill->room->type->name }}</td>
-                                            <td><a href="{{ route("receipts.create",['receipt' => $bill->id]) }}"><button type="button" class="btn btn-outline-success">ออกบิล</button></a></td>
+                                            <td><a href="{{ route("receipt.show.report",['id' => $bill->id]) }}"><button type="button" class="btn btn-outline-success">ออกบิล</button></a></td>
                                         </tr>
                                     @endif
                                 @endforeach

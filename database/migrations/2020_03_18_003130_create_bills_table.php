@@ -17,8 +17,8 @@ class CreateBillsTable extends Migration
             $table->id();
             $table->bigInteger('room_id')->unsigned();
             $table->bigInteger('user_id')->unsigned();
-            $table->float('water_unit');
-            $table->float('electric_unit');
+            $table->float('water_unit')->default(0);
+            $table->float('electric_unit')->default(0);
             $table->float('room_price');
             $table->float('total_price');
             $table->date('activated_at')->nullable();
