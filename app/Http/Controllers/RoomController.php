@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Bill;
 use App\BookingRequest;
 use App\Building;
 use App\Package;
+use App\User;
 use Carbon\Carbon;
 use App\Type;
 use App\WifiCode;
@@ -29,10 +31,17 @@ class RoomController extends Controller
      */
     public function index($id)
     {
+        $u = Auth::id();
+        $user = User::findOrFail($u);
+
         $types = Type::all();
         $type = Type::find($id);
         $buildings = Building::all();
         $rooms = Room::get()->where('type_id', $type->id);
+        $bill = Bill::all()->where('room_id','=', $user->room_id)
+            ->where('activated_at','=','รอชำระ')
+            ->get();
+
         return view('rooms.index', [
                 'types' => $types,
                 'rooms' => $rooms,
