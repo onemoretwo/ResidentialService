@@ -34,9 +34,9 @@
 
 @section('content')
     <div class="container ">
-        <div class="card" >
-            <div class="card-header">
-                <h1> ตึก A ชั้น 3 ห้อง 331</h1>
+        <div class="card bg-secondary" >
+            <div class="card-header text-white">
+                <h1> ตึก {{ $room->building->name }} ชั้น {{ $room->floor }} ห้อง {{ $room->number }}</h1>
             </div>
             <div class="card-body">
                 <div class="container py-2">
@@ -52,10 +52,21 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-6">
-                                            <h5 >  </h5>
                                             <div class="container" style="padding-top: 1rem">
-                                                <p> ห้องขนาด </p>
-                                                <p> ประเถท </p>
+                                                <dl class="row">
+                                                    <dt class="col-8"> ห้องขนาด </dt>
+                                                    <dd class="col-4"> {{ $room->type->size }}  ตร.ม</dd>
+
+                                                    <dt class="col-8"> ประเภท </dt>
+                                                    <dd class="col-4"> {{ $room->type->name }} </dd>
+
+                                                    <dt class="col-8"> ราคา </dt>
+                                                    <dd class="col-4"> {{ $room->type->price }}   บาท</dd>
+
+                                                </dl>
+
+{{--                                                <p> ห้องขนาด </p>--}}
+{{--                                                <p> ประเถท </p>--}}
 
 
                                             </div>
@@ -92,38 +103,36 @@
             </div>
 
         </div>
-        <div class="row">
-            <div class="col-4">
-                <div style="padding-top: 1rem">
-                    <div class="card">
-                        <div class="card-body">
-                            <div>
-                                <label >ชื่อ :</label>
-                                <label > title name </label>
-                                <label > lastname  </label>
+        @if($room->users == null)
+            <div class="row">
+                <div class="col-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div>
+                                    <label >ชื่อ :</label>
+                                    <label > title name </label>
+                                    <label > lastname  </label>
+                                </div>
+
+                                <div>
+                                    <label >ที่อยู่ :</label>
+                                    <label >address</label>
+                                </div>
+                                <div>
+                                    <label >Email :</label>
+                                    <label >email</label>
+                                </div>
+                                <div>
+                                    <label >เบอร์ติดต่อ :</label>
+                                    <label >tel</label>
+                                </div>
                             </div>
-
-                            <div>
-                                <label >ที่อยู่ :</label>
-                                <label >address</label>
-                            </div>
-                            <div>
-                                <label >Email :</label>
-                                <label >email</label>
-                            </div>
-                            <div>
-                                <label >เบอร์ติดต่อ :</label>
-                                <label >tel</label>
-                            </div>
-
-
-
-
-
                         </div>
                     </div>
-                </div>
-            </div>
+                @else
+                    asdasd
+                @endif
+
 
 
     </div>

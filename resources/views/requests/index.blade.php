@@ -12,7 +12,6 @@
         }
     </style>
 @endsection
-<script src="https://kit.fontawesome.com/56e49317d8.js" crossorigin="anonymous"></script>
 
 @section('content')
     <div class="container justify-content-center">
@@ -62,13 +61,6 @@
                         <div class="col-md-4" style="padding-top: 2rem">
                             <a type="button" class="btn btn-outline-primary" href="{{ route('requests.index', ['type' => $selected_type]) }}">ล้าง</a>
                         </div>
-                        @foreach($types as $type)
-                            <a class="btn btn-outline-primary type-button
-                           @if($type->id == $selected_type->id)
-                                active
-                            @endif
-                                " href="{{ route('requests.index' ,[ 'type' => $type->id ]) }}" style="margin-top: 10px">{{ $type->name }}</a>
-                        @endforeach
                     </div>
 
 
