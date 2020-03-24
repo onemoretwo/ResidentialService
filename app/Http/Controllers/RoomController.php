@@ -38,15 +38,15 @@ class RoomController extends Controller
         $type = Type::find($id);
         $buildings = Building::all();
         $rooms = Room::get()->where('type_id', $type->id);
-        $bill = Bill::all()->where('room_id','=', $user->room_id)
-            ->where('activated_at','=','รอชำระ')
-            ->get();
+        $bill = Bill::get()->where('room_id','=', $user->room_id)
+            ->where('activated_at','=','รอชำระ');
 
         return view('rooms.index', [
                 'types' => $types,
                 'rooms' => $rooms,
                 'buildings' => $buildings,
                 'selected_type' => $type,
+            'bill' => $bill,
         ]);
 
     }
@@ -160,7 +160,7 @@ class RoomController extends Controller
     {
         $room = Room::findOrFail($id);
         $today =Carbon::today();
-//        $bill = Bill::where( 'activated_at', '=', $today)->where('status','รอชำระ')->where('room_id','=',$room->id)->count();
+       $bill = Bill::where( 'activated_at', '=', $today)->where('status','รอชำระ')->where('room_id','=',$room->id)->count();
 
 //        dd($bills);
 
@@ -182,7 +182,7 @@ class RoomController extends Controller
         }
         $wifi_code = WifiCode::where('user_id',Auth::id())->first();
 
-        return view('rooms.myRoom',['room' => $room, 'c' => $n_packages,'wifi_code' => $wifi_code, 'request' => $request]);
+        return view('rooms.myRoom',['room' => $room, 'c' => $n_packages,'wifi_code' => $wifi_code, 'request' => $request,'bill'=>$bill]);
     }
 
     public function roomPackages($id){
