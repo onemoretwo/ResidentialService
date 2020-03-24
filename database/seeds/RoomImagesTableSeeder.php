@@ -49,8 +49,11 @@ class RoomImagesTableSeeder extends Seeder
 
         $roomImage = new RoomImage();
         $roomImage->room_id = 1;
-        $roomImage->image_path = "images/studio/room8.jpg";
+        $roomImage->image_path = "images/studio/room9.jpg";
         $roomImage->save();
+
     }
+
+
 
 }

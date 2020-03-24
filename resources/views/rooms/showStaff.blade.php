@@ -43,97 +43,109 @@
 
                 </div>
                 <div class="container">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div class="card">
+                    <div class="row ">
+                        <div class="col-lg-8"  id="slider">
+                            <div id="myCarousel" class="carousel slide shadow">
+                                <!-- main slider carousel items -->
+
+                                <div class="carousel-inner">
+                                    @foreach($room->roomImages->where('room_id',$room->id) as $roomImage)
+                                    <div class="{{ $loop->first ? 'active' : '' }} carousel-item" data-slide-number="{{ $loop->index }}">
+                                        <img src="{{ $roomImage->image_path }}" class="img-fluid">
+                                    </div>
+                                    @endforeach
+                                    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </div>
+                                <!-- main slider carousel nav controls -->
+
+                                <ul class="carousel-indicators list-inline mx-auto border px-2">
+                                    @foreach($room->roomImages->where('room_id',$room->id) as $roomImage)
+                                    <li class="list-inline-item active">
+                                        <a id="carousel-selector-0" class="selected" data-slide-to="{{ $loop->index }}" data-target="#myCarousel">
+                                            <img src="{{ $roomImage->image_path }}" class="img-fluid">
+                                        </a>
+                                    </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 ">
+                            <div class="card" style="height: 21rem">
                                 <div class="card-header">
-                                    <h3>รายละเอียดห้อง</h3>
+                                    <h2>รายละเอียด</h2>
                                 </div>
                                 <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <div class="container" style="padding-top: 1rem">
-                                                <dl class="row">
-                                                    <dt class="col-8"> ห้องขนาด </dt>
-                                                    <dd class="col-4"> {{ $room->type->size }}  ตร.ม</dd>
-
-                                                    <dt class="col-8"> ประเภท </dt>
-                                                    <dd class="col-4"> {{ $room->type->name }} </dd>
-
-                                                    <dt class="col-8"> ราคา </dt>
-                                                    <dd class="col-4"> {{ $room->type->price }}   บาท</dd>
-
-                                                </dl>
-
-{{--                                                <p> ห้องขนาด </p>--}}
-{{--                                                <p> ประเถท </p>--}}
-
-
-                                            </div>
-
-                                        </div>
-                                        <div class="col-6">
-                                            <h5>  </h5>
-                                            <div class="container" style="padding-top: 1rem">
-
-                                            </div>
-                                        </div>
-                                    </div>
-
+                                    <table class="table">
+                                        <tbody>
+                                        <tr>
+                                            <th scope="row">ห้องประเภท</th>
+                                            <td> {{ $room->type->name }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">ขนาด</th>
+                                            <td>{{ $room->type->size }} ตร.ม</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">รายเดือน</th>
+                                            <td>{{ $room->type->price }}  บาท</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">ค่าไฟ</th>
+                                            <td>{{ $room->building->electric_rate }}  บาทต่อยูนิต</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">ค่าน้ำ</th>
+                                            <td>{{ $room->building->water_rate }}  บาทต่อยูนิต</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
 
                                 </div>
                             </div>
-
                         </div>
-                        <div class="col-md-4">
-                            <div class="card">
-                                <div class="card-header text-center">
-                                    <h3>...</h3>
-                                </div>
-                                <div class="card-body"></div>
-                            </div>
-                            <div style="padding-top: 2rem;">
-                            </div>
 
-
-                        </div>
                     </div>
 
                 </div>
             </div>
 
         </div>
-        @if($room->users == null)
-            <div class="row">
-                <div class="col-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <div>
-                                    <label >ชื่อ :</label>
-                                    <label > title name </label>
-                                    <label > lastname  </label>
-                                </div>
-
-                                <div>
-                                    <label >ที่อยู่ :</label>
-                                    <label >address</label>
-                                </div>
-                                <div>
-                                    <label >Email :</label>
-                                    <label >email</label>
-                                </div>
-                                <div>
-                                    <label >เบอร์ติดต่อ :</label>
-                                    <label >tel</label>
+        <div class="row">
+        @if($room->users->count() > 0)
+            @foreach($room->users as $user)
+                    <div class="col-4">
+                        <div style="padding-top: 1rem">
+                            <div class="card text-dark border-primary">
+                                <div class="card-body">
+                                    <div>
+                                        <label >ชื่อ : {{ $user->title }} {{ $user->first_name }} {{ $user->last_name }}</label>
+                                    </div>
+                                    <div>
+                                        <label >ที่อยู่ :</label>
+                                        <label > {{ $user->address }}</label>
+                                    </div>
+                                    <div>
+                                        <label >Email :</label>
+                                        <label >{{ $user->email }}</label>
+                                    </div>
+                                    <div>
+                                        <label >เบอร์ติดต่อ :</label>
+                                        <label >{{ $user->phone_number_1 }}</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                @else
-                    asdasd
-                @endif
-
-
-
+            @endforeach
+        @endif
+        </div>
     </div>
+
 @endsection
