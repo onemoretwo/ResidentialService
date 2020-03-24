@@ -59,6 +59,7 @@ class ReceiptController extends Controller
         $electric_unit = $request->input('e_unit');
         $w_rate = $bill->room->building->water_rate;
         $e_rate = $bill->room->building->electric_rate;
+
         $totalPrice = $price + ($w_rate * $water_unit) + ($e_rate * $electric_unit);
 
         $bill->user_id = Auth::id();

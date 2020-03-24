@@ -160,7 +160,7 @@ class RoomController extends Controller
     {
         $room = Room::findOrFail($id);
         $today =Carbon::today();
-        $bill = Bill::where( 'activated_at', '=', $today)->where('status','รอชำระ')->where('room_id','=',$room->id)->count();
+//        $bill = Bill::where( 'activated_at', '=', $today)->where('status','รอชำระ')->where('room_id','=',$room->id)->count();
 
 //        dd($bills);
 
@@ -182,7 +182,7 @@ class RoomController extends Controller
         }
         $wifi_code = WifiCode::where('user_id',Auth::id())->first();
 
-        return view('rooms.myRoom',['room' => $room, 'c' => $n_packages,'wifi_code' => $wifi_code, 'request' => $request, 'bill'=> $bill]);
+        return view('rooms.myRoom',['room' => $room, 'c' => $n_packages,'wifi_code' => $wifi_code, 'request' => $request]);
     }
 
     public function roomPackages($id){
