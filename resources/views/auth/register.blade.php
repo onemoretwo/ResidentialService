@@ -16,7 +16,7 @@
                 <div class="card-header">{{ __('สมัครสมาชิก') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('register') }}" onsubmit="return confirm('ยืนยันข้อมูลทั้งหมดถูกต้อง')">
                         @csrf
 
                         <div class="form-group row">

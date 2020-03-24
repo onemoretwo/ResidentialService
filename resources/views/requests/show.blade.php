@@ -106,7 +106,7 @@
                             </dl>
                         </div>
                         <div class="text-center">
-                            <form id="deleteForm" onsubmit="return confirm('Are you sure to delete this post?')"
+                            <form id="deleteForm" onsubmit="return confirm('ต้องการลบคำขอนี้หรือไม่')"
                                   action="{{ route('requests.destroy', ['request' => $request->id]) }}" method="post">
                                 @method('DELETE')
                                 @csrf
