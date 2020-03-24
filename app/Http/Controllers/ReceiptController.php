@@ -62,17 +62,14 @@ class ReceiptController extends Controller
         $totalPrice = $price + ($w_rate * $water_unit) + ($e_rate * $electric_unit);
 
         $bill->user_id = Auth::id();
-//        $bill->water_unit = $water_unit;
-//        $bill->electric_unit = $electric_unit;
-//        $bill->total_price = $totalPrice;
         $bill->status = 'ชำระแล้ว';
         $bill->save();
 
         $newbill = new Bill();
         $newbill->room_id = $bill->room_id;
         $newbill->user_id = Auth::id();
-        $newbill->water_unit = $request->input('w_unit');
-        $newbill->electric_unit = $request->input('e_unit');
+        $newbill->water_unit = $water_unit;
+        $newbill->electric_unit = $electric_unit;
         $newbill->room_price = $bill->room_price;
         $newbill->total_price = $totalPrice;
         $newbill->activated_at = Carbon::create($bill->activated_at)->addMonth(1)->toDateString();
