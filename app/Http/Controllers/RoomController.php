@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Bill;
 use App\BookingRequest;
 use App\Building;
 use App\Package;
@@ -149,6 +150,10 @@ class RoomController extends Controller
     public function userRoom($id)
     {
         $room = Room::findOrFail($id);
+        $today =Carbon::today();
+        $bill = Bill::where( 'activated_at', '=', $today)->where('status','รอชำระ')->where('room_id','=',$room->id)->count();
+
+//        dd($bills);
 
         $request = BookingRequest::get()->where('room_id', $id)->where('deleted_at', null)->first();
         if(!$request) {
@@ -168,8 +173,7 @@ class RoomController extends Controller
         }
         $wifi_code = WifiCode::where('user_id',Auth::id())->first();
 
-        //
-        return view('rooms.myRoom',['room' => $room, 'c' => $n_packages,'wifi_code' => $wifi_code, 'request' => $request]);
+        return view('rooms.myRoom',['room' => $room, 'c' => $n_packages,'wifi_code' => $wifi_code, 'request' => $request, 'bill'=> $bill]);
     }
 
     public function roomPackages($id){
