@@ -19,5 +19,6 @@ class DatabaseSeeder extends Seeder
         $this->call(WifiCodesTableSeeder::class);
         $this->call(BillsTableSeeder::class);
         $this->call(BookingRequestsTableSeeder::class);
+        $this->call(RoomImagesTableSeeder::class);
     }
 }
