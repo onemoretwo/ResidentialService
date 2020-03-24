@@ -85,11 +85,6 @@
                         @if($req->status == 'สำเร็จ')
                             @continue
                         @endif
-                        @isset($selected_type)
-                            @if($selected_type->id != $req->room->type_id)
-                                @continue
-                            @endif
-                        @endisset
                         @isset($building)
                             @if($building->id != $req->room->building_id)
                                 @continue
