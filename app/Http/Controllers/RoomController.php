@@ -38,9 +38,8 @@ class RoomController extends Controller
         $type = Type::find($id);
         $buildings = Building::all();
         $rooms = Room::get()->where('type_id', $type->id);
-        $bill = Bill::all()->where('room_id','=', $user->room_id)
-            ->where('activated_at','=','รอชำระ')
-            ->get();
+        $bill = Bill::get()->where('room_id','=', $user->room_id)
+            ->where('activated_at','=','รอชำระ');
 
         return view('rooms.index', [
                 'types' => $types,
