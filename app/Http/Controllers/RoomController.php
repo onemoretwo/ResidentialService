@@ -150,6 +150,8 @@ class RoomController extends Controller
         return view('rooms.showStaff',['room' => $room]);
     }
 
+
+
     /**
      * Display the specified resource.
      *

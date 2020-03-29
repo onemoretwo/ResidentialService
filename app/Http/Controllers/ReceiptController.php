@@ -10,6 +10,7 @@ use App\Room;
 use App\User;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
 class ReceiptController extends Controller
@@ -125,6 +126,7 @@ class ReceiptController extends Controller
     public function paid(Request $request){
         $bill_id = $request->input('bill_id');
         $old_bill = Bill::findOrFail($bill_id);
+        $old_bill->user_paid = Auth::id();
         $old_bill->status = "ชำระแล้ว";
         $old_bill->save();
 
@@ -147,6 +149,7 @@ class ReceiptController extends Controller
         $bill->activated_at = Carbon::parse($old_bill->activated_at)->addMonth(1);
         $bill->save();
 
+
         return redirect()->route('home.index');
     }
 
@@ -159,6 +162,32 @@ class ReceiptController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function showBillHistory($id,$bill)
+    {
+//        dd($bill);
+        $room = Room::findOrFail($id);
+        $user = User::findOrFail(Auth::id());
+        $bills = Bill::all()->where('room_id',$room->id)->where('status','ชำระแล้ว');
+        $show_bill = Bill::findOrFail($bill);
+        $req = BookingRequest::all()->where('room_id',$room->id)->where('status','สำเร็จ')->first();
+
+        return view('rooms.showBillHistory',['room' => $room, 'bills' => $bills, 'show_bill'=>$show_bill, 'user'=>$user, 'req'=> $req]);
+    }
+
+    public function checkBill($id,$bill_show){
+        $room = Room::findOrFail($id);
+        $show_bill = Bill::findOrFail($bill_show);
+        return $this->showBillHistory($room,$show_bill);
+
+
     }
 
 

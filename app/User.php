@@ -37,6 +37,7 @@ class User extends Authenticatable
         return $this->hasMany(WifiCode::class);
     }
 
+
     use Notifiable;
 
     protected $fillable = ['title', 'first_name', 'last_name', 'email', 'password', 'gender', 'birth_date', 'money',
