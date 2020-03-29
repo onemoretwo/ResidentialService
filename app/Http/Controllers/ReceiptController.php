@@ -63,18 +63,23 @@ class ReceiptController extends Controller
         $totalPrice = $price + ($w_rate * $water_unit) + ($e_rate * $electric_unit);
 
         $bill->user_id = Auth::id();
-        $bill->status = 'ชำระแล้ว';
+        $bill->water_unit = $water_unit;
+        $bill->electric_unit = $electric_unit;
+        $bill->total_price = $totalPrice;
+        $bill->status = 'รอชำระ';
         $bill->save();
 
-        $newbill = new Bill();
-        $newbill->room_id = $bill->room_id;
-        $newbill->user_id = Auth::id();
-        $newbill->water_unit = $water_unit;
-        $newbill->electric_unit = $electric_unit;
-        $newbill->room_price = $bill->room_price;
-        $newbill->total_price = $totalPrice;
-        $newbill->activated_at = Carbon::create($bill->activated_at)->addMonth(1)->toDateString();
-        $newbill->save();
+//        $newbill = new Bill();
+//        $newbill->room_id = $bill->room_id;
+//        $newbill->user_id = Auth::id();
+//        $newbill->water_unit = $water_unit;
+//        $newbill->electric_unit = $electric_unit;
+//        $newbill->room_price = $bill->room_price;
+//        $newbill->total_price = $totalPrice;
+//        $newbill->activated_at = Carbon::create($bill->activated_at)->addMonth(1)->toDateString();
+//        $newbill->save();
+
+
 
         return redirect()->route('receipts.index');
     }
@@ -133,7 +138,7 @@ class ReceiptController extends Controller
 
         $bill = new Bill();
         $bill->room_id = $user->room_id;
-        $bill->user_id = Auth::id();
+        $bill->user_id = $old_bill->user_id;
         $bill->water_unit = 0;
         $bill->electric_unit = 0;
         $bill->room_price = $user->room->type->price;

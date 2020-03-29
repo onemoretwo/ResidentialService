@@ -19,7 +19,7 @@
         <div class="">
             <div class="card" >
                 <div class="card-body">
-                    <h3 class="card-title text-center">แบบฟอร์มการจองห้องการ</h3>
+                    <h3 class="card-title text-center">แบบฟอร์มการจองห้อง</h3>
                     <form action="" METHOD="POST">
                         @csrf
                         <div  class="container m-md-3" style="padding-top: 2rem">
@@ -112,8 +112,31 @@
                                 @csrf
                                 <button class="btn btn-danger btn-lg" type="submit">ไม่อนุมัติ</button>
                             </form>
-                            <a type="button" class="btn btn-success btn-lg" href="{{ route('requests.admin.confirm', ['request' => $request->id]) }}">อนุมัติ</a>
+                            <a type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#request">อนุมัติ</a>
                         </div>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="request" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">ยืนยันการจองห้องพัก</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        ยืนยันการส่งรายงานนี้หรือไม่
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                                        <a  href="{{ route('requests.admin.confirm', ['request' => $request->id]) }}"><button type="submit" class="btn btn-primary">ยืนยัน</button></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
                     </form>
                 </div>
             </div>
