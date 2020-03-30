@@ -30,7 +30,7 @@
             <div class="card-body">
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                        <form method="post" action="{{ route('packages.store') }}">
+                        <form  class="md-form" method="post" action="{{ route('packages.store') }}"  enctype="multipart/form-data">
                             @csrf
                             <div class="card" >
                                 <div class="card-body">
@@ -68,6 +68,12 @@
                                             </div>
                                         </div>
 
+                                        <div class="col-md-5">
+                                            <label for="image">รูปพัสดุ</label>
+                                            <input class="form-control" data-preview="#preview" type="file" name="image" onchange="loadFile(event)">
+                                            <img style="width: 330px;height: 250px;margin-top: 30px" id="preview" src="" alt="">
+                                        </div>
+
                                     </div>
 
                                 </div>
@@ -86,4 +92,13 @@
 
 
     </div>
+    @endsection
+
+@section('script')
+    <script>
+        var loadFile = function(event) {
+            var output = document.getElementById('preview');
+            output.src = URL.createObjectURL(event.target.files[0]);
+        };
+    </script>
     @endsection

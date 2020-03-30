@@ -43,11 +43,16 @@ class PackageController extends Controller
             'title' => ['required','min:3'],
             'first_name' => ['required'],
             'last_name' => ['required'],
-            'detail' => ['required', 'max:500', 'min:3']
+            'detail' => ['required', 'max:500', 'min:3'],
+            'image' => ['required']
         ]);
         $title = $request->input('title');
         $first = $request->input('first_name');
         $last = $request->input('last_name');
+        $image_filename = time() . '.' . $request->file('image')->getClientOriginalName();
+        $public_path = 'images/packages';
+        $destination = base_path()."/public/".$public_path;
+        $request->file('image')->move($destination, $image_filename);
 
         $package = new Package();
         $userId = (new User())->getRoomFromUser($title,$first,$last);
@@ -56,6 +61,7 @@ class PackageController extends Controller
         $package->user_id = Auth::id();
         $package->recipient = $title . $first . " " . $last;
         $package->room_id = $user->room->id;
+        $package->image_path = $image_filename;
         $package->detail = $request->input('detail');
         $package->save();
         return redirect()->route('packages.index');

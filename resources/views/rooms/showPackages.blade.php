@@ -48,6 +48,11 @@
             display: flex;
             margin: 12px 0;
         }
+
+        .show-image{
+            position: absolute;
+            right: 170px;
+        }
     </style>
     @endsection
 
@@ -67,6 +72,7 @@
                             <h3>ไม่มีพัสดุ</h3>
                         @else
 
+                            @php($i = 1)
                             @foreach($packages as $package)
                                 <div>
                                     <div class="card card-adapt">
@@ -82,11 +88,32 @@
                                             <hr style="margin: 0.4rem 0">
                                             <div class="marg">
                                                 <p style="margin-bottom: 0.1rem;color: #808588">ผู้รับผิดชอบ :  {{ $package->user->first_name }}    {{ $package->user->last_name }}</p>
+                                                <button class="btn btn-info show-image" data-toggle="modal" data-target="#image{{ $i }}"><i class="fas fa-gift" style="margin-right: 5px"></i>ดูรูปพัสดุ</button>
                                                 <a class="icon-con btn btn-outline-info" style="color: #0080fe;" href="{{ route('package.confirm',['room' => $package->room->id, 'package' => $package->id]) }}">รับพัสดุแล้ว</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="modal fade bd-example-modal-lg" id="image{{ $i }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content" style="width: auto">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle">รูปพัสดุ</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <img style="width: 600px" src="{{ '/images/packages/' . $package->image_path }}" alt="">
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @php($i++)
                             @endforeach
                         @endif
 
