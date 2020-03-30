@@ -26,9 +26,8 @@ Route::get('/gallery', 'HomeController@gallery')->name('home.gallery');
 Route::get('/neighborhood', 'HomeController@neighborhood')->name('home.neighborhood');
 
 Route::get('/rooms/show-room-staff/{id}', 'RoomController@showStaff')->name('rooms.show.staff');
-Route::get('/rooms/show-bill-history/{id}/show/{bill}', 'ReceiptController@showBillHistory')->name('rooms.show.billHistory');
-Route::post('/rooms/show-bill-history/{id}/bill', 'ReceiptController@checkBill')->name('rooms.bill.show');
 
+Route::get('/rooms/show-bill-history/{id}/show/{bill}', 'ReceiptController@showBillHistory')->name('rooms.show.billHistory');
 
 Route::get('/rooms/my-room/{id}', 'RoomController@userRoom')->name('rooms.show.user');
 Route::get('/rooms/my-room/{room}/accept','UserController@acceptInvite')->name('accept');

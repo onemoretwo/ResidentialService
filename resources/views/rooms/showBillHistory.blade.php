@@ -237,35 +237,32 @@
                         <tbody>
                         @foreach($bills as $bill)
                             <tr>
+
                                 <td>{{ $bill->activated_at }}</td>
-                                <form action="{{route('rooms.bill.show',['id'=> $room->id])}}" method="POST">
-                                    @csrf
-                                    <td><button type="submit" class="btn btn-sm btn-outline-primary">ดูบิล</button></td>
-                                </form>
+                                    <td><a href="{{route('rooms.show.billHistory',['id'=> $room->id,'bill'=> $bill->id])}}"><button type="submit" class="btn btn-sm btn-outline-primary">ดูบิล</button></a></td>
                             </tr>
                         @endforeach
                         </tbody>
                     </table>
                 </div>
             </div>
-{{--            <div class="card" style="margin-top: 50px;">--}}
-{{--                <div class="card-header" style="text-align: center">--}}
-{{--                    จัดการ--}}
-{{--                </div>--}}
-{{--                <ul class="list-group list-group-flush">--}}
-{{--                    @if($req->status == 'รอการชำระเงิน')--}}
-{{--                        <li class="list-group-item"><i class="fas fa-home"></i>&nbsp;&nbsp;<a class="text" href="{{ route('rooms.show.user',['id' => $room]) }}">ห้องของฉัน</a></li>--}}
+            <div class="card" style="margin-top: 50px;">
+                <div class="card-header" style="text-align: center">
+                    จัดการ
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><i class="fas fa-home"></i>&nbsp;&nbsp;<a class="text" href="{{ route('rooms.show.user',['id' => $room]) }}">ห้องของฉัน</a></li>
+                    <li class="list-group-item"><i class="fas fa-exclamation-triangle errer-sign"></i>&nbsp;&nbsp;<a class="text" href="{{ route('user.create.report',['room' => $room]) }}">แจ้งซ่อมและรายงานปัญหา</a></li>
+                    @if($bill_this_month)
+                        <li class="list-group-item"><i class="fas fa-file-invoice-dollar bill-sign"></i>&nbsp;<a href="{{ route('receipts.show',['receipt' => $room]) }}" class="text">บิลประจำเดือน</a></li>
+                    @else
+                        <li class="list-group-item"><i class="fas fa-file-invoice-dollar bill-sign"></i>&nbsp;<a href="" style="padding-left: 1rem" class="text">ยังไม่มีบิล</a></li>
+                    @endif
+                    <li class="list-group-item"><i class="fas fa-box-open package-sign"></i><a class="text" href="{{ route('room.users.packages',['id' => $room]) }}">ตรวจสอบพัสดุ</a><span class="badge badge-danger"></span></li>
 
-{{--                    @else--}}
 
-{{--                        <li class="list-group-item"><i class="fas fa-home"></i>&nbsp;&nbsp;<a class="text" href="{{ route('rooms.show.user',['id' => $room]) }}">ห้องของฉัน</a></li>--}}
-{{--                        <li class="list-group-item"><i class="fas fa-exclamation-triangle errer-sign"></i>&nbsp;&nbsp;<a class="text" href="{{ route('user.create.report',['room' => $room]) }}">แจ้งซ่อมและรายงานปัญหา</a></li>--}}
-{{--                        <li class="list-group-item"><i class="fas fa-file-invoice-dollar bill-sign"></i>&nbsp;<a href="{{ route('receipts.show',['receipt' => $room]) }}" class="text">บิลประจำเดือน</a></li>--}}
-{{--                        <li class="list-group-item"><i class="fas fa-box-open package-sign"></i><a class="text" href="{{ route('room.users.packages',['id' => $room]) }}">ตรวจสอบพัสดุ</a><span class="badge badge-danger"></span></li>--}}
-{{--                    @endif--}}
-
-{{--                </ul>--}}
-{{--            </div>--}}
+                </ul>
+            </div>
         </div>
     </div>
 @endsection
