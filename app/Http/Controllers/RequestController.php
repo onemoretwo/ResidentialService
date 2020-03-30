@@ -207,7 +207,7 @@ class RequestController extends Controller
 
         $bill = new Bill();
         $bill->room_id = $req->room_id;
-        $bill->user_id = $req->user_id;
+        $bill->user_id = Auth::id();
         $bill->water_unit = 0;
         $bill->electric_unit = 0;
         $bill->room_price = $req->room->type->price;

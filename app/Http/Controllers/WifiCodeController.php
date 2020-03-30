@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Bill;
 use App\Package;
 use App\User;
 use App\UserStatement;
@@ -124,6 +125,8 @@ class WifiCodeController extends Controller
         $user = User::findOrFail(Auth::id());
         $n_packages = Package::where('room_id',$id)->where('status','รอรับของ')->count();
         $have = (new User())->haveWifi(Auth::id());
-        return view('wifiCodes.buyWifi',['room' => $id, 'c' => $n_packages,'cash' => $user->money,'have' => $have]);
+        $bill_this_month = Bill::where( 'activated_at', '=', Carbon::today())->where('status','รอชำระ')->where('room_id','=',$user->room_id)->count();
+
+        return view('wifiCodes.buyWifi',['room' => $id, 'c' => $n_packages,'cash' => $user->money,'have' => $have,'bill_this_month'=>$bill_this_month]);
     }
 }
