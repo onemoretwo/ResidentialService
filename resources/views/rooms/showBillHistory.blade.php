@@ -221,12 +221,12 @@
             </div>
         </div>
         <div class="col-md-4">
-            <div class="card" style="text-align: center">
+            <div class="card" style="text-align: center; height: 20rem" >
                 <div class="card-header">
                     ประวัติการจ่ายบิล
                 </div>
                 <div class="card-body table-responsive">
-                    <table class="table">
+                    <table class="table ">
                         <caption>รายการบิลทั้งหมด</caption>
                         <thead>
                         <tr>
