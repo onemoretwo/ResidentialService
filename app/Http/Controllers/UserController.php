@@ -91,7 +91,7 @@ class UserController extends Controller
 
 //        return Hash::check($request->password, $user->password);
 
-        if(Hash::check($request->password, $user->password) != 1) {
+        if(!Hash::check($request->password, $user->password)) {
             return redirect()->back()->with('alert', 'รหัสผ่านไม่ถูกต้อง');
         }
 
@@ -106,5 +106,30 @@ class UserController extends Controller
 
         $user->save();
         return redirect()->route('user.show', ['user' => $user->id]);
+    }
+
+    public function updateImg($id, Request $request) {
+
+    }
+
+    public function updatePassword($id, Request $request) {
+        $user = User::findOrFail($id);
+        if(!Hash::check($request->old_password, $user->password)) {
+            return redirect()->back()->with('alert', 'รหัสผ่านปัจจุบันไม่ถูกต้อง');
+        }
+
+        if(strlen($request->password) < 8) {
+            return redirect()->back()->with('alert', 'รหัสผ่่านต้องมีความยาวอย่างน้อย 8 ตัวอักษร');
+        }
+
+        if($request->password != $request->password_confirmation) {
+            return redirect()->back()->with('alert', 'รหัสผ่านใหม่ไม่ตรงกัน');
+        }
+
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+        return redirect()->route('user.show', ['user' => $user->id])->with('alert', 'เปลี่ยนรหัสผ่านเรียบร้อย');
+
     }
 }

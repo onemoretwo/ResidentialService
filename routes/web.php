@@ -78,4 +78,6 @@ Route::resource('/admin', 'AdminController');
 Route::get('/profile/{user}','UserController@show')->name('user.show');
 Route::get('/profile/edit/{user}','UserController@edit')->name('user.edit');
 Route::post('/profile/update/{user}','UserController@update')->name('user.update');
+Route::post('/profile/update/img/{user}','UserController@updateImg')->name('user.update.img');
+Route::post('/profile/update/password/{user}','UserController@updatePassword')->name('user.update.password');
 

@@ -2,6 +2,9 @@
 
 @section('style')
     <style>
+        .required-red {
+            color: red;
+        }
         img {
             object-fit: cover;
         }
@@ -109,12 +112,99 @@
                                 <a type="button" class="btn btn-primary" href="{{ route('user.edit', ['user' => $user->id]) }}">
                                     {{ __('แก้ไขข้อมูล') }}
                                 </a>
-                                <a type="button" class="btn btn-primary" href="{{ route('user.edit', ['user' => $user->id]) }}">
+                                <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#changeImgModal">
                                     {{ __('เปลี่ยนรูปประจำตัว') }}
-                                </a>
-                                <a type="button" class="btn btn-primary" href="{{ route('user.edit', ['user' => $user->id]) }}">
+                                </button>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#changePasswordModal">
                                     {{ __('เปลี่ยนรหัสผ่าน') }}
-                                </a>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="modal fade" id="changeImgModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">เปลี่ยนรูปประจำตัว</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <form action="{{ route('user.update.img', ['user' => $user->id]) }}" method="POST">
+                                        @csrf
+                                    <div class="modal-body">
+                                        <input class="form-control-file @error('img') is-invalid @enderror" name="img" id="img"
+                                               type="file" value="upload">
+                                        @error('img')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                                        <button type="submit" class="btn btn-primary">ยืนยัน</button>
+                                    </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">เปลี่ยนรหัสผ่าน</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <form action="{{ route('user.update.password', ['user' => $user->id]) }}" method="POST">
+                                        @csrf
+                                        <div class="modal-body">
+                                            <div class="form-group row">
+                                                <label for="old-password" class="col-md-4 col-form-label text-md-right">รหัสผ่านปัจจุบัน <label class="required-red">*</label></label>
+
+                                                <div class="col-md-6">
+                                                    <input id="old_password" type="password" class="form-control @error('old_password') is-invalid @enderror" name="old_password" required>
+
+                                                    @error('old_password')
+                                                    <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label for="password" class="col-md-4 col-form-label text-md-right">รหัสผ่านใหม่ <label class="required-red">*</label></label>
+
+                                                <div class="col-md-6">
+                                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required>
+
+                                                    @error('password')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label for="password-confirm" class="col-md-4 col-form-label text-md-right">ยืนยันรหัสผ่านใหม่ <label class="required-red">*</label></label>
+
+                                                <div class="col-md-6">
+                                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                                            <button type="submit" class="btn btn-primary">ยืนยัน</button>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -125,6 +215,12 @@
 @endsection
 
 @section('script')
-
+    <script>
+        var msg = '{{Session::get('alert')}}';
+        var exist = '{{Session::has('alert')}}';
+        if(exist){
+            alert(msg);
+        }
+    </script>
 @endsection
 
