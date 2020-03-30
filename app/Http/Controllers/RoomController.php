@@ -34,9 +34,9 @@ class RoomController extends Controller
         $u = Auth::id();
         $user = User::findOrFail($u);
 
-//        return $user->isUpdateInfo() == false;
+//        return auth()->user()->isUpdateInfo();
 
-        if($user->isUpdateInfo()) {
+        if(!auth()->user()->isUpdateInfo()) {
             return redirect()->route('user.edit', ['user' => $user->id])->with('alert', 'กรุณาแก้ไขข้อมูลให้ครบถ้วน');
         }
 

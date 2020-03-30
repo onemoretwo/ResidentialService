@@ -80,10 +80,10 @@ class User extends Authenticatable
     }
 
     public function isUpdateInfo() {
-        if ($this->birth_date === null ||
-            $this->citizen_id === null ||
-            $this->address === null ||
-            $this->phone_number_1 === null)
+        if ($this->birth_date == null ||
+            $this->citizen_id == null ||
+            $this->address == null ||
+            $this->phone_number_1 == null)
             return false;
         return true;
     }
