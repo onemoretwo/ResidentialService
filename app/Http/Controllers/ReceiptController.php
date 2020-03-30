@@ -10,6 +10,7 @@ use App\Room;
 use App\User;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
 class ReceiptController extends Controller
@@ -63,18 +64,23 @@ class ReceiptController extends Controller
         $totalPrice = $price + ($w_rate * $water_unit) + ($e_rate * $electric_unit);
 
         $bill->user_id = Auth::id();
-        $bill->status = 'ชำระแล้ว';
+        $bill->water_unit = $water_unit;
+        $bill->electric_unit = $electric_unit;
+        $bill->total_price = $totalPrice;
+        $bill->status = 'รอชำระ';
         $bill->save();
 
-        $newbill = new Bill();
-        $newbill->room_id = $bill->room_id;
-        $newbill->user_id = Auth::id();
-        $newbill->water_unit = $water_unit;
-        $newbill->electric_unit = $electric_unit;
-        $newbill->room_price = $bill->room_price;
-        $newbill->total_price = $totalPrice;
-        $newbill->activated_at = Carbon::create($bill->activated_at)->addMonth(1)->toDateString();
-        $newbill->save();
+//        $newbill = new Bill();
+//        $newbill->room_id = $bill->room_id;
+//        $newbill->user_id = Auth::id();
+//        $newbill->water_unit = $water_unit;
+//        $newbill->electric_unit = $electric_unit;
+//        $newbill->room_price = $bill->room_price;
+//        $newbill->total_price = $totalPrice;
+//        $newbill->activated_at = Carbon::create($bill->activated_at)->addMonth(1)->toDateString();
+//        $newbill->save();
+
+
 
         return redirect()->route('receipts.index');
     }
@@ -120,6 +126,7 @@ class ReceiptController extends Controller
     public function paid(Request $request){
         $bill_id = $request->input('bill_id');
         $old_bill = Bill::findOrFail($bill_id);
+        $old_bill->user_paid = Auth::id();
         $old_bill->status = "ชำระแล้ว";
         $old_bill->save();
 
@@ -133,7 +140,7 @@ class ReceiptController extends Controller
 
         $bill = new Bill();
         $bill->room_id = $user->room_id;
-        $bill->user_id = Auth::id();
+        $bill->user_id = $old_bill->user_id;
         $bill->water_unit = 0;
         $bill->electric_unit = 0;
         $bill->room_price = $user->room->type->price;
@@ -141,6 +148,7 @@ class ReceiptController extends Controller
         $bill->status = 'บิลใหม่';
         $bill->activated_at = Carbon::parse($old_bill->activated_at)->addMonth(1);
         $bill->save();
+
 
         return redirect()->route('home.index');
     }
@@ -156,5 +164,24 @@ class ReceiptController extends Controller
         //
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function showBillHistory($id,$bill)
+    {
+//        dd($bill);
+        $room = Room::findOrFail($id);
+        $user = User::findOrFail(Auth::id());
+        $bills = Bill::all()->where('room_id',$room->id)->where('status','ชำระแล้ว');
+        $show_bill = Bill::findOrFail($bill);
+        $req = BookingRequest::all()->where('room_id',$room->id)->where('status','สำเร็จ')->first();
+        $bill_this_month = Bill::where( 'activated_at', '<=', Carbon::today())->where('status','รอชำระ')->where('room_id','=',$room->id)->count();
+
+
+        return view('rooms.showBillHistory',['room' => $room, 'bills' => $bills, 'show_bill'=>$show_bill, 'user'=>$user, 'req'=> $req,'bill_this_month'=>$bill_this_month]);
+    }
 
 }
