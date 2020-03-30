@@ -139,7 +139,7 @@
                             <div class="col-6 ">
                                 <dl class="row">
                                     <dt class="col-12 ">เลขประจำตัวผู้เสียภาษี : 0016302283835</dt>
-                                    <dt class="col-12 ">วันที่ : {{ \Carbon\Carbon::parse($show_bill->activated_at)->format('d/m/Y')}} </dt>
+                                    <dt class="col-12 ">วันที่ออกบิล : {{ \Carbon\Carbon::parse($show_bill->activated_at)->format('d/m/Y')}} </dt>
                                 </dl>
                             </div>
                         </div>
@@ -238,7 +238,7 @@
                         @foreach($bills as $bill)
                             <tr>
 
-                                <td>{{ $bill->activated_at }}</td>
+                                <td>{{ \Carbon\Carbon::parse($bill->activated_at)->format('d/m/Y') }}</td>
                                     <td><a href="{{route('rooms.show.billHistory',['id'=> $room->id,'bill'=> $bill->id])}}"><button type="submit" class="btn btn-sm btn-outline-primary">ดูบิล</button></a></td>
                             </tr>
                         @endforeach

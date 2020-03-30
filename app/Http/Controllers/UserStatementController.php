@@ -15,7 +15,7 @@ class UserStatementController extends Controller
     public function myStatements($id,$statements=null,$start_date=null,$end_date=null){
         $user = User::findOrFail(Auth::id());
         $n_packages = Package::where('room_id',$id)->where('status','รอรับของ')->count();
-        $bill_this_month = Bill::where( 'activated_at', '=', Carbon::today())->where('status','รอชำระ')->where('room_id','=',$user->room_id)->count();
+        $bill_this_month = Bill::where( 'activated_at', '<=', Carbon::today())->where('status','รอชำระ')->where('room_id','=',$user->room_id)->count();
 
         if ($statements === null) {
             $statements = UserStatement::where('user_id', Auth::id())->orderBy('created_at', 'desc')->get();

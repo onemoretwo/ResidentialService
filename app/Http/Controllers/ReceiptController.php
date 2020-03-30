@@ -178,7 +178,7 @@ class ReceiptController extends Controller
         $bills = Bill::all()->where('room_id',$room->id)->where('status','ชำระแล้ว');
         $show_bill = Bill::findOrFail($bill);
         $req = BookingRequest::all()->where('room_id',$room->id)->where('status','สำเร็จ')->first();
-        $bill_this_month = Bill::where( 'activated_at', '=', Carbon::today())->where('status','รอชำระ')->where('room_id','=',$room->id)->count();
+        $bill_this_month = Bill::where( 'activated_at', '<=', Carbon::today())->where('status','รอชำระ')->where('room_id','=',$room->id)->count();
 
 
         return view('rooms.showBillHistory',['room' => $room, 'bills' => $bills, 'show_bill'=>$show_bill, 'user'=>$user, 'req'=> $req,'bill_this_month'=>$bill_this_month]);
