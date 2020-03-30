@@ -16,7 +16,26 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('ข้อมูลของฉัน') }}</div>
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-3">
+                                <h4>{{ __('ข้อมูลของฉัน') }}</h4>
+                            </div>
+                            <div class="col">
+                                <div class="text-right">
+                                    <a type="button" class="btn btn-primary" href="{{ route('user.edit', ['user' => $user->id]) }}">
+                                        {{ __('แก้ไขข้อมูล') }}
+                                    </a>
+                                    <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#changeImgModal">
+                                        {{ __('เปลี่ยนรูปประจำตัว') }}
+                                    </button>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#changePasswordModal">
+                                        {{ __('เปลี่ยนรหัสผ่าน') }}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="card-body">
 
@@ -90,13 +109,18 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="phone_number_1" class="col-md-4 col-form-label text-md-right">เบอร์ติดต่อ 1 </label>
+                            <label for="phone_number_1" class="col-md-4 col-form-label text-md-right">เบอร์ติดต่อ
+                            @if($user->phone_number_2)
+                                1
+                            @endif
+                            </label>
 
                             <div class="col-md-6">
                                 <input id="phone_number_1" type="text" class="form-control " name="phone_number_1" value="{{ $user->phone_number_1 }}" disabled>
                             </div>
                         </div>
 
+                        @if($user->phone_number_2)
                         <div class="form-group row">
                             <label for="phone_number_2" class="col-md-4 col-form-label text-md-right">เบอร์ติดต่อ 2</label>
 
@@ -104,22 +128,7 @@
                                 <input id="phone_number_2" type="text" class="form-control " name="phone_number_2" value="{{ $user->phone_number_2 }}" disabled>
                             </div>
                         </div>
-
-
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-ถ offset-md-4">
-                                <a type="button" class="btn btn-primary" href="{{ route('user.edit', ['user' => $user->id]) }}">
-                                    {{ __('แก้ไขข้อมูล') }}
-                                </a>
-                                <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#changeImgModal">
-                                    {{ __('เปลี่ยนรูปประจำตัว') }}
-                                </button>
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#changePasswordModal">
-                                    {{ __('เปลี่ยนรหัสผ่าน') }}
-                                </button>
-                            </div>
-                        </div>
+                        @endif
 
                         <div class="modal fade" id="changeImgModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
