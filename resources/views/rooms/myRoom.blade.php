@@ -69,6 +69,11 @@
             color: darkslateblue;
         }
 
+        img {
+            object-fit: cover;
+            margin-left: 2.5rem;
+        }
+
     </style>
 @endsection
 <script src="https://kit.fontawesome.com/56e49317d8.js" crossorigin="anonymous"></script>
@@ -120,16 +125,28 @@
                         <div class="card margbot">
                             <div class="row">
                                 <div class="col-md-10">
-                                    <dl class="row" style="padding-top: 1rem; margin-left: 2rem">
-
-                                        <dt class="col-sm-2"><i class="fas fa-user"></i> ชื่อ :</dt>
-                                        <dd class="col-sm-9">{{ $user->title . " " . $user->first_name . "     " . $user->last_name}}</dd>
-
-                                        <dt class="col-sm-2"><i class="far fa-envelope"></i> email :</dt>
-                                        <dd class="col-sm-9 "> {{ $user->email }}</dd>
-
-                                        <dt class="col-sm-2"><i class="fas fa-phone-square-alt"></i> เบอร์ : </dt>
-                                        <dd class="col-sm-9">{{ $user->phone_number_1 }}</dd>
+                                    <dl class="row" style="padding-top: 1rem; margin-left: 0rem">
+                                        <div class="col-3">
+                                            @if(!$user->img)
+                                                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="profile picture" width="100" height="100">
+                                            @else
+                                                <img src="{{ $user->img }}" alt="profile picture" width="100" height="100">
+                                            @endif
+                                        </div>
+                                        <div class="col-9">
+                                            <div class="row">
+                                                <dt class="col-sm-2"><i class="fas fa-user"></i> ชื่อ :</dt>
+                                                <dd class="col-sm-9">{{ $user->title . " " . $user->first_name . "     " . $user->last_name}}</dd>
+                                            </div>
+                                            <div class="row">
+                                                <dt class="col-sm-2"><i class="far fa-envelope"></i> email :</dt>
+                                                <dd class="col-sm "> {{ $user->email }}</dd>
+                                            </div>
+                                            <div class="row">
+                                                <dt class="col-sm-2"><i class="fas fa-phone-square-alt"></i> เบอร์ : </dt>
+                                                <dd class="col-sm-9">{{ $user->phone_number_1 }}</dd>
+                                            </div>
+                                        </div>
 
                                     </dl>
                                 </div>
@@ -139,8 +156,6 @@
 
                     </div>
                 </div>
-
-
 
             </div>
             <div class="col-md-3">

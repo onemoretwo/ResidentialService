@@ -7,6 +7,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
@@ -108,7 +109,29 @@ class UserController extends Controller
         return redirect()->route('user.show', ['user' => $user->id]);
     }
 
-    public function updateImg($id, Request $request) {
+    public function updateImg(Request $request, $id) {
+        if (!$request->file('img')) {
+            return redirect()->back()->with('alert', 'เกิดข้อผิดพลาด');
+        }
+
+        $user = User::findOrFail($id);
+
+        $img = $request->file('img');
+        $input = time() . '-' . $user->first_name . '.' . $img->getClientOriginalExtension();
+        $des = public_path('/images/profile');
+        $img->move($des, $input);
+        $user->img = '/images/profile/' . $input;
+
+        $user->save();
+        return redirect()->route('user.show', ['user' => $user->id])->with('alert', 'เปลี่ยนรูปประจำตัวเรียบร้อยแล้ว');
+    }
+
+    public function deleteImg($id) {
+        $user = User::findOrFail($id);
+
+        $user->img = null;
+        $user->save();
+        return redirect()->route('user.show', ['user' => $user->id])->with('alert', 'ลบรูปประจำตัวเรียบร้อยแล้ว');
 
     }
 
