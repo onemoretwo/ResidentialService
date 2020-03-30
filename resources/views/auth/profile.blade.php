@@ -139,21 +139,23 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <form action="{{ route('user.update.img', ['user' => $user->id]) }}" method="POST">
+                                    <form action="{{ route('user.update.img', ['user' => $user->id]) }}" method="POST" enctype="multipart/form-data">
                                         @csrf
-                                    <div class="modal-body">
-                                        <input class="form-control-file @error('img') is-invalid @enderror" name="img" id="img"
-                                               type="file" value="upload">
-                                        @error('img')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
+                                        <div class="modal-body">
+                                            <input class="form-control-file @error('img') is-invalid @enderror" name="img" id="img"
+                                                   type="file" value="upload">
+                                            @error('img')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                            @enderror
                                         </div>
-                                        @enderror
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-                                        <button type="submit" class="btn btn-primary">ยืนยัน</button>
-                                    </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                                            <a href="{{ route('user.delete.img', ['user' => $user->id]) }}"
+                                               class="btn btn-danger" onsubmit="return confirm('ต้องการลบรูปประจำตัวหรือไม่')">ลบรูปประจำตัว</a>
+                                            <button type="submit" class="btn btn-primary">ยืนยัน</button>
+                                        </div>
                                     </form>
                                 </div>
                             </div>
