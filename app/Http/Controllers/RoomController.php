@@ -34,6 +34,12 @@ class RoomController extends Controller
         $u = Auth::id();
         $user = User::findOrFail($u);
 
+//        return $user->isUpdateInfo() == false;
+
+        if($user->isUpdateInfo()) {
+            return redirect()->route('user.edit', ['user' => $user->id])->with('alert', 'กรุณาแก้ไขข้อมูลให้ครบถ้วน');
+        }
+
         $types = Type::all();
         $type = Type::find($id);
         $buildings = Building::all();
