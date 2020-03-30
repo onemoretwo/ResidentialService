@@ -78,4 +78,14 @@ class User extends Authenticatable
         $wifi = $user->wifiCodes;
         return ($wifi->count() != 0);
     }
+
+    public function isUpdateInfo() {
+        if ($this->birth_date == null ||
+            $this->citizen_id == null ||
+            $this->address == null ||
+            $this->phone_number_1 == null)
+            return false;
+        return true;
+    }
+
 }

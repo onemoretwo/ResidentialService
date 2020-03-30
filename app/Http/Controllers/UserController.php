@@ -6,6 +6,8 @@ use App\Room;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -60,5 +62,74 @@ class UserController extends Controller
         $user->money += $cash;
         $user->save();
         return redirect()->route('buyCash');
+    }
+
+    public function show($id) {
+        $user = User::findOrFail($id);
+        return view('auth.profile', ['user' => $user]);
+    }
+
+    public function edit($id) {
+        $user = User::findOrFail($id);
+        return view('auth.edit', ['user' => $user]);
+    }
+
+    public function update(Request $request, $id) {
+        $user = User::findOrFail($id);
+
+        $validateData  = $request->validate([
+            'title' => ['required'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'password' => ['required', 'string'],
+            'birth_date' => ['required', 'date', 'before:today'],
+            'citizen_id' => ['required', 'digits:13'],
+            'address' => ['required'],
+            'phone_number_1' => ['required', 'digits:10'],
+            'phone_number_2' => ['nullable', 'digits:10']
+        ]);
+
+//        return Hash::check($request->password, $user->password);
+
+        if(!Hash::check($request->password, $user->password)) {
+            return redirect()->back()->with('alert', 'รหัสผ่านไม่ถูกต้อง');
+        }
+
+        $user->title = $request->title;
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
+        $user->birth_date = $request->birth_date;
+        $user->citizen_id = $request->citizen_id;
+        $user->address = $request->address;
+        $user->phone_number_1 = $request->phone_number_1;
+        $user->phone_number_2 = $request->phone_number_2;
+
+        $user->save();
+        return redirect()->route('user.show', ['user' => $user->id]);
+    }
+
+    public function updateImg($id, Request $request) {
+
+    }
+
+    public function updatePassword($id, Request $request) {
+        $user = User::findOrFail($id);
+        if(!Hash::check($request->old_password, $user->password)) {
+            return redirect()->back()->with('alert', 'รหัสผ่านปัจจุบันไม่ถูกต้อง');
+        }
+
+        if(strlen($request->password) < 8) {
+            return redirect()->back()->with('alert', 'รหัสผ่่านต้องมีความยาวอย่างน้อย 8 ตัวอักษร');
+        }
+
+        if($request->password != $request->password_confirmation) {
+            return redirect()->back()->with('alert', 'รหัสผ่านใหม่ไม่ตรงกัน');
+        }
+
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+        return redirect()->route('user.show', ['user' => $user->id])->with('alert', 'เปลี่ยนรหัสผ่านเรียบร้อย');
+
     }
 }

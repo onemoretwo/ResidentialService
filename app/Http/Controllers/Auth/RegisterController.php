@@ -56,11 +56,11 @@ class RegisterController extends Controller
             'last_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'birth_date' => ['required', 'date', 'before:today'],
-            'citizen_id' => ['required', 'digits:13'],
-            'address' => ['required'],
-            'phone_number_1' => ['required', 'digits:10'],
-            'phone_number_2' => ['nullable', 'digits:10']
+//            'birth_date' => ['required', 'date', 'before:today'],
+//            'citizen_id' => ['required', 'digits:13'],
+//            'address' => ['required'],
+//            'phone_number_1' => ['required', 'digits:10'],
+//            'phone_number_2' => ['nullable', 'digits:10']
         ]);
     }
 
@@ -89,11 +89,11 @@ class RegisterController extends Controller
             'last_name' => $data['last_name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'birth_date' => $data['birth_date'],
-            'citizen_id' => $data['citizen_id'],
-            'address' => $data['address'],
-            'phone_number_1' => $data['phone_number_1'],
-            'phone_number_2' => $data['phone_number_2'],
+//            'birth_date' => $data['birth_date'],
+//            'citizen_id' => $data['citizen_id'],
+//            'address' => $data['address'],
+//            'phone_number_1' => $data['phone_number_1'],
+//            'phone_number_2' => $data['phone_number_2'],
             'gender' => $gender,
             'role' => $role
         ]);

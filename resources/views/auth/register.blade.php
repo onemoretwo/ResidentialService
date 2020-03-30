@@ -100,78 +100,78 @@
                             </div>
                         </div>
 
-                        <div class="form-group row" id="birthdatepicker">
-                            <label for="birth_date" class="col-md-4 col-form-label text-md-right">วันเกิด <label class="required-red">*</label></label>
+{{--                        <div class="form-group row" id="birthdatepicker">--}}
+{{--                            <label for="birth_date" class="col-md-4 col-form-label text-md-right">วันเกิด <label class="required-red">*</label></label>--}}
 
-                            <div class="col-md-6">
-                            <input type="date" class="form-control" id="birth_date" name="birth_date">
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-time"></span>
-                                </span>
+{{--                            <div class="col-md-6">--}}
+{{--                            <input type="date" class="form-control" id="birth_date" name="birth_date">--}}
+{{--                                <span class="input-group-addon">--}}
+{{--                                    <span class="glyphicon glyphicon-time"></span>--}}
+{{--                                </span>--}}
 
-                                @error('birth_date')
-                                <span class="invalid-feedback" role=" alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+{{--                                @error('birth_date')--}}
+{{--                                <span class="invalid-feedback" role=" alert">--}}
+{{--                                        <strong>{{ $message }}</strong>--}}
+{{--                                    </span>--}}
+{{--                                @enderror--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
-                        <div class="form-group row">
-                            <label for="citizen_id" class="col-md-4 col-form-label text-md-right">รหัสประจำตัวประชาชน <label class="required-red">*</label></label>
+{{--                        <div class="form-group row">--}}
+{{--                            <label for="citizen_id" class="col-md-4 col-form-label text-md-right">รหัสประจำตัวประชาชน <label class="required-red">*</label></label>--}}
 
-                            <div class="col-md-6">
-                                <input id="citizen_id" type="text" class="form-control @error('citizen_id') is-invalid @enderror" name="citizen_id" value="{{ old('citizen_id') }}" required>
+{{--                            <div class="col-md-6">--}}
+{{--                                <input id="citizen_id" type="text" class="form-control @error('citizen_id') is-invalid @enderror" name="citizen_id" value="{{ old('citizen_id') }}" required>--}}
 
-                                @error('citizen_id')
-                                <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+{{--                                @error('citizen_id')--}}
+{{--                                <span class="invalid-feedback" role="alert">--}}
+{{--                                        <strong>{{ $message }}</strong>--}}
+{{--                                    </span>--}}
+{{--                                @enderror--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
-                        <div class="form-group row">
-                            <label for="address" class="col-md-4 col-form-label text-md-right">ที่อยู่ <label class="required-red">*</label></label>
+{{--                        <div class="form-group row">--}}
+{{--                            <label for="address" class="col-md-4 col-form-label text-md-right">ที่อยู่ <label class="required-red">*</label></label>--}}
 
-                            <div class="col-md-6">
-                                <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required>
+{{--                            <div class="col-md-6">--}}
+{{--                                <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required>--}}
 
-                                @error('address')
-                                <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+{{--                                @error('address')--}}
+{{--                                <span class="invalid-feedback" role="alert">--}}
+{{--                                        <strong>{{ $message }}</strong>--}}
+{{--                                    </span>--}}
+{{--                                @enderror--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
-                        <div class="form-group row">
-                            <label for="phone_number_1" class="col-md-4 col-form-label text-md-right">เบอร์ติดต่อ 1 <label class="required-red">*</label></label>
+{{--                        <div class="form-group row">--}}
+{{--                            <label for="phone_number_1" class="col-md-4 col-form-label text-md-right">เบอร์ติดต่อ 1 <label class="required-red">*</label></label>--}}
 
-                            <div class="col-md-6">
-                                <input id="phone_number_1" type="text" class="form-control @error('phone_number_1') is-invalid @enderror" name="phone_number_1" value="{{ old('phone_number_1') }}" required>
+{{--                            <div class="col-md-6">--}}
+{{--                                <input id="phone_number_1" type="text" class="form-control @error('phone_number_1') is-invalid @enderror" name="phone_number_1" value="{{ old('phone_number_1') }}" required>--}}
 
-                                @error('phone_number_1')
-                                <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+{{--                                @error('phone_number_1')--}}
+{{--                                <span class="invalid-feedback" role="alert">--}}
+{{--                                        <strong>{{ $message }}</strong>--}}
+{{--                                    </span>--}}
+{{--                                @enderror--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
-                        <div class="form-group row">
-                            <label for="phone_number_2" class="col-md-4 col-form-label text-md-right">เบอร์ติดต่อ 2</label>
+{{--                        <div class="form-group row">--}}
+{{--                            <label for="phone_number_2" class="col-md-4 col-form-label text-md-right">เบอร์ติดต่อ 2</label>--}}
 
-                            <div class="col-md-6">
-                                <input id="phone_number_2" type="text" class="form-control @error('phone_number_2') is-invalid @enderror" name="phone_number_2" value="{{ old('phone_number_2') }}">
+{{--                            <div class="col-md-6">--}}
+{{--                                <input id="phone_number_2" type="text" class="form-control @error('phone_number_2') is-invalid @enderror" name="phone_number_2" value="{{ old('phone_number_2') }}">--}}
 
-                                @error('phone_number_2')
-                                <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+{{--                                @error('phone_number_2')--}}
+{{--                                <span class="invalid-feedback" role="alert">--}}
+{{--                                        <strong>{{ $message }}</strong>--}}
+{{--                                    </span>--}}
+{{--                                @enderror--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
 
 
