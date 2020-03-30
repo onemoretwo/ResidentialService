@@ -22,15 +22,16 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
 //            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->date('birth_date');
+            $table->date('birth_date')->nullable();
             $table->binary('gender');
-            $table->string('citizen_id',13)->unique();
-            $table->mediumText('address');
-            $table->string('phone_number_1',10);
+            $table->string('citizen_id',13)->unique()->nullable();
+            $table->mediumText('address')->nullable();
+            $table->string('phone_number_1',10)->nullable();
             $table->string('phone_number_2',10)->nullable();
             $table->float('money')->default(0);
             $table->enum('role',['user','staff','admin']);
             $table->bigInteger('invited')->nullable();
+            $table->string('img')->nullable();
 
             $table->rememberToken();
             $table->date("checkIn_at")->nullable();

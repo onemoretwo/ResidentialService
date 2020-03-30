@@ -75,3 +75,7 @@ Route::resource('/packages','PackageController');
 
 Route::resource('/admin', 'AdminController');
 
+Route::get('/profile/{user}','UserController@show')->name('user.show');
+Route::get('/profile/edit/{user}','UserController@edit')->name('user.edit');
+Route::post('/profile/update/{user}','UserController@update')->name('user.update');
+
