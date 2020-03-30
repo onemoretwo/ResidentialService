@@ -19,6 +19,7 @@ class CreatePackagesTable extends Migration
             $table->bigInteger('user_id')->unsigned();
             $table->string('recipient');
             $table->enum('status',['รอรับของ','ได้รับแล้ว'])->default('รอรับของ');
+            $table->string('image_path');
             $table->string('detail');
             $table->timestamps();
 

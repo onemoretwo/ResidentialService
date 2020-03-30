@@ -31,12 +31,10 @@
             float: right;
         }
 
-        .icon {
-            height: 40px;
-            width: 40px;
+        .show-image{
             position: absolute;
-            right: -7px;
-            top: -20px;
+            right: 40px;
+            top: 15px;
         }
     </style>
     @endsection
@@ -65,11 +63,12 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 
+                        @php($i=1)
                         @foreach($packages as $package)
                         <div>
                             <div class="card card-adapt">
                                 <div class="card-body card-bot">
-                                    <img class="icon" src="images/gift.png" alt="">
+                                    <button class="btn btn-info show-image" data-toggle="modal" data-target="#image{{ $i }}"><i class="fas fa-gift" style="margin-right: 5px"></i>ดูรูปพัสดุ</button>
                                     <div class="inline">
                                         <div class="room-detail">
                                             <h5>ตึก  : {{ $package->room->building->name }}</h5>
@@ -86,6 +85,26 @@
                                 </div>
                             </div>
                         </div>
+
+                            <div class="modal fade bd-example-modal-lg" id="image{{ $i }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content" style="width: auto">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle">รูปพัสดุ</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <img style="width: 600px" src="{{ '/images/packages/' . $package->image_path }}" alt="">
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @php($i++)
                             @endforeach
 
                     </div>

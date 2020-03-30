@@ -99,6 +99,7 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('user.show', ['user' => Auth::user()->id]) }}">ข้อมูลของฉัน</a>
                             @if(Auth::user()->role === 'user')
                                 <a class="dropdown-item" href="{{ route('buyCash') }}">เติมเงินเข้าระบบ</a>
                             @endif
