@@ -49,18 +49,19 @@ class PackageController extends Controller
         $title = $request->input('title');
         $first = $request->input('first_name');
         $last = $request->input('last_name');
+        $building = $request->input('building_name');
+        $room = $request->input('room_number');
         $image_filename = time() . '.' . $request->file('image')->getClientOriginalName();
         $public_path = 'images/packages';
         $destination = base_path()."/public/".$public_path;
         $request->file('image')->move($destination, $image_filename);
 
         $package = new Package();
-        $userId = (new User())->getRoomFromUser($title,$first,$last);
-        $user = User::findOrFail($userId);
+        $room_id = (new User())->getRoomFromUser($building,$room);
 
         $package->user_id = Auth::id();
         $package->recipient = $title . $first . " " . $last;
-        $package->room_id = $user->room->id;
+        $package->room_id = $room_id;
         $package->image_path = $image_filename;
         $package->detail = $request->input('detail');
         $package->save();

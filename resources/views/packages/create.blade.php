@@ -60,6 +60,25 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="form-row" style="padding-top: 1rem">
+                                            <div class="col-md-2 mb-3">
+                                                <label for="building">ตึก</label>
+                                                <select class="custom-select" id="building" name="building_name" required>
+                                                    <option selected disabled value="">เลือกตึก</option>
+                                                    <option value="A">ตึก A</option>
+                                                    <option value="B">ตึก B</option>
+                                                    <option value="C">ตึก C</option>
+
+                                                </select>
+                                            </div>
+                                            <div class="col-md-2 mb-3">
+                                                <label for="numRoom">เลขห้อง</label>
+                                                <input type="text" class="form-control" id="numRoom" name="room_number" required>
+                                                <div class="invalid-feedback">
+                                                    Please provide a valid zip.
+                                                </div>
+                                            </div>
+                                        </div>
 
                                         <div class="row">
                                             <div class="col-md-8 form-group">
