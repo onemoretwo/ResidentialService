@@ -29,7 +29,7 @@ class BillsTableSeeder extends Seeder
         $elec_u1 = 99;
         for($i = 12 ; $i > 1 ; $i--){
             $bill = new Bill();
-            $bill->room_id = 215;
+            $bill->room_id = 123;
             $bill->user_id = 1;
             $bill->user_paid = 3;
             $bill->water_unit= $water_u1 - $i;

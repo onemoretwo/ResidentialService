@@ -235,7 +235,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($bills as $bill)
+                        @foreach($bills->sortByDesc('activated_at') as $bill)
                             <tr>
 
                                 <td>{{ \Carbon\Carbon::parse($bill->activated_at)->format('d/m/Y') }}</td>
