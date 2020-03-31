@@ -29,7 +29,9 @@ class ReportController extends Controller
         $repairs = Report::get()
             ->where('type', '=', 'แจ้งซ่อม')
             ->where('status','=','รอการยืนยัน');
-        return view('reports.index',['reports'=> $reports,'repairs'=> $repairs, 'buildings' => $buildings]);
+        $saved = Report::get()->where('status', 'บันทึก');
+
+        return view('reports.index',['reports'=> $reports,'repairs'=> $repairs, 'buildings' => $buildings, 'saved' => $saved]);
     }
 
     /**
@@ -46,7 +48,9 @@ class ReportController extends Controller
         $repairs = Report::get()
             ->where('type', '=', 'แจ้งซ่อม')
             ->where('status','=','รอการยืนยัน');
-        return view('reports.index',['reports'=> $reports,'repairs'=> $repairs, 'buildings' => $buildings, 'building' => $building]);
+        $saved = Report::get()->where('status', 'บันทึก');
+
+        return view('reports.index',['reports'=> $reports,'repairs'=> $repairs, 'buildings' => $buildings, 'building' => $building, 'saved' => $saved]);
 
     }
 
@@ -60,7 +64,9 @@ class ReportController extends Controller
         $repairs = Report::all()
             ->where('type', '=', 'แจ้งซ่อม')
             ->where('status','=','รอการยืนยัน');
-        return view('reports.index',['reports'=> $reports,'repairs'=> $repairs, 'buildings' => $buildings, 'building' => $building, 'floor' => $floor]);
+        $saved = Report::get()->where('status', 'บันทึก');
+
+        return view('reports.index',['reports'=> $reports,'repairs'=> $repairs, 'buildings' => $buildings, 'building' => $building, 'floor' => $floor, 'saved' => $saved]);
 
     }
 
@@ -217,6 +223,14 @@ class ReportController extends Controller
         return view('reports.index',['reports'=> $reports,'repairs'=> $repairs]);
 
 
+    }
+
+    public function save($id) {
+        $report = Report::findOrFail($id);
+
+        $report->status = 'บันทึก';
+        $report->save();
+        return redirect()->route('reports.index');
     }
 
 }

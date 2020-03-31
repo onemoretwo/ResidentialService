@@ -86,3 +86,5 @@ Route::post('/profile/update/img/{user}','UserController@updateImg')->name('user
 Route::get('/profile/delete/img/{user}','UserController@deleteImg')->name('user.delete.img');
 Route::post('/profile/update/password/{user}','UserController@updatePassword')->name('user.update.password');
 
+Route::get('/reports/{report}/save','ReportController@save')->name('reports.save');
+
