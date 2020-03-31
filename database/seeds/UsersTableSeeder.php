@@ -40,7 +40,7 @@ class UsersTableSeeder extends Seeder
         $user->birth_date = NOW();
         $user->gender = 1;
         $user->citizen_id = "4674567643123";
-        $user->address = "homeless";
+        $user->address = "42/119 ต.ท่าจีน อ.เมือง จ.สมุทรสาคร";
         $user->phone_number_1 = "0868214563";
         $user->phone_number_2 = null;
         $user->role = "user";
@@ -61,7 +61,7 @@ class UsersTableSeeder extends Seeder
         $user->gender = 1;
         $user->citizen_id = "1234561234561";
         $user->money = 100000;
-        $user->address = "homeless";
+        $user->address = "33/159 ต.ท่าจีน อ.เมือง จ.สมุทรสาคร";
         $user->phone_number_1 = "0868214563";
         $user->role = "user";
         $user->save();
@@ -80,7 +80,7 @@ class UsersTableSeeder extends Seeder
         $user->gender = 1;
         $user->citizen_id = "0000000000000";
         $user->money = 18500;
-        $user->address = "homeless";
+        $user->address = "33/150 ต.ท่าจีน อ.เมือง จ.สมุทรสาคร";
         $user->phone_number_1 = "0868214563";
         $user->role = "user";
         $user->save();

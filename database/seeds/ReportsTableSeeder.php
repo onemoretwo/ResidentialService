@@ -12,10 +12,71 @@ class ReportsTableSeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 1 ;$i <= 10;$i++){
-
-
+        $room = 1;
+        for ($i = 7 ;$i <= 13 ;$i++){
+            $report = new Report();
+            $report->user_id = $i ;
+            $report->room_id = $room++;
+            $report->title = 'ส่งเสียงดัง';
+            $report->detail = 'ข้างห้องรบกวน และทำเสียงดัง';
+            $report->type = 'รายงาน';
+            $report->status = 'รอการยืนยัน' ;
+            $report->save();
         }
+
+        $room2 = 1;
+        for ($i = 7 ;$i <= 13 ;$i++){
+            $report = new Report();
+            $report->user_id = $i ;
+            $report->room_id = $room2++;
+            $report->title = 'เครื่องปรับอากาศเสีย';
+            $report->detail = 'เครื่องปรับอากาศไม่ทำงาน และมีน้ำไหลลงมา';
+            $report->type = 'แจ้งซ่อม';
+            $report->status = 'รอการยืนยัน' ;
+            $report->save();
+        }
+
+        $room2 = 1;
+        for ($i = 7 ;$i <= 13 ;$i++){
+            $report = new Report();
+            $report->user_id = $i ;
+            $report->room_id = $room2++;
+            $report->title = 'ไฟบนฝ้าไม่ติด';
+            $report->detail = 'ไฟกระพริบและ บางครั้งก็ไม่ติด';
+            $report->type = 'แจ้งซ่อม';
+            $report->status = 'รอการยืนยัน' ;
+            $report->save();
+        }
+
+        $report = new Report();
+        $report->user_id = 3;
+        $report->room_id = 123;
+        $report->title = 'ไฟบนฝ้าไม่ติด';
+        $report->detail = 'ไฟกระพริบและ บางครั้งก็ไม่ติด';
+        $report->type = 'แจ้งซ่อม';
+        $report->status = 'รอการยืนยัน' ;
+        $report->save();
+
+
+        $report = new Report();
+        $report->user_id = 4;
+        $report->room_id = 123;
+        $report->title = 'ส่งเสียงดัง';
+        $report->detail = 'ข้างห้องรบกวน และทำเสียงดัง';
+        $report->type = 'รายงาน';
+        $report->status = 'รอการยืนยัน' ;
+        $report->save();
+
+        $report = new Report();
+        $report->user_id = 7;
+        $report->room_id = 123;
+        $report->title = 'ได้ยินเสียงทุบผนัง';
+        $report->detail = 'ได้ยินเสียงทุบผนังหรือเจาะผนังเกือบทุกเช้า';
+        $report->type = 'รายงาน';
+        $report->status = 'รอการยืนยัน' ;
+        $report->save();
+
+
 
 
 

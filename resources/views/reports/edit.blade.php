@@ -48,8 +48,6 @@
 
                     </div>
 
-
-
                 </div>
                 <div class="card-footer justify-content-end">
                     <form action="{{ route('reports.destroy', ['report' => $report->id]) }}" method="POST">
