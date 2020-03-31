@@ -49,16 +49,6 @@ class ReportsTableSeeder extends Seeder
         }
 
         $report = new Report();
-        $report->user_id = 3;
-        $report->room_id = 123;
-        $report->title = 'ไฟบนฝ้าไม่ติด';
-        $report->detail = 'ไฟกระพริบและ บางครั้งก็ไม่ติด';
-        $report->type = 'แจ้งซ่อม';
-        $report->status = 'รอการยืนยัน' ;
-        $report->save();
-
-
-        $report = new Report();
         $report->user_id = 4;
         $report->room_id = 123;
         $report->title = 'ส่งเสียงดัง';

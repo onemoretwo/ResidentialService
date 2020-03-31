@@ -118,7 +118,7 @@
                             @if($report->type === 'รายงาน')
                             <div class="card inner row">
                                 <div style="text-align: left;font-size: 14px">
-                                    <p style="color: #808588;margin-bottom: 0">ผู้แจ้ง : {{ $report->user->tile . " " . $report->user->first_name . "     " . $report->user->last_name }}</p>
+                                    <p style="color: #808588;margin-bottom: 0">ผู้แจ้ง : ไม่ระบุ</p>
                                     <p class="numberf">{{ $i }}</p>
                                 </div>
                                 <hr style="margin: 0.3rem">
