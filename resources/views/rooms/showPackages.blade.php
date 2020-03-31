@@ -39,11 +39,6 @@
             top: -20px;
         }
 
-        .icon-con{
-            position: absolute;
-            right: 50px;
-        }
-
         .marg{
             display: flex;
             margin: 12px 0;
@@ -51,7 +46,16 @@
 
         .show-image{
             position: absolute;
-            right: 170px;
+            right: 50px;
+        }
+
+        .slider{
+            height: 600px;
+            overflow: auto;
+        }
+
+        .his{
+            margin: 15px 0;
         }
     </style>
     @endsection
@@ -89,7 +93,6 @@
                                             <div class="marg">
                                                 <p style="margin-bottom: 0.1rem;color: #808588">ผู้รับผิดชอบ :  {{ $package->user->first_name }}    {{ $package->user->last_name }}</p>
                                                 <button class="btn btn-info show-image" data-toggle="modal" data-target="#image{{ $i }}"><i class="fas fa-gift" style="margin-right: 5px"></i>ดูรูปพัสดุ</button>
-                                                <a class="icon-con btn btn-outline-info" style="color: #0080fe;" href="{{ route('package.confirm',['room' => $package->room->id, 'package' => $package->id]) }}">รับพัสดุแล้ว</a>
                                             </div>
                                         </div>
                                     </div>
@@ -123,6 +126,48 @@
             </div>
         </div>
 
+        <button class="btn btn-outline-info" style="margin-top: 30px" data-toggle="modal" data-target="#log">ดูประวัติพัสดุของห้อง</button>
 
+        <div class="modal fade bd-example-modal-lg" id="log" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 800px">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">รูปพัสดุ</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body slider">
+                        <div class="card">
+                            <div class="card-header">
+                                ประวัติการรับพัสดุ
+                            </div>
+                            <div class="card-body">
+
+                                @foreach($his as $hi)
+                                <div class="card his">
+                                    <div class="inline">
+                                        <div class="package-detail">
+                                            <p><b style="color: #777b7e">ชื่อผู้รับพัสดุ :</b>&nbsp;&nbsp;&nbsp; {{ $hi->recipient }} </p>
+                                            <p><b style="color: #777b7e">รายละเอียด :</b>&nbsp;&nbsp;&nbsp;&nbsp; {{ $hi->detail }}</p>
+                                            <p class="date" style="color: #808588">รับเมื่อ : {{ $hi->updated_at }}</p>
+                                        </div>
+                                    </div>
+                                    <hr style="margin: 0.4rem 0">
+                                    <div class="marg">
+                                        <p style="margin-bottom: 0.1rem;color: #808588;margin-left: 10px">ผู้รับผิดชอบ :  {{ $package->user->first_name }}    {{ $package->user->last_name }}</p>
+                                    </div>
+                                </div>
+                                    @endforeach
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     @endsection

@@ -36,6 +36,12 @@
             right: 40px;
             top: 15px;
         }
+
+        .icon-con{
+            position: absolute;
+            right: 160px;
+            top: 15px;
+        }
     </style>
     @endsection
 
@@ -69,6 +75,7 @@
                             <div class="card card-adapt">
                                 <div class="card-body card-bot">
                                     <button class="btn btn-info show-image" data-toggle="modal" data-target="#image{{ $i }}"><i class="fas fa-gift" style="margin-right: 5px"></i>ดูรูปพัสดุ</button>
+                                    <a class="icon-con btn btn-outline-info" style="color: #0080fe;" href="{{ route('package.confirm',['room' => $package->room->id, 'package' => $package->id]) }}">รับพัสดุแล้ว</a>
                                     <div class="inline">
                                         <div class="room-detail">
                                             <h5>ตึก  : {{ $package->room->building->name }}</h5>
