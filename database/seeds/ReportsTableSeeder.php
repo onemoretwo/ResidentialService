@@ -77,6 +77,28 @@ class ReportsTableSeeder extends Seeder
         $report->save();
 
 
+        $room3 = 1;
+        for ($i = 7 ;$i <= 10 ;$i++){
+            $report = new Report();
+            $report->user_id = $i ;
+            $report->room_id = $room3++;
+            $report->title = 'ตู้เย็นชำรุด';
+            $report->detail = 'ไฟที่ตู้เย็นไม่ติด';
+            $report->type = 'แจ้งซ่อม';
+            $report->status = 'บันทึก' ;
+            $report->save();
+        }
+        for ($i = 7 ;$i <= 13 ;$i++){
+            $report = new Report();
+            $report->user_id = $i ;
+            $report->room_id = $room3++;
+            $report->title = 'แอบเลี้ยงสัตว์เลี่ยง';
+            $report->detail = 'มีคนแอบเลี้ยงสัตว์เลี้ยงในหอพัก';
+            $report->type = 'รายงาน';
+            $report->status = 'บันทึก' ;
+            $report->save();
+        }
+
 
 
 
