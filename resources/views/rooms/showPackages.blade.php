@@ -105,7 +105,7 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <img style="width: 600px" src="{{ '/images/packages/' . $package->image_path }}" alt="">
+                                                <img style="width: 600px" src="{{ $package->image_path }}" alt="">
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
