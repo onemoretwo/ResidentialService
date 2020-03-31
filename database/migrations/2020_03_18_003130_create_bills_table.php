@@ -17,6 +17,7 @@ class CreateBillsTable extends Migration
             $table->id();
             $table->bigInteger('room_id')->unsigned();
             $table->bigInteger('user_id')->unsigned();
+            $table->bigInteger('user_paid')->unsigned()->nullable();
             $table->float('water_unit')->default(0);
             $table->float('electric_unit')->default(0);
             $table->float('room_price');
@@ -27,6 +28,8 @@ class CreateBillsTable extends Migration
 
             $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_paid')->references('id')->on('users')->onDelete('cascade');
+
             $table->softDeletes();
         });
     }

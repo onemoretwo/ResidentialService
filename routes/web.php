@@ -26,6 +26,9 @@ Route::get('/gallery', 'HomeController@gallery')->name('home.gallery');
 Route::get('/neighborhood', 'HomeController@neighborhood')->name('home.neighborhood');
 
 Route::get('/rooms/show-room-staff/{id}', 'RoomController@showStaff')->name('rooms.show.staff');
+
+Route::get('/rooms/show-bill-history/{id}/show/{bill}', 'ReceiptController@showBillHistory')->name('rooms.show.billHistory');
+
 Route::get('/rooms/my-room/{id}', 'RoomController@userRoom')->name('rooms.show.user');
 Route::get('/rooms/my-room/{room}/accept','UserController@acceptInvite')->name('accept');
 Route::get('/rooms/my-room/{room}/deny','UserController@denyInvite')->name('deny');
@@ -35,6 +38,7 @@ Route::get('/rooms/my-room/{room}/packages/{package}', 'PackageController@packag
 Route::get('/rooms/my-room/{room}/report/create','ReportController@userCreateReport')->name('user.create.report');
 Route::get('/rooms/my-room/{room}/wifi','WifiCodeController@userBuyWifi')->name('room.user.wifi');
 Route::get('/rooms/my-room/{room}/myStatements','UserStatementController@myStatements')->name('room.user.statement');
+
 Route::post('/rooms/my-room/{room}/myStatements','UserStatementController@statementDayFix')->name('room.statement.day');
 Route::get('/rooms/my-room/{room}/myStatements/back','UserStatementController@allStatement')->name('backToAll');
 Route::get('/rooms/my-room/{room}/addRoommate','UserController@addRoommateView')->name('room.user.roommate');
@@ -79,5 +83,6 @@ Route::get('/profile/{user}','UserController@show')->name('user.show');
 Route::get('/profile/edit/{user}','UserController@edit')->name('user.edit');
 Route::post('/profile/update/{user}','UserController@update')->name('user.update');
 Route::post('/profile/update/img/{user}','UserController@updateImg')->name('user.update.img');
+Route::get('/profile/delete/img/{user}','UserController@deleteImg')->name('user.delete.img');
 Route::post('/profile/update/password/{user}','UserController@updatePassword')->name('user.update.password');
 
