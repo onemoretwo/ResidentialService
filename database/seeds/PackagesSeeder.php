@@ -35,5 +35,13 @@ class PackagesSeeder extends Seeder
         $package->detail = 'เครื่องฟอกอากาศ';
         $package->image_path = 'https://www.boonthavorn.com/media/catalog/product/cache/2/image/991x743/9df78eab33525d08d6e5fb8d27136e95/1/0/1063650_2.jpg';
         $package->save();
+
+        $package = new Package();
+        $package->room_id = 11;
+        $package->user_id = 6;
+        $package->recipient = 'นางสาวไอริน พรเจริญศักดิ์';
+        $package->detail = 'เก้าอี้';
+        $package->image_path = 'https://www.jyskthailand.com/media/catalog/product/cache/4/image/991x743/9df78eab33525d08d6e5fb8d27136e95/1/1/1111702-1.jpg';
+        $package->save();
     }
 }
