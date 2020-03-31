@@ -55,9 +55,11 @@
                     <form action="{{ route('reports.destroy', ['report' => $report->id]) }}" method="POST">
                         @method('DELETE')
                         @csrf
-                        <button type="submit" class="btn btn-outline-danger">ปฎิเสธ</button>
+                        <button type="submit" class="btn btn-outline-danger">ลบรายงาน</button>
                     </form>
-                    <button type="submit" class="btn btn-outline-success">อนุมัติ</button>
+                @if($report->status != 'บันทึก')
+                    <a type="button" class="btn btn-outline-success" href="{{ route('reports.save', ['report' => $report->id]) }}">เพิ่มในบันทึก</a>
+                @endif
                 </div>
             </form>
 
