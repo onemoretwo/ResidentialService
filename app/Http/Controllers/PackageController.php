@@ -111,7 +111,7 @@ class PackageController extends Controller
         $package->save();
 
         $packages = Package::where('room_id',$room_id)->where('status','รอรับของ')->orderBy('created_at','desc')->get();
-        return redirect()->route('room.users.packages',['id' => $room_id]);
+        return redirect()->route('packages.index');
     }
 
     /**
