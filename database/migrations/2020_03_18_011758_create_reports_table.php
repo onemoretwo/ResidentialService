@@ -20,7 +20,7 @@ class CreateReportsTable extends Migration
             $table->string('title');
             $table->string('detail');
             $table->enum('type',['แจ้งซ่อม','รายงาน']);
-            $table->enum('status',['รอการยืนยัน','อนุมัติ'])->default('รอการยืนยัน');
+            $table->enum('status',['รอการยืนยัน','อนุมัติ','บันทึก'])->default('รอการยืนยัน');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

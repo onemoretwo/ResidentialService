@@ -77,9 +77,9 @@
                     <li class="nav-item">
                         <a class="nav-link" id="repair-tab" data-toggle="tab" href="#repair" role="tab" aria-controls="repair" aria-selected="false">แจ้งซ่อมภายใน</a>
                     </li>
-{{--                    <li class="nav-item">--}}
-{{--                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>--}}
-{{--                    </li>--}}
+                    <li class="nav-item">
+                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#save" role="tab" aria-controls="save" aria-selected="false">รายการที่บันทึก</a>
+                    </li>
                 </ul>
             </div>
 
@@ -171,6 +171,46 @@
                                     </tr>
 
                                 @endif
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                    <div class="tab-pane fade table-responsive" id="save" role="tabpanel" aria-labelledby="repair-tab">
+                        <table class="table table-hover text-center">
+                            <thead>
+                            <tr>
+                                <th scope="col">เรื่อง</th>
+                                <th scope="col">เวลาที่ส่ง</th>
+                                <th scope="col">ตึก</th>
+                                <th scope="col">ห้อง</th>
+                                <th scope="col"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @if($saved)
+                                @foreach( $saved as $save)
+                                    <tr>
+                                        <td>{{  $save->title}}</td>
+                                        <td>{{  $save->created_at}}</td>
+                                        <td>{{ $save->room->building->name }}</td>
+                                        <td>{{ $save->room->number }}</td>
+                                        <td>
+                                            <a href="{{route('reports.edit',['report' => $save->id])}}">
+                                                <button type="submit" class="btn btn-outline-primary">แสดง</button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+
+                            @else
+                                <tr>
+                                    <td class=" text-black-50" colspan="3">
+                                        ไม่มีเรื่องแจ้งซ่อม
+                                    </td>
+                                </tr>
+
+                            @endif
                             </tbody>
                         </table>
 

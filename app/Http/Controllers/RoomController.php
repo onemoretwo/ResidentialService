@@ -196,7 +196,8 @@ class RoomController extends Controller
 
     public function roomPackages($id){
         $packages = Package::where('room_id',$id)->where('status','รอรับของ')->get();
-        return view('rooms.showPackages',['packages' => $packages]);
+        $his_package = Package::where('room_id',$id)->where('status','ได้รับแล้ว')->orderBy('updated_at','desc')->get();
+        return view('rooms.showPackages',['packages' => $packages,'his' => $his_package]);
     }
 
     /**

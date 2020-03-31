@@ -23,9 +23,11 @@
                             </div>
                             <div class="col">
                                 <div class="text-right">
+                                    @if(Auth::user()->role != 'staff')
                                     <a type="button" class="btn btn-primary" href="{{ route('user.edit', ['user' => $user->id]) }}">
                                         {{ __('แก้ไขข้อมูล') }}
                                     </a>
+                                    @endif
                                     <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#changeImgModal">
                                         {{ __('เปลี่ยนรูปประจำตัว') }}
                                     </button>
