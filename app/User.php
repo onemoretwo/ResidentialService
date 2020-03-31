@@ -69,9 +69,10 @@ class User extends Authenticatable
         return $this->role === 'staff' ;
     }
 
-    public function getRoomFromUser($title,$first,$last){
-        $user = DB::table('users')->where('title',$title)->where('first_name',$first)->where('last_name',$last)->first();
-        return $user->id;
+    public function getRoomFromUser($building_name,$room_number){
+        $building = DB::table('buildings')->where('name',$building_name)->first();
+        $room = DB::table('rooms')->where('building_id',$building->id)->where('number',$room_number)->first();
+        return $room->id;
     }
 
     public function haveWifi($id){
