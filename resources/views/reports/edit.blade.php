@@ -48,15 +48,13 @@
 
                     </div>
 
-
-
                 </div>
                 <div class="card-footer justify-content-end">
-                    <form action="{{ route('reports.destroy', ['report' => $report->id]) }}" method="POST">
-                        @method('DELETE')
-                        @csrf
+{{--                    <form action="{{ route('reports.destroy', ['report' => $report->id]) }}" method="POST">--}}
+{{--                        @method('DELETE')--}}
+{{--                        @csrf--}}
                         <button type="submit" class="btn btn-outline-danger">ปฎิเสธ</button>
-                    </form>
+{{--                    </form>--}}
                     <button type="submit" class="btn btn-outline-success">อนุมัติ</button>
                 </div>
             </form>
