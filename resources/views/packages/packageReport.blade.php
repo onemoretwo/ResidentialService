@@ -62,8 +62,7 @@
 
                     </div>
                     <div class="col-4 text-right">
-                        <a href="{{ route('packages.history') }}"><button class="btn btn-outline-info allp">ตรวจสอบประวัติพัสดุ</button></a>
-                        <a href="{{ route('packages.create') }}"><button class="btn btn-outline-success"><i class="fas fa-plus" ></i> เพิ่มพัสดุ</button></a>
+                        <a href="{{ route('packages.index') }}"><button class="btn btn-outline-success">แจ้งพัสดุ</button></a>
                     </div>
 
                 </div>
@@ -75,29 +74,29 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 
-                        @php($i=1)
+                        @php($i = 0)
                         @foreach($packages as $package)
-                        <div>
-                            <div class="card card-adapt">
-                                <div class="card-body card-bot">
-                                    <button class="btn btn-info show-image" data-toggle="modal" data-target="#image{{ $i }}"><i class="fas fa-gift" style="margin-right: 5px"></i>ดูรูปพัสดุ</button>
-                                    <a class="icon-con btn btn-outline-info" style="color: #0080fe;" href="{{ route('package.confirm',['room' => $package->room->id, 'package' => $package->id]) }}">รับพัสดุแล้ว</a>
-                                    <div class="inline">
-                                        <div class="room-detail">
-                                            <h5>ตึก  : {{ $package->room->building->name }}</h5>
-                                            <h5 style="margin-bottom: 0">ห้อง : {{ $package->room->number }}</h5>
+                            <div>
+                                <div class="card card-adapt">
+                                    <div class="card-body card-bot">
+                                        <button class="btn btn-info show-image" data-toggle="modal" data-target="#image{{ $i }}"><i class="fas fa-gift" style="margin-right: 5px"></i>ดูรูปพัสดุ</button>
+                                        <button class="icon-con btn btn-@if($package->status == "ได้รับแล้ว")success @elseif($package->status == "รอรับของ")danger @endif" style="color: #FFFFFF;">@if($package->status == "ได้รับแล้ว")รับพัสดุแล้ว @else รอรับพัสดุ @endif</button>
+                                        <div class="inline">
+                                            <div class="room-detail">
+                                                <h5>ตึก  : {{ $package->room->building->name }}</h5>
+                                                <h5 style="margin-bottom: 0">ห้อง : {{ $package->room->number }}</h5>
+                                            </div>
+                                            <div class="package-detail">
+                                                <p>ชื่อผู้รับพัสดุ : {{ $package->recipient }} </p>
+                                                <p>รายละเอียด : {{ $package->detail }}</p>
+                                                <p class="date" style="color: #808588">{{ $package->created_at }}</p>
+                                            </div>
                                         </div>
-                                        <div class="package-detail">
-                                            <p>ชื่อผู้รับพัสดุ : {{ $package->recipient }} </p>
-                                            <p>รายละเอียด : {{ $package->detail }}</p>
-                                            <p class="date" style="color: #808588">{{ $package->created_at }}</p>
-                                        </div>
+                                        <hr style="margin: 0.4rem 0">
+                                        <p style="margin-bottom: 0.1rem;color: #808588">ผู้รับผิดชอบ :  {{ $package->user->first_name }}    {{ $package->user->last_name }}</p>
                                     </div>
-                                    <hr style="margin: 0.4rem 0">
-                                    <p style="margin-bottom: 0.1rem;color: #808588">ผู้รับผิดชอบ :  {{ $package->user->first_name }}    {{ $package->user->last_name }}</p>
                                 </div>
                             </div>
-                        </div>
 
                             <div class="modal fade bd-example-modal-lg" id="image{{ $i }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -118,7 +117,7 @@
                                 </div>
                             </div>
                             @php($i++)
-                            @endforeach
+                        @endforeach
 
                     </div>
                     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>

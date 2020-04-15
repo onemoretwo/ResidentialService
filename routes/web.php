@@ -74,7 +74,7 @@ Route::get('/requests/{type}/building/{building}/floor/{floor}', 'RequestControl
 Route::get('/requests/create/{room}','RequestController@create')->name('requests.create');
 Route::get('/requests/{request}/update/admin-confirm','RequestController@updateConfirm')->name('requests.admin.confirm');
 
-
+Route::get('/packages/report', 'PackageController@packageReport')->name('packages.history');
 Route::resource('/packages','PackageController');
 
 Route::resource('/admin', 'AdminController');
