@@ -124,4 +124,9 @@ class PackageController extends Controller
     {
         //
     }
+
+    public function packageReport(){
+        $packages = Package::orderBy('created_at','desc')->get();
+        return view('packages.packageReport',["packages" => $packages]);
+    }
 }
