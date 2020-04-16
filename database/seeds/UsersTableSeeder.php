@@ -39,10 +39,6 @@ class UsersTableSeeder extends Seeder
         $user->password = Hash::make('1234');
         $user->birth_date = NOW();
         $user->gender = 1;
-        $user->citizen_id = "4674567643123";
-        $user->address = "42/119 ต.ท่าจีน อ.เมือง จ.สมุทรสาคร";
-        $user->phone_number_1 = "0868214563";
-        $user->phone_number_2 = null;
         $user->role = "user";
         $user->checkIn_at = null;
         $user->save();
