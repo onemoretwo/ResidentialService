@@ -16,9 +16,9 @@ php artisan key:generate
 ---
 
 ## เตรียมการสำหรับทดสอบระบบ
-คำสั่งสำหรับสร้างข้อมูลจำลองใน Database และเปิดใช้ใน Server
+คำสั่งสำหรับสร้างข้อมูลจำลองใน Database และเปิดใช้งาน Server
 ```
-php artisan migrate:fresh --seed
+php artisan migrate:refresh --seed
 php artisan serve
 ```
 ---
